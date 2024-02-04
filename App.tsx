@@ -1,41 +1,22 @@
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
-import { QueryClientProvider, useQuery } from "@tanstack/react-query";
-import { QueryClient } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-// import { addPlugin } from "react-native-flipper";
-
-export const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      // NOTE
-      // refetchOnWindowFocus breaks some UIs (like feeds)
-      // so we only selectively want to enable this
-      // -prf
-      refetchOnWindowFocus: false,
-      // Structural sharing between responses makes it impossible to rely on
-      // "first seen" timestamps on objects to determine if they're fresh.
-      // Disable this optimization so that we can rely on "first seen" timestamps.
-      structuralSharing: false,
-      // We don't want to retry queries by default, because in most cases we
-      // want to fail early and show a response to the user. There are
-      // exceptions, and those can be made on a per-query basis. For others, we
-      // should give users controls to retry.
-      retry: false,
-    },
-  },
-});
+import { useTodoMutation } from "mutations/use-todo-mutation/use-todo-mutation";
+import { useTodoQuery } from "queries/hooks/use-todo-query/use-todo-query";
+import { queryClient } from "queries/query-client/query-client";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export const Test = () => {
-  const fetchData = async () => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/todos");
-    const data = await response.json();
-    return data;
-  };
+  const { data, isLoading, isError } = useTodoQuery();
+  const { mutate } = useTodoMutation(1, {});
 
-  const { data, isLoading, isError } = useQuery({ queryKey: ["example"], queryFn: fetchData });
-  // console.log("data", data);
-  return null;
+  return (
+    <View style={{ alignItems: "center", justifyContent: "center", display: "flex", marginTop: 100 }}>
+      <TouchableOpacity onPress={() => mutate()} accessibilityRole="button">
+        <Text>Press to trigger todo mutation</Text>
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 export default function App() {

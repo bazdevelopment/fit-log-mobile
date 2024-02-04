@@ -5,8 +5,9 @@
     "module": "esnext",
     "types": ["node"],
     "paths": {
-      "#/*": ["./src/*"],
+      "*": ["./src/*"],
       "@components/*": ["./src/components/*"],
+      "@queries/*": ["./src/queries/*"],
     },
   },
 }

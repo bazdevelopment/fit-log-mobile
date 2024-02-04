@@ -10,7 +10,8 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "lint:fix": "eslint \"**/*.{js,ts,tsx}\" --fix"
+    "lint:fix": "eslint \"**/*.{js,ts,tsx}\" --fix",
+    "open-react-query-devtools": "open http://localhost:$PORT/_expo/plugins/@dev-plugins/react-query"
   },
   "dependencies": {
     "@dev-plugins/react-query": "^0.0.5",
