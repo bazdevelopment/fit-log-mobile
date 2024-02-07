@@ -4,14 +4,15 @@ import { StatusBar } from "expo-status-bar";
 import { useTodoMutation } from "mutations/use-todo-mutation/use-todo-mutation";
 import { useTodoQuery } from "queries/hooks/use-todo-query/use-todo-query";
 import { queryClient } from "queries/query-client/query-client";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
+import { atoms } from "styles/atoms";
 
 export const Test = () => {
   const { data, isLoading, isError } = useTodoQuery();
   const { mutate } = useTodoMutation(1, {});
 
   return (
-    <View style={{ alignItems: "center", justifyContent: "center", display: "flex", marginTop: 100 }}>
+    <View style={[atoms.justify_center, atoms.flex_1, atoms.flex_row]}>
       <TouchableOpacity onPress={() => mutate()} accessibilityRole="button">
         <Text>Press to trigger todo mutation</Text>
       </TouchableOpacity>
@@ -25,19 +26,10 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Test />
-      <View style={styles.container}>
+      <View style={[atoms.flex_1, atoms.align_center, atoms.justify_center]}>
         <Text>This is the first build for FitLog app!</Text>
         <StatusBar style="auto" />
       </View>
     </QueryClientProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
