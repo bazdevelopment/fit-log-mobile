@@ -1,5 +1,6 @@
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider, useTheme } from "context/theme-context/theme-context";
 import { StatusBar } from "expo-status-bar";
 import { useTodoMutation } from "mutations/use-todo-mutation/use-todo-mutation";
 import { useTodoQuery } from "queries/hooks/use-todo-query/use-todo-query";
@@ -23,13 +24,17 @@ export const Test = () => {
 export default function App() {
   useReactQueryDevTools(queryClient);
 
+  const theme = useTheme();
+
   return (
     <QueryClientProvider client={queryClient}>
-      <Test />
-      <View style={[atoms.flex_1, atoms.align_center, atoms.justify_center]}>
-        <Text>This is the first build for FitLog app!</Text>
-        <StatusBar style="auto" />
-      </View>
+      <ThemeProvider>
+        <Test />
+        <View style={[atoms.flex_1, atoms.align_center, atoms.justify_center]}>
+          <Text>This is the first build for FitLog app!</Text>
+          <StatusBar style="auto" />
+        </View>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
