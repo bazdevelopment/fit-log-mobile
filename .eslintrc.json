@@ -14,7 +14,7 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react-native-a11y/ios"
   ],
-  "plugins": ["react", "react-native", "react-hooks", "prettier", "@typescript-eslint", "simple-import-sort"],
+  "plugins": ["react", "react-native", "react-hooks", "prettier", "@typescript-eslint", "simple-import-sort", "lingui"],
   "rules": {
     "no-unused-vars": 0,
     "no-irregular-whitespace": 0,

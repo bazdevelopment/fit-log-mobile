@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 module.exports = function (api) {
   api.cache(true);
   return {
+    plugins: ["macros"],
     presets: ["babel-preset-expo"],
   };
 };

@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:JSON.parse("{\"6eNY1i\":\"Asta e primul build pentru app!\",\"iHd4A9\":\"Asta e primul build pentru FitLog app!\",\"jPeu1I\":\"Apasaaaaa\"}")};

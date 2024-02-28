@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:JSON.parse("{\"Pm7MuN\":\"<0>This is the first build for FitLog app!</0>\",\"jPeu1I\":\"Press to trigger todo mutation\"}")};
