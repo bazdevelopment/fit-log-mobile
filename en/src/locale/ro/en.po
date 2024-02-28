@@ -8,7 +8,7 @@ msgstr ""
 "Language: en\n"
 "Project-Id-Version: fitlog-translation\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-02-28 19:00\n"
+"PO-Revision-Date: 2024-02-28 19:06\n"
 "Last-Translator: \n"
 "Language-Team: English\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -24,9 +24,9 @@ msgstr ""
 
 #: App.tsx:43
 msgid "This is the first build for FitLog app!!!!"
-msgstr ""
+msgstr "!!!!"
 
 #: App.tsx:23
-msgid "Press to trigger todo mutation"
-msgstr ""
+msgid "Press to trigger todo mutation!!!!!!"
+msgstr "!!!!!!"
 
