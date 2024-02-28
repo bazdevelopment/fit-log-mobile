@@ -48,7 +48,7 @@ export default function App() {
               <Text>
                 <Trans>This is the first build for FitLog app!</Trans>
               </Text>
-              <StatusBar style="auto" />
+              <StatusBar />
             </View>
           </I18nProvider>
         </LanguageContextProvider>
