@@ -1,4 +1,4 @@
-import { tokens } from "styles";
+import { tokens } from ".";
 
 export const atoms = {
   /*

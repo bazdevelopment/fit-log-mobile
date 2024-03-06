@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { useLanguagePreference } from "hooks/use-language-preference/use-language-preference";
 import { createContext, useContext } from "react";
+
+import { useLanguagePreference } from "../../hooks/use-language-preference/use-language-preference";
 
 interface LanguageContextType {
   language: string; // Assuming language is a string, you can replace it with the appropriate type

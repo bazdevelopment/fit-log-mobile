@@ -4,11 +4,21 @@
     "jsx": "react-jsx",
     "module": "esnext",
     "types": ["jest"],
-    "baseUrl": "./",
-    "paths": {
-      "*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@queries/*": ["./src/queries/*"],
-    },
-  },
-}
+    // "baseUrl": "./",
+    // "paths": {
+    //     "*": ["src/*"],
+        // "styles/*":["src/styles/*"],
+
+    // }
+
+    // "baseUrl": "./",
+    // "paths": {
+    //   "*": ["./src/*"],
+    //   "@components/*": ["./src/components/*"],
+    //   "@enums/*": ["./src/enums/*"],
+    //   "@styles/*":["./src/styles/*"],
+    //   "@queries/*": ["./src/queries/*"],
+    //   "@context/*":["./src/context/*"]
+    // // },
+
+}}

@@ -1,13 +1,13 @@
-import { POSITIONS } from "enums/positions";
-import { TYPOGRAPHY_ELEMENTS } from "enums/typography-elements";
-import React from "react";
 import { Text as RNText, View } from "react-native";
-import { atoms } from "styles/atoms";
 
+import { POSITIONS } from "../../../enums/positions";
+import { TYPOGRAPHY_ELEMENTS } from "../../../enums/typography-elements";
+import { atoms } from "../../../styles/atoms";
 import { ILabel } from "./label.interface";
 import { defaultStyles } from "./label.styles";
 
 /**
+ *
  * A reusable component for displaying text labels with optional styling and ellipsis handling.
  *
  * @example

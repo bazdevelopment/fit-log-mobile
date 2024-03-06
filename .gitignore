@@ -72,7 +72,8 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-
+# storybook
+storybook-static
 # jest
 .jest
 
