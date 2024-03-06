@@ -1,9 +1,11 @@
 import { i18n } from "@lingui/core";
-import { useLanguage } from "context/language-context/language-context";
-import { APP_LANGUAGE, TAppLanguage } from "enums/app-language";
-import { messages as messagesEn } from "locale/en/messages.js";
-import { messages as messagesRo } from "locale/ro/messages.js";
 import { useEffect } from "react";
+
+import { useLanguage } from "../../context/language-context/language-context";
+import { APP_LANGUAGE, TAppLanguage } from "../../enums/app-language";
+import { messages as messagesEn } from "../../locale/en/messages.js";
+import { messages as messagesRo } from "../../locale/ro/messages.js";
+
 /**
  * custom hook used to activate a specific message together with the correct messages
  */

@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { TAppLanguage } from "enums/app-language";
 import { useEffect, useState } from "react";
+
+import { TAppLanguage } from "../../enums/app-language";
 
 const defaultLanguage = "en";
 

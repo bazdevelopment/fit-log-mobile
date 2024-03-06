@@ -1,5 +1,6 @@
-import { useLanguage } from "context/language-context/language-context";
 import { Button, Text, View } from "react-native";
+
+import { useLanguage } from "../../context/language-context/language-context";
 
 const LanguagePreference = () => {
   const { language, onChangeLanguagePreference } = useLanguage();
