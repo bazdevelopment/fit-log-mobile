@@ -3,7 +3,6 @@ import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import { SafeAreaView, Text, View } from "react-native";
 
 export default function TabLayout() {
   return (
