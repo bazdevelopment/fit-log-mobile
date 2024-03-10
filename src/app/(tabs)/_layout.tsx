@@ -1,7 +1,4 @@
-import { Foundation } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
+import { AntDesign, Entypo, FontAwesome, Foundation } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 
 export default function TabLayout() {

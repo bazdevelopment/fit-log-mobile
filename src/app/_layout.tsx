@@ -2,7 +2,6 @@ import { useReactNavigationDevTools } from "@dev-plugins/react-navigation";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { useNavigationContainerRef } from "expo-router";
 import { Stack } from "expo-router/stack";
-import { Text, View } from "react-native";
 
 import { LanguageContextProvider } from "../context/language-context/language-context";
 import { ThemeProvider } from "../context/theme-context/theme-context";
