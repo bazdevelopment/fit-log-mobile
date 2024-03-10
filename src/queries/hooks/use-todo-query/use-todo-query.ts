@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchTodoData } from "api/todo/todo-api";
-import { TODO_KEY } from "queries/query-keys/todo-key";
+
+import { fetchTodoData } from "../../../api/todo/todo-api";
+import { TODO_KEY } from "../../query-keys/todo-key";
 
 /**
  * The `useTodoQuery` function is a custom React hook used for querying todo data in a React application.

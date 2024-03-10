@@ -1,6 +1,5 @@
-import { THEME } from "enums/theme";
-import { ITheme } from "types/theme.interface";
-
+import { THEME } from "../enums/theme";
+import { ITheme } from "../types/theme.interface";
 import { typography } from "./typography";
 
 export const lightTheme: ITheme = {

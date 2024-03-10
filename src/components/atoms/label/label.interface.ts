@@ -1,12 +1,12 @@
-import { TEllipsizeMode } from "enums/ellipsize-mode";
-import { TPositions } from "enums/positions";
 import { ReactElement } from "react";
-import { TextStyle, ViewStyle } from "react-native";
+
+import { TEllipsizeMode } from "../../../enums/ellipsize-mode";
+import { TPositions } from "../../../enums/positions";
 
 export interface ILabel {
   labelText: string;
-  additionalLabelStyle?: TextStyle;
-  additionalContainerStyle?: ViewStyle;
+  additionalLabelStyle?: string;
+  additionalContainerStyle?: string;
   numberOfLinesDisplayed?: number;
   ellipsizeMode?: TEllipsizeMode;
   allowFontScaling?: boolean;
@@ -16,10 +16,10 @@ export interface ILabel {
 }
 
 export interface IDefaultStylesType {
-  p: TextStyle;
-  h1: TextStyle;
-  h2: TextStyle;
-  h3: TextStyle;
-  h4: TextStyle;
-  h5: TextStyle;
+  p: string;
+  h1: string;
+  h2: string;
+  h3: string;
+  h4: string;
+  h5: string;
 }

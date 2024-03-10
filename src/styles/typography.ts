@@ -1,4 +1,4 @@
-import { Typography } from "types/theme.interface";
+import { Typography } from "../types/theme.interface";
 
 export const typography: Typography = {
   "2xl-thin": {
