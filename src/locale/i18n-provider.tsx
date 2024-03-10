@@ -1,7 +1,8 @@
 import { i18n } from "@lingui/core";
 import { I18nProvider as DefaultI18nProvider } from "@lingui/react";
-import { useLocaleLanguage } from "hooks/use-locale-language/use-locale-language";
 import React from "react";
+
+import { useLocaleLanguage } from "../hooks/use-locale-language/use-locale-language";
 
 /**
  *The `I18nProvider` function is a React component used for internationalization (i18n) in React applications.

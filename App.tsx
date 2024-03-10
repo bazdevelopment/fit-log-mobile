@@ -12,8 +12,9 @@ import { ThemeProvider, useTheme } from "./src/context/theme-context/theme-conte
 import { POSITIONS } from "./src/enums/positions";
 import { TYPOGRAPHY_ELEMENTS } from "./src/enums/typography-elements";
 import I18nProvider from "./src/locale/i18n-provider";
+import { useTodoMutation } from "./src/mutations/use-todo-mutation/use-todo-mutation";
+import { useTodoQuery } from "./src/queries/hooks/use-todo-query/use-todo-query";
 import { queryClient } from "./src/queries/query-client/query-client";
-import { atoms } from "./src/styles/atoms";
 
 export const Test = () => {
   const { data, isLoading, isError } = useTodoQuery();
@@ -21,7 +22,7 @@ export const Test = () => {
   const { mutate } = useTodoMutation(1, {});
 
   return (
-    <View style={[atoms.justify_center, atoms.flex_row, atoms.mt_5xl]}>
+    <View className="flex justify-center flex-row mb-10">
       <TouchableOpacity onPress={() => mutate()} accessibilityRole="button">
         <Text>
           <Trans>Press to trigger todo mutation</Trans>
@@ -46,10 +47,15 @@ export default function App() {
             <LanguagePreference />
 
             <Test />
-            <View style={[atoms.flex_1, atoms.align_center]}>
+            <View className="flex items-center">
               <Text>
                 <Trans>This is the first build for FitLog app!</Trans>
-                <Label labelText="This is a label component" as={TYPOGRAPHY_ELEMENTS.p} iconPosition={POSITIONS.left} />
+                <Label
+                  labelText="This is a label component"
+                  as={TYPOGRAPHY_ELEMENTS.p}
+                  iconPosition={POSITIONS.left}
+                  additionalLabelStyle="text-black"
+                />
               </Text>
               <StatusBar />
             </View>

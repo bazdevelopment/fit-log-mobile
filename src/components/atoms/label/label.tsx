@@ -2,7 +2,6 @@ import { Text as RNText, View } from "react-native";
 
 import { POSITIONS } from "../../../enums/positions";
 import { TYPOGRAPHY_ELEMENTS } from "../../../enums/typography-elements";
-import { atoms } from "../../../styles/atoms";
 import { ILabel } from "./label.interface";
 import { defaultStyles } from "./label.styles";
 
@@ -17,8 +16,8 @@ import { defaultStyles } from "./label.styles";
  * -- Usage with additional styles--
  * <Label
  *   labelText="Long text that might be truncated"
- *   additionalLabelStyle={{ color: 'red', fontSize: 16 }}
- *   additionalContainerStyle={{ backgroundColor: 'lightgray', padding: 8 }}
+ *   additionalLabelStyle="tailwind classes"
+ *   additionalContainerStyle="tailwind classes"
  * />
  */
 
@@ -33,17 +32,17 @@ const Label = ({
   icon,
   iconPosition = POSITIONS.left,
 }: ILabel) => {
-  const iconElement = <View style={atoms.mr_md}>{icon}</View>;
+  const iconElement = <View className="mr-2">{icon}</View>;
   return (
     <View
-      style={
-        icon ? [atoms.flex, atoms.flex_row, atoms.align_center, additionalContainerStyle] : additionalContainerStyle
+      className={
+        icon ? `flex flex-row items-center ${additionalContainerStyle as string}` : (additionalContainerStyle as string)
       }
     >
       {iconPosition === POSITIONS.left && iconElement}
       <RNText
         allowFontScaling={allowFontScaling}
-        style={[defaultStyles[as], additionalLabelStyle]}
+        className={`${defaultStyles[as]} ${additionalLabelStyle as string}`}
         numberOfLines={numberOfLinesDisplayed}
         ellipsizeMode={ellipsizeMode}
       >

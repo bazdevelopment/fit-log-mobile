@@ -6,7 +6,7 @@ const LanguagePreference = () => {
   const { language, onChangeLanguagePreference } = useLanguage();
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View className="flex justify-center items-center flex-column mt-20">
       <Text>Current Language: {language}</Text>
       <Button title="Set English" onPress={() => onChangeLanguagePreference("en")} />
       <Button title="Set romanian" onPress={() => onChangeLanguagePreference("ro")} />
