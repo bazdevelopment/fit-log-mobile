@@ -6,7 +6,7 @@ PODS:
     - ExpoModulesCore
   - EXConstants (15.4.5):
     - ExpoModulesCore
-  - EXFont (11.10.2):
+  - EXFont (11.10.3):
     - ExpoModulesCore
   - EXImageLoader (4.6.0):
     - ExpoModulesCore
@@ -16,17 +16,17 @@ PODS:
     - ExpoModulesCore
   - EXNotifications (0.27.6):
     - ExpoModulesCore
-  - Expo (50.0.5):
+  - Expo (50.0.8):
     - ExpoModulesCore
-  - expo-dev-client (3.3.8):
+  - expo-dev-client (3.3.9):
     - EXManifests
     - expo-dev-launcher
     - expo-dev-menu
     - expo-dev-menu-interface
     - EXUpdatesInterface
-  - expo-dev-launcher (3.6.6):
+  - expo-dev-launcher (3.6.7):
     - EXManifests
-    - expo-dev-launcher/Main (= 3.6.6)
+    - expo-dev-launcher/Main (= 3.6.7)
     - expo-dev-menu
     - expo-dev-menu-interface
     - ExpoModulesCore
@@ -35,7 +35,7 @@ PODS:
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
     - React-RCTAppDelegate
-  - expo-dev-launcher/Main (3.6.6):
+  - expo-dev-launcher/Main (3.6.7):
     - EXManifests
     - expo-dev-launcher/Unsafe
     - expo-dev-menu
@@ -46,7 +46,7 @@ PODS:
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
     - React-RCTAppDelegate
-  - expo-dev-launcher/Unsafe (3.6.6):
+  - expo-dev-launcher/Unsafe (3.6.7):
     - EXManifests
     - expo-dev-menu
     - expo-dev-menu-interface
@@ -56,14 +56,14 @@ PODS:
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
     - React-RCTAppDelegate
-  - expo-dev-menu (4.5.5):
-    - expo-dev-menu/Main (= 4.5.5)
-    - expo-dev-menu/ReactNativeCompatibles (= 4.5.5)
+  - expo-dev-menu (4.5.6):
+    - expo-dev-menu/Main (= 4.5.6)
+    - expo-dev-menu/ReactNativeCompatibles (= 4.5.6)
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
   - expo-dev-menu-interface (1.7.2)
-  - expo-dev-menu/Main (4.5.5):
+  - expo-dev-menu/Main (4.5.6):
     - EXManifests
     - expo-dev-menu-interface
     - expo-dev-menu/Vendored
@@ -71,29 +71,31 @@ PODS:
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
-  - expo-dev-menu/ReactNativeCompatibles (4.5.5):
+  - expo-dev-menu/ReactNativeCompatibles (4.5.6):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
-  - expo-dev-menu/SafeAreaView (4.5.5):
+  - expo-dev-menu/SafeAreaView (4.5.6):
     - ExpoModulesCore
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
-  - expo-dev-menu/Vendored (4.5.5):
+  - expo-dev-menu/Vendored (4.5.6):
     - expo-dev-menu/SafeAreaView
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
-  - ExpoCamera (14.0.3):
+  - ExpoCamera (14.0.5):
     - ExpoModulesCore
     - ZXingObjC/OneD
     - ZXingObjC/PDF417
   - ExpoDevice (5.9.3):
     - ExpoModulesCore
-  - ExpoFileSystem (16.0.5):
+  - ExpoFileSystem (16.0.7):
     - ExpoModulesCore
-  - ExpoImage (1.10.5):
+  - ExpoHead (3.4.8):
+    - ExpoModulesCore
+  - ExpoImage (1.10.6):
     - ExpoModulesCore
     - SDWebImage (~> 5.17.0)
     - SDWebImageAVIFCoder (~> 0.10.1)
@@ -103,7 +105,7 @@ PODS:
     - ExpoModulesCore
   - ExpoKeepAwake (12.8.2):
     - ExpoModulesCore
-  - ExpoModulesCore (1.11.8):
+  - ExpoModulesCore (1.11.9):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
@@ -112,6 +114,11 @@ PODS:
     - ReactCommon/turbomodule/core
   - ExpoSharing (11.10.0):
     - ExpoModulesCore
+  - EXSplashScreen (0.26.4):
+    - ExpoModulesCore
+    - glog
+    - RCT-Folly (= 2022.05.16.00)
+    - React-Core
   - EXTaskManager (11.7.2):
     - ExpoModulesCore
     - UMAppLoader
@@ -1079,6 +1086,8 @@ PODS:
   - React-Mapbuffer (0.73.2):
     - glog
     - React-debug
+  - react-native-safe-area-context (4.8.2):
+    - React-Core
   - React-nativeconfig (0.73.2)
   - React-NativeModulesApple (0.73.2):
     - glog
@@ -1292,11 +1301,13 @@ DEPENDENCIES:
   - ExpoCamera (from `../node_modules/expo-camera/ios`)
   - ExpoDevice (from `../node_modules/expo-device/ios`)
   - ExpoFileSystem (from `../node_modules/expo-file-system/ios`)
+  - ExpoHead (from `../node_modules/expo-router/ios`)
   - ExpoImage (from `../node_modules/expo-image/ios`)
   - ExpoImagePicker (from `../node_modules/expo-image-picker/ios`)
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
   - ExpoSharing (from `../node_modules/expo-sharing/ios`)
+  - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
   - EXTaskManager (from `../node_modules/expo-task-manager/ios`)
   - EXUpdatesInterface (from `../node_modules/expo-updates-interface/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -1349,6 +1360,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector-modern`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
+  - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -1435,6 +1447,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-device/ios"
   ExpoFileSystem:
     :path: "../node_modules/expo-file-system/ios"
+  ExpoHead:
+    :path: "../node_modules/expo-router/ios"
   ExpoImage:
     :path: "../node_modules/expo-image/ios"
   ExpoImagePicker:
@@ -1445,6 +1459,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-modules-core"
   ExpoSharing:
     :path: "../node_modules/expo-sharing/ios"
+  EXSplashScreen:
+    :path: "../node_modules/expo-splash-screen/ios"
   EXTaskManager:
     :path: "../node_modules/expo-task-manager/ios"
   EXUpdatesInterface:
@@ -1500,6 +1516,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   React-Mapbuffer:
     :path: "../node_modules/react-native/ReactCommon"
+  react-native-safe-area-context:
+    :path: "../node_modules/react-native-safe-area-context"
   React-nativeconfig:
     :path: "../node_modules/react-native/ReactCommon"
   React-NativeModulesApple:
@@ -1557,24 +1575,26 @@ SPEC CHECKSUMS:
   DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
   EXApplication: 137189a3f149b4e8e546884629392c3efc94cbd3
   EXConstants: 988aa430ca0f76b43cd46b66e7fae3287f9cc2fc
-  EXFont: 21b9c760abd593ce8f0d5386b558ced76018506f
+  EXFont: f20669cb266ef48b004f1eb1f2b20db96cd1df9f
   EXImageLoader: 55080616b2fe9da19ef8c7f706afd9814e279b6b
   EXJSONUtils: 5c42959e87be238b045ef37cc5268b16a6c0ad4a
   EXManifests: 5e8c29f36c716af768a4ea47ec05e1b89ab93091
   EXNotifications: e11f0e9a5b657c064a481a5d522f3bc5a07bf7cd
-  Expo: 49cded7844f2ec4ffb1cc3b86504853f26952935
-  expo-dev-client: 025dce84f48b04c60c3891547732f001f6aad777
-  expo-dev-launcher: 3cddfcd8e54748d0046af07dc8e4f58dbb045e93
-  expo-dev-menu: 8088833c320b616a312ffe438fbea5df276c010e
+  Expo: c2d3edc1b1e833e26d837b03aa46d9137ca63302
+  expo-dev-client: dbc8e8a81d17a9d92e083a2856d056ba9a58984d
+  expo-dev-launcher: 3f2a78d97842a3fdc2f0116f775d8dbc32396cbd
+  expo-dev-menu: b964921baa1bda2a7ff42a407d1d7698ce215faf
   expo-dev-menu-interface: 7ba029c9d1a82ac22b9b584c00514860b060553e
-  ExpoCamera: c50a4c67431540e86406e953dc189b850263e522
+  ExpoCamera: 9eb966748a7897e84986567e3eef71836c219823
   ExpoDevice: d204395e17fffdcefa7470bdef33b07719ac41b1
-  ExpoFileSystem: 04795dd4d47e76eaf12e38c92091f77d794f9e7f
-  ExpoImage: 2b71f20472f293c1fbbf2400795b03d5bf8dd598
+  ExpoFileSystem: c7488590959bf85ebc114909eb8186cbd62e3a25
+  ExpoHead: 8224345e80abcf4c97b31c99805dd5a3c8d3404d
+  ExpoImage: 8cf2d51de3d03b7e984e9b0ba8f19c0c22057001
   ExpoImagePicker: 66970181d1c838f444e5e1f81b804ab2d5ff49bd
   ExpoKeepAwake: 0f5cad99603a3268e50af9a6eb8b76d0d9ac956c
-  ExpoModulesCore: 96d1751929ad10622773bb729ab28a8423f0dd0c
+  ExpoModulesCore: 1391529545de72f7f64ecabc7adb912306ab4d34
   ExpoSharing: 752ad6ae2b693de9cd4e7fddb78297bdc658b815
+  EXSplashScreen: 39244885abfb1b12765aae89edb90f8c88db6bbd
   EXTaskManager: 3e446dbf75cd662aa6e7d6828be5bc26265241c3
   EXUpdatesInterface: 3e444e2093e25b7ca0999a7d8c16e8392dee70c3
   FBLazyVector: fbc4957d9aa695250b55d879c1d86f79d7e69ab4
@@ -1617,6 +1637,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 03644c063fc3621c9a4e8bf263a8150909129618
   React-logger: 66b168e2b2bee57bd8ce9e69f739d805732a5570
   React-Mapbuffer: 9ee041e1d7be96da6d76a251f92e72b711c651d6
+  react-native-safe-area-context: 0ee144a6170530ccc37a0fd9388e28d06f516a89
   React-nativeconfig: d753fbbc8cecc8ae413d615599ac378bbf6999bb
   React-NativeModulesApple: 964f4eeab1b4325e8b6a799cf4444c3fd4eb0a9c
   React-perflogger: 29efe63b7ef5fbaaa50ef6eaa92482f98a24b97e
