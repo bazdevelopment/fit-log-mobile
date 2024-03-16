@@ -41,6 +41,7 @@ const Label = ({
     >
       {iconPosition === POSITIONS.left && iconElement}
       <RNText
+        testID="label-id"
         allowFontScaling={allowFontScaling}
         className={`${defaultStyles[as]} ${additionalLabelStyle as string}`}
         numberOfLines={numberOfLinesDisplayed}
