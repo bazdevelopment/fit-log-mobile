@@ -17,7 +17,8 @@
     "intl:extract": "lingui extract",
     "intl:compile": "lingui compile",
     "storybook:web": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "coverage": "jest --coverage && open ./coverage/lcov-report/index.html"
   },
   "dependencies": {
     "@dev-plugins/react-navigation": "^0.0.5",
@@ -66,6 +67,7 @@
     "react-native-svg": "^14.1.0",
     "react-native-web": "^0.19.10",
     "storybook": "^7.0.10",
+    "tailwind-merge": "^2.2.1",
     "ts-jest": "^29.1.2"
   },
   "devDependencies": {

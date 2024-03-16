@@ -76,5 +76,7 @@ yarn-error.*
 storybook-static
 # jest
 .jest
+# test coverage reports
+coverage
 
 # @end expo-cli

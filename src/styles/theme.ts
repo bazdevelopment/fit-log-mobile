@@ -1,5 +1,7 @@
 import { vars } from "nativewind";
 
+import { Colors } from "./colors";
+
 export const NAV_THEME = {
   light: {
     background: "hsl(0 0% 100%)",
@@ -21,10 +23,10 @@ export const NAV_THEME = {
 
 export const themes_tw = {
   light: vars({
-    "--color-primary-default": "#6739FF",
-    "--color-secondary-default": "#FF7B5C",
-    "--color-tertiary-default": "#080B11",
-    "--color-grey-default": "#797979",
+    "--color-primary-default": Colors.primary,
+    "--color-secondary-default": Colors.secondary,
+    "--color-tertiary-default": Colors.tertiary,
+    "--color-grey-default": Colors.grey,
   }),
   dark: vars({
     "--color-primary-default": "#402580",
