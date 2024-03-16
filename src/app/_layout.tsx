@@ -33,7 +33,7 @@ export default function AppLayout() {
     "Inter-ExtraBold": require("../assets/fonts/Inter-ExtraBold.ttf"),
     "Inter-ExtraLight": require("../assets/fonts/Inter-ExtraLight.ttf"),
     "Inter-Light": require("../assets/fonts/Inter-Light.ttf"),
-    "Inter-Medium": require("../assets/fonts/Inter-Light.ttf"),
+    "Inter-Medium": require("../assets/fonts/Inter-Medium.ttf"),
     "Inter-SemiBold": require("../assets/fonts/Inter-SemiBold.ttf"),
     "Inter-Thin": require("../assets/fonts/Inter-Thin.ttf"),
   });
