@@ -7,6 +7,7 @@ import MuscleIcon from "../../assets/icons/MuscleIcon";
 import Icon from "../../components/atoms/icon/icon";
 import Label from "../../components/atoms/label/label";
 import LanguagePreference from "../../components/language-preferrence/language-preference";
+import StarRating from "../../components/molecules/star-rating/star-rating";
 import { POSITIONS } from "../../enums/positions";
 import { TYPOGRAPHY_ELEMENTS } from "../../enums/typography-elements";
 import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
@@ -56,11 +57,8 @@ export default function Root() {
           <Text>Toggle light/dark mode</Text>
         </TouchableOpacity>
       </View>
-      <Icon
-        iconElement={<MuscleIcon fill={Colors.primary} width={40} height={40} />}
-        textSize="sm"
-        heading="Swimming"
-      />
+
+      <StarRating rating={2.5} reviewsNumber={10} />
     </View>
   );
 }
