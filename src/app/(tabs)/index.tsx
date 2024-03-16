@@ -3,6 +3,8 @@ import { Trans } from "@lingui/macro";
 import { Link } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
 
+import MuscleIcon from "../../assets/icons/MuscleIcon";
+import Icon from "../../components/atoms/icon/icon";
 import Label from "../../components/atoms/label/label";
 import LanguagePreference from "../../components/language-preferrence/language-preference";
 import { POSITIONS } from "../../enums/positions";
@@ -10,6 +12,7 @@ import { TYPOGRAPHY_ELEMENTS } from "../../enums/typography-elements";
 import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
 import { useTodoMutation } from "../../mutations/use-todo-mutation/use-todo-mutation";
 import { useTodoQuery } from "../../queries/hooks/use-todo-query/use-todo-query";
+import { Colors } from "../../styles/colors";
 
 export const Test = () => {
   const { data, isLoading, isError } = useTodoQuery();
@@ -53,6 +56,11 @@ export default function Root() {
           <Text>Toggle light/dark mode</Text>
         </TouchableOpacity>
       </View>
+      <Icon
+        iconElement={<MuscleIcon fill={Colors.primary} width={40} height={40} />}
+        textSize="sm"
+        heading="Swimming"
+      />
     </View>
   );
 }
