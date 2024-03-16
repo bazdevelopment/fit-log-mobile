@@ -29,14 +29,12 @@ const StarRating = ({ rating, reviewsNumber, isBriefModeEnabled = false }: IStar
       {!isBriefModeEnabled && detailedRatingList}
       {!!rating && (
         <Label
-          labelText={rating.toString()}
+          labelText={String(rating)}
           additionalContainerStyle={`${!isBriefModeEnabled ? "pl-3 pr-1" : "pr-1"} mb-1`}
           additionalLabelStyle="text-gray-500"
         />
       )}
-      {!!reviewsNumber && (
-        <Label labelText={`(${reviewsNumber.toString()} reviews)`} additionalLabelStyle="text-gray-500 mb-1" />
-      )}
+      {!!reviewsNumber && <Label labelText={`(${reviewsNumber} reviews)`} additionalLabelStyle="text-gray-500 mb-1" />}
     </View>
   );
 };

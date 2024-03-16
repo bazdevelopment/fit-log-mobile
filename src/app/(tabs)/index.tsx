@@ -3,8 +3,6 @@ import { Trans } from "@lingui/macro";
 import { Link } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
 
-import MuscleIcon from "../../assets/icons/MuscleIcon";
-import Icon from "../../components/atoms/icon/icon";
 import Label from "../../components/atoms/label/label";
 import LanguagePreference from "../../components/language-preferrence/language-preference";
 import StarRating from "../../components/molecules/star-rating/star-rating";
@@ -13,7 +11,6 @@ import { TYPOGRAPHY_ELEMENTS } from "../../enums/typography-elements";
 import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
 import { useTodoMutation } from "../../mutations/use-todo-mutation/use-todo-mutation";
 import { useTodoQuery } from "../../queries/hooks/use-todo-query/use-todo-query";
-import { Colors } from "../../styles/colors";
 
 export const Test = () => {
   const { data, isLoading, isError } = useTodoQuery();
