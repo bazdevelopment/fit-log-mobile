@@ -1,18 +1,15 @@
-import { useReactQueryDevTools } from "@dev-plugins/react-query";
 import { i18n } from "@lingui/core";
 import { Trans } from "@lingui/macro";
 import { Link } from "expo-router";
-import { StatusBar } from "expo-status-bar";
 import { Text, TouchableOpacity, View } from "react-native";
 
 import Label from "../../components/atoms/label/label";
 import LanguagePreference from "../../components/language-preferrence/language-preference";
-import { useTheme } from "../../context/theme-context/theme-context";
 import { POSITIONS } from "../../enums/positions";
 import { TYPOGRAPHY_ELEMENTS } from "../../enums/typography-elements";
+import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
 import { useTodoMutation } from "../../mutations/use-todo-mutation/use-todo-mutation";
 import { useTodoQuery } from "../../queries/hooks/use-todo-query/use-todo-query";
-import { queryClient } from "../../queries/query-client/query-client";
 
 export const Test = () => {
   const { data, isLoading, isError } = useTodoQuery();
@@ -33,12 +30,9 @@ export const Test = () => {
 i18n.loadAndActivate({ locale: "ro", messages: undefined });
 
 export default function Root() {
-  useReactQueryDevTools(queryClient);
-
-  const theme = useTheme();
-
+  const { toggleColorScheme } = useThemeScheme();
   return (
-    <>
+    <View className="bg-white flex-1">
       <LanguagePreference />
       <Test />
       <View className="flex items-center">
@@ -51,10 +45,14 @@ export default function Root() {
             additionalLabelStyle="text-black"
           />
         </Text>
-        <Link href="/explore">Go to explore</Link>
+        <Link href="/explore" className="text-primary-default">
+          Go to explore
+        </Link>
         <Link href="/favorite">Go to favorite</Link>
-        <StatusBar />
+        <TouchableOpacity accessibilityRole="button" onPress={toggleColorScheme}>
+          <Text>Toggle light/dark mode</Text>
+        </TouchableOpacity>
       </View>
-    </>
+    </View>
   );
 }
