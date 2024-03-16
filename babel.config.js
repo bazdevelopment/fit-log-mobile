@@ -6,8 +6,9 @@ module.exports = function (api) {
       ["@babel/plugin-transform-class-properties", { loose: true }],
       ["@babel/plugin-transform-private-methods", { loose: true }],
       ["@babel/plugin-transform-private-property-in-object", { loose: true }],
-      ["nativewind/babel"],
+      // "expo-router/babel",
+      "react-native-reanimated/plugin",
     ],
-    presets: ["babel-preset-expo"],
+    presets: [["babel-preset-expo", { jsxImportSource: "nativewind" }], "nativewind/babel"],
   };
 };
