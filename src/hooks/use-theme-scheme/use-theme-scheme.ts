@@ -8,6 +8,11 @@ import { THEME } from "../../enums/theme";
  */
 export const useThemeScheme = () => {
   const { colorScheme, setColorScheme } = useNativewindColorScheme();
+
+  /** Toggle color scheme from light to dark and vice versa
+   * useNativewindColorScheme() persists the theme without needing asysc storage
+   *
+   */
   const toggleColorScheme = () => {
     setColorScheme(colorScheme === THEME.LIGHT ? THEME.DARK : THEME.LIGHT);
   };

@@ -4,7 +4,7 @@ import "../../global.css";
 // import { useReactNavigationDevTools } from "@dev-plugins/react-navigation";
 // import { useReactQueryDevTools } from "@dev-plugins/react-query";
 import { ThemeProvider as NavigationTeamProvider } from "@react-navigation/native";
-import { Theme } from "@react-navigation/native";
+import { Theme as ITheme } from "@react-navigation/native";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 // import { useNavigationContainerRef } from "expo-router";
@@ -17,11 +17,11 @@ import I18nProvider from "../locale/i18n-provider";
 import { queryClient } from "../queries/query-client/query-client";
 import { NAV_THEME } from "../styles/theme";
 
-const LIGHT_THEME: Theme = {
+const LIGHT_THEME: ITheme = {
   dark: false,
   colors: NAV_THEME.light,
 };
-const DARK_THEME: Theme = {
+const DARK_THEME: ITheme = {
   dark: true,
   colors: NAV_THEME.dark,
 };
