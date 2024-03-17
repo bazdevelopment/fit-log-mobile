@@ -1,5 +1,5 @@
 module.exports = {
-  preset: "react-native", // jest-expo is not working for now
+  preset: "jest-expo", // jest-expo is not working for now
   roots: ["<rootDir>"],
   verbose: true,
   globals: {
@@ -17,7 +17,7 @@ module.exports = {
   testRegex: "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
   testPathIgnorePatterns: ["\\.snap$", "<rootDir>/node_modules/"],
   transformIgnorePatterns: [
-    "node_modules/(?!(jest-)?react-native|@react-native-community|@react-navigation|(@react-native|react-native)/)",
+    "node_modules/(?!(jest-)?react-native|expo|@react-native-community|@react-navigation|(@react-native|react-native)|@expo/vector-icons/)",
   ],
   setupFilesAfterEnv: ["@testing-library/jest-native/extend-expect"],
 };

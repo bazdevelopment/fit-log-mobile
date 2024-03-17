@@ -5,7 +5,6 @@ import { Text, TouchableOpacity, View } from "react-native";
 
 import Label from "../../components/atoms/label/label";
 import LanguagePreference from "../../components/language-preferrence/language-preference";
-import StarRating from "../../components/molecules/star-rating/star-rating";
 import { POSITIONS } from "../../enums/positions";
 import { TYPOGRAPHY_ELEMENTS } from "../../enums/typography-elements";
 import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
@@ -54,8 +53,6 @@ export default function Root() {
           <Text>Toggle light/dark mode</Text>
         </TouchableOpacity>
       </View>
-
-      <StarRating rating={2.5} reviewsNumber={10} />
     </View>
   );
 }

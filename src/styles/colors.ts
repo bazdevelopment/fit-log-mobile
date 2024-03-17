@@ -10,4 +10,9 @@ export const Colors = {
   lightGrey: "#D3D3D3",
   white: "#FFFFFF",
   orange: "#FFA500",
+  error: "#D70036",
+  warning: "#FFAD00",
+  success: "#3AAA35",
+  information: "#009EE3",
+  transparent: "transparent",
 };
