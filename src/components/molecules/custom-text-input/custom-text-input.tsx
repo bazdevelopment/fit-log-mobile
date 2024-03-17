@@ -15,19 +15,19 @@ import { ICustomTextInput } from "./custom-text-input.interface";
  */
 const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustomTextInput) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [value, setValue] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   const toggleShowPassword = () => {
     setShowPassword(prevState => !prevState);
   };
 
   const handleChangeText = (text: string) => {
-    setValue(text);
+    setInputValue(text);
     if (!text && type === INPUT_TYPE.password) toggleShowPassword();
   };
 
   const handleResetInput = () => {
-    setValue("");
+    setInputValue("");
   };
 
   return (
@@ -47,11 +47,11 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
         className={`flex-row items-center bg-gray-100 rounded-lg py-1.5 px-2 ${error ? "border-red-500 border-[1.5px]" : ""}`}
       >
         <View className={type ? "mr-2" : ""}>
-          <InputIcons position="front" type={type} inputValue={value} handleResetInput={handleResetInput} />
+          <InputIcons position="front" type={type} inputValue={inputValue} handleResetInput={handleResetInput} />
         </View>
         <RNTextInput
           className="flex-1 font-inter-regular text-gray-700 tracking-wide h-9"
-          value={value}
+          value={inputValue}
           onChangeText={handleChangeText}
           placeholder={placeholder}
           placeholderTextColor={Colors.grey}
@@ -66,7 +66,7 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
           showPassword={showPassword}
           toggleShowPassword={toggleShowPassword}
           handleResetInput={handleResetInput}
-          inputValue={value}
+          inputValue={inputValue}
         />
       </View>
       {!!error && (

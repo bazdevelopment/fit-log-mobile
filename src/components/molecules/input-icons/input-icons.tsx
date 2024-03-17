@@ -1,5 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 import React from "react";
 
 import SearchIcon from "../../../assets/icons/Search";
