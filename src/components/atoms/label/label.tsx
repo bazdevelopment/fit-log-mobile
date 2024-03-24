@@ -26,7 +26,7 @@ const Label = ({
   additionalLabelStyle,
   additionalContainerStyle,
   ellipsizeMode,
-  numberOfLinesDisplayed = 1,
+  numberOfLinesDisplayed = 100,
   allowFontScaling = true,
   as = TYPOGRAPHY_ELEMENTS.p,
   icon,

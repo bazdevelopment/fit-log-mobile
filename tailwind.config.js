@@ -26,6 +26,7 @@ module.exports = {
         tertiary: {
           default: "var(--color-tertiary-default)",
         },
+        "gray-light": "#FEFEFE",
       },
     },
   },

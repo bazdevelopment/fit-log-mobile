@@ -13,11 +13,7 @@ const StarRating = ({ rating, reviewsNumber, isBriefModeEnabled = false }: IStar
   const starRatingPercentages = generateStarPercentages(rating);
 
   const detailedRatingList = starRatingPercentages.map((ratingPercentage: number, index: number) => (
-    <View
-      key={`${index}-${ratingPercentage}`}
-      className="flex flex-row items-center max-w-7"
-      testID="star-rating-detailed-id"
-    >
+    <View key={`${index}-${ratingPercentage}`} className="flex flex-row flex-1" testID="star-rating-detailed-id">
       <StarIcon percentFilled={ratingPercentage} />
     </View>
   ));
@@ -29,12 +25,14 @@ const StarRating = ({ rating, reviewsNumber, isBriefModeEnabled = false }: IStar
       {!isBriefModeEnabled && detailedRatingList}
       {!!rating && (
         <Label
-          labelText={String(rating)}
+          labelText={String(rating.toFixed(2))}
           additionalContainerStyle={`${!isBriefModeEnabled ? "pl-3 pr-1" : "pr-1"} mb-1`}
-          additionalLabelStyle="text-gray-500"
+          additionalLabelStyle="text-gray-500 text-sm"
         />
       )}
-      {!!reviewsNumber && <Label labelText={`(${reviewsNumber} reviews)`} additionalLabelStyle="text-gray-500 mb-1" />}
+      {!!reviewsNumber && (
+        <Label labelText={`(${reviewsNumber} reviews)`} additionalLabelStyle="text-gray-500 mb-1 text-sm" />
+      )}
     </View>
   );
 };
