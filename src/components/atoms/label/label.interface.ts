@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
-import { TEllipsizeMode } from "../../../enums/ellipsize-mode";
-import { TPositions } from "../../../enums/positions";
+import { TEllipsizeMode } from "../../../constants/ellipsize-mode";
+import { TPositions } from "../../../constants/positions";
 
 export interface ILabel {
   labelText: string;

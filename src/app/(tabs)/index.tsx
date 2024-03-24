@@ -13,7 +13,7 @@ export const Test = () => {
   const { mutate } = useTodoMutation(1, {});
 
   return (
-    <View className="flex justify-center flex-row mb-10">
+    <View className="mb-10 flex flex-row justify-center">
       <TouchableOpacity onPress={() => mutate()} accessibilityRole="button">
         <Text>
           <Trans>Press to trigger todo mutation</Trans>
@@ -28,7 +28,7 @@ i18n.loadAndActivate({ locale: "ro", messages: undefined });
 export default function Root() {
   const { toggleColorScheme } = useThemeScheme();
   return (
-    <View className="bg-white flex-1">
+    <View className="flex-1 bg-white">
       <LanguagePreference />
       <Test />
       <TouchableOpacity accessibilityRole="button" onPress={toggleColorScheme}>

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { createContext, useContext } from "react";
 
 import { useLanguagePreference } from "../../hooks/use-language-preference/use-language-preference";

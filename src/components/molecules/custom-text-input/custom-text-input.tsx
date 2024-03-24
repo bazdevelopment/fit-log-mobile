@@ -2,7 +2,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 import { Alert, TextInput as RNTextInput, View } from "react-native";
 
-import { INPUT_TYPE } from "../../../enums/input-type";
+import { INPUT_TYPE } from "../../../constants/input-type";
 import { Colors } from "../../../styles/colors";
 import Icon from "../../atoms/icon/icon";
 import Label from "../../atoms/label/label";
@@ -32,7 +32,7 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
 
   return (
     <View>
-      <View className="flex-row items-center mb-1">
+      <View className="mb-1 flex-row items-center">
         {!!label && <Label labelText={label} additionalLabelStyle="text-[13px] mr-1 tracking-wide" />}
         {!!labelInfo && (
           <Icon
@@ -44,13 +44,13 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
       </View>
 
       <View
-        className={`flex-row items-center bg-gray-100 rounded-lg py-1.5 px-2 ${error ? "border-red-500 border-[1.5px]" : ""}`}
+        className={`flex-row items-center rounded-lg bg-gray-100 px-2 py-1.5 ${error ? "border-[1.5px] border-red-500" : ""}`}
       >
         <View className={type ? "mr-2" : ""}>
           <InputIcons position="front" type={type} inputValue={inputValue} handleResetInput={handleResetInput} />
         </View>
         <RNTextInput
-          className="flex-1 font-inter-regular text-gray-700 tracking-wide h-9"
+          className="font-inter-regular h-9 flex-1 tracking-wide text-gray-700"
           value={inputValue}
           onChangeText={handleChangeText}
           placeholder={placeholder}

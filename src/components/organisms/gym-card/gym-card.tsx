@@ -15,7 +15,7 @@ const GymCardHeader = ({ imageSource, layout }: IGymCardHeader) => {
   return (
     <View>
       <Image
-        className={`rounded-t-xl ${layout === "row" ? "w-[120px] h-[100px] mr-4 rounded-b-xl" : "h-[100px]"}`}
+        className={`rounded-t-xl ${layout === "row" ? "mr-4 h-[100px] w-[120px] rounded-b-xl" : "h-[100px]"}`}
         source={{ uri: imageSource }}
       />
     </View>
@@ -25,7 +25,7 @@ const GymCardHeader = ({ imageSource, layout }: IGymCardHeader) => {
  * Renders the body section of the Gym Card, displaying the gym's details such as title, subtitle, rating, and number of reviews.
  */
 const GymCardBody = ({ title, subtitle, rating, numReviews, layout }: IGymCardBody) => (
-  <View className={`pt-2 pb-1 ${layout === "row" ? "flex-1 px-1" : "w-full px-2"}`}>
+  <View className={`pb-1 pt-2 ${layout === "row" ? "flex-1 px-1" : "w-full px-2"}`}>
     <Label labelText={title} additionalLabelStyle="text-lg font-inter-medium" />
     <Label
       icon={<Ionicons name="location" size={20} color={Colors.primary} />}

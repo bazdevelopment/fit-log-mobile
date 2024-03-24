@@ -1,7 +1,7 @@
 import { Text as RNText, View } from "react-native";
 
-import { POSITIONS } from "../../../enums/positions";
-import { TYPOGRAPHY_ELEMENTS } from "../../../enums/typography-elements";
+import { POSITIONS } from "../../../constants/positions";
+import { TYPOGRAPHY_ELEMENTS } from "../../../constants/typography-elements";
 import { ILabel } from "./label.interface";
 import { defaultStyles } from "./label.styles";
 

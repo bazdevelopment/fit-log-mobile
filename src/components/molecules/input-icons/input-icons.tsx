@@ -2,7 +2,7 @@ import { AntDesign, Ionicons } from "@expo/vector-icons";
 import React from "react";
 
 import SearchIcon from "../../../assets/icons/Search";
-import { INPUT_TYPE } from "../../../enums/input-type";
+import { INPUT_TYPE } from "../../../constants/input-type";
 import { Colors } from "../../../styles/colors";
 import Icon from "../../atoms/icon/icon";
 import { InputIconsProps } from "./input-icons.interface";

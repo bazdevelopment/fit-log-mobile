@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/react-native";
 
 import ChevronIcon from "../../../assets/icons/SvgExample";
-import { POSITIONS } from "../../../enums/positions";
+import { POSITIONS } from "../../../constants/positions";
 import Button from "./button";
 
 describe("Button component", () => {

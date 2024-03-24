@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react-native";
 
-import { INPUT_TYPE } from "../../../enums/input-type";
+import { INPUT_TYPE } from "../../../constants/input-type";
 import CustomTextInput from "./custom-text-input";
 
 describe("CustomTextInput", () => {
