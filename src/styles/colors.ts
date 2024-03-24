@@ -15,4 +15,5 @@ export const Colors = {
   success: "#3AAA35",
   information: "#009EE3",
   transparent: "transparent",
+  blackPantone: "#27324C",
 };

@@ -8,7 +8,9 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 // import { useNavigationContainerRef } from "expo-router";
 import { Stack } from "expo-router/stack";
+import { StatusBar } from "expo-status-bar";
 
+import { STATUS_BAR_STYLE } from "../constants/status-bar";
 import { LanguageContextProvider } from "../context/language-context/language-context";
 import { ThemeProvider } from "../context/theme-context/theme-context";
 import { useThemeScheme } from "../hooks/use-theme-scheme/use-theme-scheme";
@@ -56,6 +58,7 @@ export default function AppLayout() {
         <ThemeProvider>
           <LanguageContextProvider>
             <I18nProvider>
+              <StatusBar style={isDarkColorScheme ? STATUS_BAR_STYLE.light : STATUS_BAR_STYLE.dark} />
               <Stack>
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
               </Stack>

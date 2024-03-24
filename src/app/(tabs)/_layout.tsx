@@ -1,50 +1,37 @@
-import { AntDesign, Entypo, FontAwesome, Foundation } from "@expo/vector-icons";
+/* eslint-disable react/no-unstable-nested-components */
 import { Tabs } from "expo-router";
 
+import TabBarIcon from "../../components/atoms/tab-bar-icon/tab-bar-icon";
+import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
+import { tabScreens } from "../../navigation/tabs";
+import { getTabBarStyles } from "../../navigation/tabs/tabs.styles";
+import { Colors } from "../../styles/colors";
+
 export default function TabLayout() {
+  const { isDarkColorScheme } = useThemeScheme();
+  const styles = getTabBarStyles(isDarkColorScheme);
+
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "blue",
+        tabBarActiveTintColor: Colors.primary,
         /**TODO: consider to create a custom top navigation bar */
-        // header: () => {}
+        header: () => null,
+        tabBarStyle: styles.tabBarContainer,
       }}
     >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          tabBarIcon: ({ color }) => <FontAwesome size={24} name="home" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore/index"
-        options={{
-          title: "Explore",
-          tabBarIcon: ({ color }) => <Foundation size={24} name="web" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="favorite/index"
-        options={{
-          title: "Favorite",
-          tabBarIcon: ({ color }) => <FontAwesome size={24} name="heart-o" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="chat/index"
-        options={{
-          title: "Chat",
-          tabBarIcon: ({ color }) => <Entypo name="chat" size={24} color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="profile/index"
-        options={{
-          title: "Profile",
-          tabBarIcon: ({ color }) => <AntDesign name="profile" size={24} color={color} />,
-        }}
-      />
+      {tabScreens.map((screen, index) => (
+        <Tabs.Screen
+          key={index}
+          name={screen.name}
+          options={{
+            title: screen.title,
+            tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
+              <TabBarIcon icon={screen.icon(color)} focused={focused} />
+            ),
+          }}
+        />
+      ))}
     </Tabs>
   );
 }
