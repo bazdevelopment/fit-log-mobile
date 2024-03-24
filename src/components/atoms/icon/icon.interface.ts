@@ -4,4 +4,5 @@ export interface IIcon {
   textSize?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "base";
   withBackground?: boolean;
   onPress?: () => void;
+  additionalClassName: string;
 }

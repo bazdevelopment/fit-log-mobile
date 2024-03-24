@@ -5,8 +5,8 @@ import { Colors } from "../../styles/colors";
 const SvgComponent = ({ percentFilled }: { percentFilled: number }) => {
   return (
     <Svg
-      width="34"
-      height="34"
+      width="24"
+      height="24"
       viewBox="-5.0 -10.0 110.0 135.0"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
