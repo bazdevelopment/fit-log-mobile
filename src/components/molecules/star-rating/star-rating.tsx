@@ -13,7 +13,7 @@ const StarRating = ({ rating, reviewsNumber, isBriefModeEnabled = false }: IStar
   const starRatingPercentages = generateStarPercentages(rating);
 
   const detailedRatingList = starRatingPercentages.map((ratingPercentage: number, index: number) => (
-    <View key={`${index}-${ratingPercentage}`} className="flex flex-row flex-1" testID="star-rating-detailed-id">
+    <View key={`${index}-${ratingPercentage}`} className="flex flex-1 flex-row" testID="star-rating-detailed-id">
       <StarIcon percentFilled={ratingPercentage} />
     </View>
   ));

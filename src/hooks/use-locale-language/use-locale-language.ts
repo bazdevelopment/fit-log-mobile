@@ -1,8 +1,8 @@
 import { i18n } from "@lingui/core";
 import { useEffect } from "react";
 
+import { APP_LANGUAGE, TAppLanguage } from "../../constants/app-language.js";
 import { useLanguage } from "../../context/language-context/language-context";
-import { APP_LANGUAGE, TAppLanguage } from "../../enums/app-language";
 import { messages as messagesEn } from "../../locale/en/messages.js";
 import { messages as messagesRo } from "../../locale/ro/messages.js";
 

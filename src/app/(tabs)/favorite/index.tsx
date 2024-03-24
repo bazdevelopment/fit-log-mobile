@@ -1,5 +1,5 @@
 import Label from "../../../components/atoms/label/label";
-import { TYPOGRAPHY_ELEMENTS } from "../../../enums/typography-elements";
+import { TYPOGRAPHY_ELEMENTS } from "../../../constants/typography-elements";
 
 const Page = () => {
   return <Label labelText="This is favorite page" as={TYPOGRAPHY_ELEMENTS.p} />;

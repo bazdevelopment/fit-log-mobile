@@ -1,6 +1,6 @@
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
 
-import { POSITIONS } from "../../../enums/positions";
+import { POSITIONS } from "../../../constants/positions";
 import { IButton } from "./button.interface";
 import { getButtonStyles } from "./button.styles";
 

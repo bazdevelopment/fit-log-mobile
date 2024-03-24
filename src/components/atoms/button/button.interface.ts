@@ -1,4 +1,4 @@
-import { TPositions } from "../../../enums/positions";
+import { TPositions } from "../../../constants/positions";
 
 export interface IButton {
   buttonText: string;

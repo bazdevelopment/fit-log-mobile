@@ -1,4 +1,4 @@
-import { TInputType } from "../../../enums/input-type";
+import { TInputType } from "../../../constants/input-type";
 
 export interface InputIconsProps {
   type: TInputType;
