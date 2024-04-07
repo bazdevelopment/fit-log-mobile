@@ -1,5 +1,6 @@
 import { i18n } from "@lingui/core";
 import { Trans } from "@lingui/macro";
+import { Link } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
 
 import LanguagePreference from "../../components/language-preferrence/language-preference";
@@ -18,6 +19,7 @@ export const Test = () => {
         <Text>
           <Trans>Press to trigger todo mutation</Trans>
         </Text>
+        <Link href="/onboarding">About</Link>
       </TouchableOpacity>
     </View>
   );

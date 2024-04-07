@@ -7,4 +7,5 @@ export interface IIcon {
   withBackground?: boolean;
   onPress?: () => void;
   additionalClassName?: string;
+  additionalInnerClassName?: string;
 }

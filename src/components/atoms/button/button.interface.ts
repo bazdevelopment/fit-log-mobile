@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 import { TPositions } from "../../../constants/positions";
 
 export interface IButton {
@@ -6,7 +8,7 @@ export interface IButton {
   variant: TVariant;
   disabled?: boolean;
   size?: TSize;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   iconPosition?: TPositions;
   isLoading?: boolean;
 }
