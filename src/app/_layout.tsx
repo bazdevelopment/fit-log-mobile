@@ -6,7 +6,6 @@ import "../../global.css";
 import { Theme as ITheme, ThemeProvider as NavigationTeamProvider } from "@react-navigation/native";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
-// import { useNavigationContainerRef } from "expo-router";
 import { Stack } from "expo-router/stack";
 import { StatusBar } from "expo-status-bar";
 
@@ -27,6 +26,9 @@ const DARK_THEME: ITheme = {
   colors: NAV_THEME.dark,
 };
 
+export const unstable_settings = {
+  initialRouteName: "onboarding/index",
+};
 export default function AppLayout() {
   const [fontsLoaded, fontError] = useFonts({
     "Inter-Regular": require("../assets/fonts/Inter-Regular.ttf"),
@@ -48,7 +50,6 @@ export default function AppLayout() {
  */
 
   const { isDarkColorScheme } = useThemeScheme();
-
   if (!fontsLoaded && !fontError) {
     return null;
   }
@@ -59,8 +60,9 @@ export default function AppLayout() {
           <LanguageContextProvider>
             <I18nProvider>
               <StatusBar style={isDarkColorScheme ? STATUS_BAR_STYLE.light : STATUS_BAR_STYLE.dark} />
-              <Stack>
+              <Stack screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen name="onboarding/index" options={{ headerShown: false }} />
               </Stack>
             </I18nProvider>
           </LanguageContextProvider>
