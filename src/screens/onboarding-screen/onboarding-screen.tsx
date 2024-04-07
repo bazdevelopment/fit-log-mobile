@@ -8,6 +8,9 @@ import PaginationControls from "../../components/molecules/pagination-controls/p
 import RegularList from "../../components/molecules/regular-list/regular-list";
 import { DeviceDimensions } from "../../constants/device-dimensions";
 
+/**
+ * First onboarding screen which displays multiple slides that represent a short brief of what the app can offer
+ */
 const OnboardingScreen = () => {
   const {
     activeIndex,

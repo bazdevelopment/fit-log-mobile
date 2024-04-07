@@ -7,6 +7,10 @@ import Icon from "../../atoms/icon/icon";
 import PaginationDots from "../../atoms/pagination-dots/pagination-dots";
 import { IPaginationControls } from "./pagination-controls.interface";
 
+/**
+ * Component used to display right/left arrow for navigating back and forth between screens
+ * A section of dots is displayed between the arrows
+ */
 const PaginationControls = ({
   activeDotIndex,
   pagesLength,

@@ -2,6 +2,9 @@ import { Redirect, useNavigationContainerRef } from "expo-router";
 import React from "react";
 import { ActivityIndicator } from "react-native";
 
+/** While navigation is still loading show an activity indicator
+ * when navigation mounted, based on a condition if the user did the onboarding low he wil be redirect to onboarding screens / root screens
+ */
 export default function Page() {
   const isOnboardingDone = false;
   const navigation = useNavigationContainerRef();

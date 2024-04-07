@@ -4,6 +4,9 @@ import { ScrollView } from "react-native";
 
 import { DeviceDimensions } from "../../../../../constants/device-dimensions";
 
+/**
+ * Custom hook used to isolate all the methods for a pagination logic
+ */
 export const usePagination = (pagesLength: number) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollViewRef = useRef<ScrollView>(null);
@@ -16,6 +19,10 @@ export const usePagination = (pagesLength: number) => {
 
   const handleChangeActiveIndex = (newActiveIndex: number) => setActiveIndex(newActiveIndex);
 
+  const handleFinishOnboarding = () => {
+    router.navigate("(tabs)");
+  };
+
   const handleNextPress = () => {
     if (activeIndex === lastPageIndex) handleFinishOnboarding();
     if (activeIndex < lastPageIndex) {
@@ -26,10 +33,6 @@ export const usePagination = (pagesLength: number) => {
     if (activeIndex > 0) {
       scrollTo(activeIndex - 1);
     }
-  };
-
-  const handleFinishOnboarding = () => {
-    router.navigate("(tabs)");
   };
 
   return {

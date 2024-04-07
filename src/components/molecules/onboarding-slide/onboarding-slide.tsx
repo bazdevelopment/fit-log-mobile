@@ -7,6 +7,9 @@ import { isOdd } from "../../../utilities/is-odd";
 import Label from "../../atoms/label/label";
 import { IOnboardingSlide } from "./onboarding-slide.interface";
 
+/**
+ *  Slide that display only a title, a description and an image
+ */
 const OnboardingSlide = ({ title, description, image }: IOnboardingSlide) => {
   return (
     <View className="items-center justify-center" style={{ width: DeviceDimensions.deviceWidth }}>
