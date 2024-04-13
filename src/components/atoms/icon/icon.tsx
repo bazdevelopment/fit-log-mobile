@@ -16,10 +16,29 @@ textSize: The size of the text for the heading. Defaults to "base".
 onPress: Function to be called when the icon is pressed.
 withBackground: Determines whether to display a background behind the icon. Defaults to true.
  */
-const Icon = ({ iconElement, heading, textSize, onPress, additionalClassName, additionalInnerClassName }: IIcon) => {
-  const style = twMerge("flex flex-col justify-center items-center", additionalClassName);
+const Icon = ({
+  iconElement,
+  heading,
+  textSize,
+  onPress,
+  additionalClassName,
+  additionalInnerClassName,
+  disabled,
+  isHidden,
+}: IIcon) => {
+  const style = twMerge(
+    `flex flex-col justify-center items-center ${isHidden ? "opacity-0" : "opacity-100"} `,
+    additionalClassName
+  );
+  // onPress={debounce(onPress, 150)}
   return (
-    <Pressable accessibilityRole="button" className={style} onPress={debounce(onPress, 150)} testID="icon-pressable-id">
+    <Pressable
+      accessibilityRole="button"
+      className={style}
+      disabled={disabled}
+      onPress={onPress}
+      testID="icon-pressable-id"
+    >
       <View className={`rounded-full ${additionalInnerClassName ? `${additionalInnerClassName} p-3` : "bg-white p-4"}`}>
         {iconElement}
       </View>

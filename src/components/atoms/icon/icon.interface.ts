@@ -8,4 +8,6 @@ export interface IIcon {
   onPress?: () => void;
   additionalClassName?: string;
   additionalInnerClassName?: string;
+  disabled?: boolean;
+  isHidden?: boolean;
 }

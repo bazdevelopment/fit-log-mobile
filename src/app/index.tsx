@@ -1,5 +1,5 @@
 import { Redirect, useNavigationContainerRef } from "expo-router";
-import React from "react";
+import React, { useEffect } from "react";
 import { ActivityIndicator } from "react-native";
 
 /** While navigation is still loading show an activity indicator
@@ -10,13 +10,15 @@ export default function Page() {
   const navigation = useNavigationContainerRef();
   const [ready, setReady] = React.useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!navigation?.isReady) return;
 
     setTimeout(() => setReady(true), 2000);
   }, [navigation?.isReady]);
 
-  if (ready) return <Redirect href={isOnboardingDone ? "(tabs)" : "/onboarding"} />;
+  //  todo: use the condition below after second onboarding floe is ready
+  //if (ready) return <Redirect href={isOnboardingDone ? "(tabs)" : "/onboarding"} />;
+  if (ready) return <Redirect href={isOnboardingDone ? "/onboarding-second-flow" : "/onboarding-second-flow"} />;
 
   return <ActivityIndicator style={{ marginTop: 100, width: 100, height: 100 }} />;
 }
