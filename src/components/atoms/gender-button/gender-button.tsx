@@ -8,6 +8,9 @@ import Icon from "../icon/icon";
 import Label from "../label/label";
 import { IGenderButton } from "./gender-button.interface";
 
+/**
+ * Component used to display the gender button
+ */
 const GenderButton = ({ gender, onPress, isSelected }: IGenderButton) => {
   return (
     <TouchableOpacity
