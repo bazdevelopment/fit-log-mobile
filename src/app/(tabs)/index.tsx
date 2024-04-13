@@ -3,7 +3,6 @@ import { Trans } from "@lingui/macro";
 import { Link } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
 
-import ProgressBar from "../../components/atoms/progress-bar/ProgressBar";
 import LanguagePreference from "../../components/language-preferrence/language-preference";
 import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
 import { useTodoMutation } from "../../mutations/use-todo-mutation/use-todo-mutation";
@@ -34,7 +33,6 @@ export default function Root() {
     <View className="flex-1 bg-white">
       <LanguagePreference />
       <Test />
-      <ProgressBar currentStep={4} totalSteps={4} />
       <TouchableOpacity accessibilityRole="button" onPress={toggleColorScheme}>
         <Text>Toggle light/dark mode</Text>
       </TouchableOpacity>
