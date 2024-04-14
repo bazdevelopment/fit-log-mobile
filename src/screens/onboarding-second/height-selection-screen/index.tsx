@@ -4,6 +4,7 @@ import { View } from "react-native";
 import Button from "../../../components/atoms/button/button";
 import Label from "../../../components/atoms/label/label";
 import WheelPicker from "../../../components/organisms/wheel-picker/wheel-picker";
+import { UNIT } from "../../../constants/unit";
 import { WHEEL_PICKER_OPTIONS } from "../../../constants/wheel-picker-options";
 import { generateCustomRangeArray } from "../../../utilities/generatee-cusom-range-array";
 import { IHeightSelectionScreen } from "./height-selection-screen.interface";
@@ -31,7 +32,7 @@ export default function HeightSelectionScreen({ goToNext, onboardingData }: IHei
             WHEEL_PICKER_OPTIONS.DEFAULT_END_RANGE_INDEX_HEIGHT
           )}
           onChange={(value: number) => setHeight(value)}
-          unit="cm"
+          unit={UNIT.cm}
         />
       </View>
       <View className="h-28 rounded-xl bg-white px-10 pt-5 shadow">

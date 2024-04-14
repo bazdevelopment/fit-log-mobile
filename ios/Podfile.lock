@@ -1257,6 +1257,8 @@ PODS:
     - React-perflogger (= 0.73.2)
   - RNCAsyncStorage (1.21.0):
     - React-Core
+  - RNFlashList (1.6.4):
+    - React-Core
   - RNReanimated (3.6.3):
     - glog
     - RCT-Folly (= 2022.05.16.00)
@@ -1387,6 +1389,7 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - "RNFlashList (from `../node_modules/@shopify/flash-list`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -1566,6 +1569,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNFlashList:
+    :path: "../node_modules/@shopify/flash-list"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -1667,6 +1672,7 @@ SPEC CHECKSUMS:
   React-utils: f5bc61e7ea3325c0732ae2d755f4441940163b85
   ReactCommon: 45b5d4f784e869c44a6f5a8fad5b114ca8f78c53
   RNCAsyncStorage: 618d03a5f52fbccb3d7010076bc54712844c18ef
+  RNFlashList: b521ebdd7f9352673817f1d98e8bdc0c8cf8545b
   RNReanimated: 6259d9f32f4a54b2f5660bc2c1829215e38ca20f
   RNScreens: b582cb834dc4133307562e930e8fa914b8c04ef2
   RNSVG: ba3e7232f45e34b7b47e74472386cf4e1a676d0a
@@ -1681,4 +1687,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 1d227ed81a30bcd6c3adfb21708850ff7af1a492
 
-COCOAPODS: 1.15.0
+COCOAPODS: 1.14.3

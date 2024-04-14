@@ -39,15 +39,25 @@ const WheelPicker = ({ selectedIndex, onChange, values, unit }: IWheelPicker) =>
     });
   };
 
+  const handleRenderItem = ({ item, index }: { item: number; index: number }) => (
+    <WheelPickerElement
+      value={item}
+      onScrollToIndex={onScrollToIndex}
+      isSelected={selectedIndex - firstValue === index}
+      unit={unit}
+    />
+  );
+
+  const getKeyExtractor = (_, index: number) => index.toString();
+
   return (
     <View className="mb-[50px] mt-[30px] flex-1">
       {/*  top = 180px = > 3 * WHEEL_PICKER_OPTIONS.DEFAULT_ITEM_HEIGHT  */}
       <View className="absolute top-[180px] h-[60px] w-[100px] border-x-0 border-y-[3px] border-primary-default" />
+
       <FlatList
         ref={flatListRef}
         contentContainerStyle={{
-          justifyContent: "center",
-          flexDirection: "column",
           paddingTop: WHEEL_PICKER_OPTIONS.DEFAULT_ITEM_HEIGHT * 3,
           paddingBottom: WHEEL_PICKER_OPTIONS.DEFAULT_ITEM_HEIGHT * 3,
         }}
@@ -61,15 +71,8 @@ const WheelPicker = ({ selectedIndex, onChange, values, unit }: IWheelPicker) =>
           index,
         })}
         data={values}
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={({ item, index }) => (
-          <WheelPickerElement
-            value={item}
-            onScrollToIndex={onScrollToIndex}
-            isSelected={selectedIndex - firstValue === index}
-            unit={unit}
-          />
-        )}
+        keyExtractor={getKeyExtractor}
+        renderItem={handleRenderItem}
       />
     </View>
   );
