@@ -2,5 +2,5 @@ import { IOnboardingSecondData } from "../../../components/templates/onboarding-
 
 export interface IAgeSelectionScreen {
   goToNext: (data: IOnboardingSecondData) => void;
-  onBoardingData: IOnboardingSecondData;
+  onboardingData: IOnboardingSecondData;
 }
