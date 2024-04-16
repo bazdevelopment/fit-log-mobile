@@ -44,7 +44,7 @@ export default function WeightSelectionScreen({ goToNext, onboardingData }: IWei
         </View>
       </View>
       <View className="h-28 rounded-xl bg-white px-10 pt-5 shadow">
-        <Button buttonText="Next" onPress={() => goToNext({ weight })} variant="primary" />
+        <Button buttonText="Continue" onPress={() => goToNext({ weight })} variant="primary" />
       </View>
     </>
   );

@@ -17,6 +17,6 @@ export interface IOnboardingSecondData {
   age?: Nullable<number>;
   weight?: Nullable<number>;
   height?: Nullable<number>;
-  goal?: Nullable<string>;
+  goals?: Nullable<string[]>;
   activityLevel?: Nullable<string>;
 }

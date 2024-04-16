@@ -2,4 +2,5 @@ import { IOnboardingSecondData } from "../../../components/templates/onboarding-
 
 export interface IActivityLevelScreen {
   goToNext: (data: IOnboardingSecondData) => void;
+  onboardingData: IOnboardingSecondData;
 }
