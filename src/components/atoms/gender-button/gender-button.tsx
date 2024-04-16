@@ -15,7 +15,7 @@ const GenderButton = ({ gender, onPress, isSelected }: IGenderButton) => {
   return (
     <TouchableOpacity
       accessibilityRole="button"
-      className={`size-36 flex-col items-center justify-center gap-2 rounded-full ${!isSelected ? " bg-slate-100" : "bg-primary-default"}`}
+      className={`size-36 flex-col items-center justify-center  rounded-full ${!isSelected ? " bg-slate-100" : "bg-primary-default"}`}
       onPress={onPress}
     >
       <Icon

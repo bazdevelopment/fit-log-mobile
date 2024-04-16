@@ -21,7 +21,7 @@ export default function OnboardingSecondFlowPage() {
     age: null,
     weight: null,
     height: null,
-    goal: null,
+    goals: null,
     activityLevel: null,
   });
   const [currentIndex, setCurrentIndex] = useState(0);

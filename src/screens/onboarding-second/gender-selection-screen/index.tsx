@@ -15,7 +15,7 @@ export default function GenderSelectionScreen({ goToNext, onboardingData }: IGen
 
   return (
     <>
-      <View className="flex-1 items-center ">
+      <View className="flex-1 items-center">
         <Label labelText="Tell us about yourself!" as="h2" additionalLabelStyle="font-bold font-inter-semi-bold mb-4" />
         <Label
           labelText="To give you a better experience we need to know your gender"
@@ -37,7 +37,7 @@ export default function GenderSelectionScreen({ goToNext, onboardingData }: IGen
         </View>
       </View>
       <View className="bottom-10 px-10">
-        <Button buttonText="Next" onPress={() => goToNext({ gender })} variant="primary" />
+        <Button buttonText="Continue" onPress={() => goToNext({ gender })} variant="primary" />
       </View>
     </>
   );

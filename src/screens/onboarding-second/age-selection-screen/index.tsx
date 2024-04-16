@@ -36,7 +36,7 @@ export default function AgeSelectionScreen({ goToNext, onboardingData }: IAgeSel
       </View>
 
       <View className="h-28 rounded-xl bg-white px-10 pt-5 shadow">
-        <Button buttonText="Next" onPress={() => goToNext({ age })} variant="primary" />
+        <Button buttonText="Continue" onPress={() => goToNext({ age })} variant="primary" />
       </View>
     </>
   );
