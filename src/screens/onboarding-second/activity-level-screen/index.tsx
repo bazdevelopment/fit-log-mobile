@@ -32,8 +32,8 @@ export default function ActivityLevelScreen({ goToNext, onboardingData }: IActiv
       hasBorder: true,
     },
     {
-      text: ACTIVITY_LEVEL.ADVANCE,
-      isSelected: checkIsActive(ACTIVITY_LEVEL.ADVANCE),
+      text: ACTIVITY_LEVEL.ADVANCED,
+      isSelected: checkIsActive(ACTIVITY_LEVEL.ADVANCED),
       onPress: handleActivityLevel,
       hasBorder: true,
     },
