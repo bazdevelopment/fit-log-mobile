@@ -16,6 +16,7 @@ const InputIcons = ({
   showPassword,
   position,
   handleResetInput,
+  additionalInnerIconStyle,
 }: InputIconsProps) => {
   const iconsList: Record<
     InputIconsProps["type"],
@@ -47,10 +48,11 @@ const InputIcons = ({
       end: (
         <Icon
           onPress={toggleShowPassword}
+          additionalInnerClassName={additionalInnerIconStyle}
           iconElement={
             inputValue ? (
               <Ionicons
-                name={showPassword ? "eye-outline" : "eye-off-outline"}
+                name={!showPassword ? "eye-off-outline" : "eye-outline"}
                 size={24}
                 color={Colors.tertiary}
                 testID="password-icon"

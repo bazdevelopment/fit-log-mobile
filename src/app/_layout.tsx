@@ -32,7 +32,9 @@ export const unstable_settings = {
 export default function AppLayout() {
   const [fontsLoaded, fontError] = useFonts({
     "Primary-Regular": require("../assets/fonts/HankenGrotesk-Regular.ttf"),
+    "Primary-Medium": require("../assets/fonts/HankenGrotesk-Medium.otf"),
     "Primary-Bold": require("../assets/fonts/HankenGrotesk-Bold.ttf"),
+    "Primary-Semi-Bold": require("../assets/fonts/HankenGrotesk-SemiBold.otf"),
     "Primary-Light": require("../assets/fonts/HankenGrotesk-Light.otf"),
     "Primary-Italic": require("../assets/fonts/HankenGrotesk-Italic.ttf"),
     "Primary-Bold-Italic": require("../assets/fonts/HankenGrotesk-BoldItalic.ttf"),
@@ -58,7 +60,6 @@ export default function AppLayout() {
               <StatusBar style={isDarkColorScheme ? STATUS_BAR_STYLE.LIGHT : STATUS_BAR_STYLE.DARK} />
               <Stack screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                <Stack.Screen name="onboarding/index" options={{ headerShown: false }} />
               </Stack>
             </I18nProvider>
           </LanguageContextProvider>

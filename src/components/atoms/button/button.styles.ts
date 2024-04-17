@@ -31,7 +31,7 @@ export const getButtonStyles = (
       wrapper: `${flexStyle} rounded-md bg-red-500 ${pressed ? "bg-red-600" : ""}`,
     },
     link: {
-      text: `text-${size} font-primary text-center underline text-primary-default mr-4`,
+      text: `text-${size} font-primary-bold text-center underline text-primary-default mr-4`,
       wrapper: `${flexStyle} ${pressed ? "opacity-75" : ""}`,
     },
   };

@@ -7,4 +7,5 @@ export interface InputIconsProps {
   toggleShowPassword?: () => void; // Function to toggle show/hide password (optional)
   showPassword?: boolean; // Boolean to indicate if password is shown (optional)
   handleResetInput: () => void;
+  additionalInnerIconStyle?: string;
 }

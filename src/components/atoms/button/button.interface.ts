@@ -11,6 +11,7 @@ export interface IButton {
   icon?: ReactNode;
   iconPosition?: TPositions;
   isLoading?: boolean;
+  additionalContainerStyle?: string;
 }
 
 export type TVariant = "default" | "primary" | "secondary" | "outlined" | "destructive" | "link";
