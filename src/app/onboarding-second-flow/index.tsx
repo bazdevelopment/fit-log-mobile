@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import OnboardingSecondFlow from "../../components/templates/onboarding-second-flow/onboarding-second-flow";
-import { IOnboardingSecondData } from "../../components/templates/onboarding-second-flow/onboarding-second-flow.interface";
+import OnboardingSecondFlow from "../../components/templates/onboarding-second-flow";
+import { IOnboardingSecondData } from "../../components/templates/onboarding-second-flow/OnboardingSecondFlow.interface";
 import ActivityLevelScreen from "../../screens/onboarding-second/activity-level-screen";
 import AgeSelectionScreen from "../../screens/onboarding-second/age-selection-screen";
 import GenderSelectionScreen from "../../screens/onboarding-second/gender-selection-screen";

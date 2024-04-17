@@ -4,10 +4,10 @@ import { Alert, TextInput as RNTextInput, View } from "react-native";
 
 import { INPUT_TYPE } from "../../../constants/input-type";
 import { Colors } from "../../../styles/colors";
-import Icon from "../../atoms/icon/icon";
-import Label from "../../atoms/label/label";
-import InputIcons from "../input-icons/input-icons";
-import { ICustomTextInput } from "./custom-text-input.interface";
+import Icon from "../../atoms/icon";
+import Label from "../../atoms/label";
+import InputIcons from "../input-icons";
+import { ICustomTextInput } from "./CustomTextInput.interface";
 
 /**
  *CustomTextInput Component
@@ -23,7 +23,7 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
 
   const handleChangeText = (text: string) => {
     setInputValue(text);
-    if (!text && type === INPUT_TYPE.password) toggleShowPassword();
+    if (!text && type === INPUT_TYPE.PASSWORD) toggleShowPassword();
   };
 
   const handleResetInput = () => {
@@ -56,7 +56,7 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
           placeholder={placeholder}
           placeholderTextColor={Colors.grey}
           autoCapitalize="none"
-          secureTextEntry={type === INPUT_TYPE.password && !showPassword}
+          secureTextEntry={type === INPUT_TYPE.PASSWORD && !showPassword}
           spellCheck={true}
           autoCorrect={true}
         />

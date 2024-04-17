@@ -3,9 +3,9 @@ import { View } from "react-native";
 
 import ArrowLeft from "../../../assets/icons/ArrowLeft";
 import { Colors } from "../../../styles/colors";
-import Icon from "../../atoms/icon/icon";
-import ProgressBar from "../../atoms/progress-bar/ProgressBar";
-import { IOnboardingSecondData, IOnboardingSecondFlow } from "./onboarding-second-flow.interface";
+import Icon from "../../atoms/icon";
+import ProgressBar from "../../atoms/progress-bar";
+import { IOnboardingSecondData, IOnboardingSecondFlow } from "./OnboardingSecondFlow.interface";
 
 /**
  * Wrapper for second onboarding flow where top navigation and progress bar are displayed by default all over the screens

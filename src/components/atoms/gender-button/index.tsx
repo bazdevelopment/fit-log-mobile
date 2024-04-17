@@ -4,9 +4,9 @@ import FemaleIcon from "../../../assets/icons/FemaleIcon";
 import MaleIcon from "../../../assets/icons/MaleIcon";
 import { GENDER } from "../../../constants/gender";
 import { Colors } from "../../../styles/colors";
-import Icon from "../icon/icon";
-import Label from "../label/label";
-import { IGenderButton } from "./gender-button.interface";
+import Icon from "../icon";
+import Label from "../label";
+import { IGenderButton } from "./GenderButton.interface";
 
 /**
  * Component used to display the gender button
@@ -22,7 +22,7 @@ const GenderButton = ({ gender, onPress, isSelected }: IGenderButton) => {
         additionalInnerClassName="bg-none p-0"
         onPress={onPress}
         iconElement={
-          gender === GENDER.Male ? (
+          gender === GENDER.MALE ? (
             <MaleIcon color={isSelected ? Colors.white : Colors.blackPantone} width={50} height={50} />
           ) : (
             <FemaleIcon color={isSelected ? Colors.white : Colors.blackPantone} width={50} height={50} />

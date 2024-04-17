@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react-native";
 
-import StarRating from "./star-rating";
+import StarRating from ".";
 
 describe("StarRating component", () => {
   beforeEach(() => {

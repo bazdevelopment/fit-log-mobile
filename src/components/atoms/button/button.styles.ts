@@ -2,7 +2,13 @@ import { TElement, TSize, TVariant } from "./button.interface";
 
 const flexStyle = "flex flex-row items-center justify-center";
 
-export const getButtonStyles = (variant: TVariant, size: TSize, element: TElement, pressed: boolean): string => {
+export const getButtonStyles = (
+  variant: TVariant,
+  size: TSize,
+  element: TElement,
+  pressed: boolean,
+  disabled: boolean
+): string => {
   const style = {
     default: {
       text: `text-${size} font-primary p-3 text-center text-primary-default`,
@@ -10,7 +16,7 @@ export const getButtonStyles = (variant: TVariant, size: TSize, element: TElemen
     },
     primary: {
       text: `text-${size} font-primary text-white p-3 text-center`,
-      wrapper: `${flexStyle} rounded-full bg-primary-default ${pressed ? "opacity-90" : "opacity-100"}`,
+      wrapper: `${flexStyle} rounded-full bg-primary-default ${pressed ? "opacity-90" : "opacity-100"} ${disabled ? "opacity-50" : ""}`,
     },
     secondary: {
       text: `text-${size} font-primary text-primary-default p-3 text-center`,

@@ -1,4 +1,4 @@
-import { colorClass, thicknessClass } from "./horizontal-line.styles";
+import { colorClass, thicknessClass } from "./HorizontalLine.styles";
 
 export interface IHorizontalLine {
   thickness: keyof typeof thicknessClass;

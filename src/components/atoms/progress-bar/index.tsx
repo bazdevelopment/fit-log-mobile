@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Animated, View } from "react-native";
 
-import Label from "../label/label";
+import Label from "../label";
 import { IProgressBar } from "./ProgressBar.interface";
 
 /**

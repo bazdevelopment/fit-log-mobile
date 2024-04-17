@@ -2,17 +2,17 @@
 import { Image, View } from "react-native";
 import { twMerge } from "tailwind-merge";
 
-import { DeviceDimensions } from "../../../constants/device-dimensions";
+import { DEVICE_DIMENSIONS } from "../../../constants/device-dimensions";
 import { isOdd } from "../../../utilities/is-odd";
-import Label from "../../atoms/label/label";
-import { IOnboardingSlide } from "./onboarding-slide.interface";
+import Label from "../../atoms/label";
+import { IOnboardingSlide } from "./OnboardingSlide.interface";
 
 /**
  *  Slide that display only a title, a description and an image
  */
 const OnboardingSlide = ({ title, description, image }: IOnboardingSlide) => {
   return (
-    <View className="items-center justify-center" style={{ width: DeviceDimensions.deviceWidth }}>
+    <View className="items-center justify-center" style={{ width: DEVICE_DIMENSIONS.DEVICE_WIDTH }}>
       <Image source={image} className="h-[400px] w-full" resizeMode="contain" />
       <View className="mt-6 flex-row flex-wrap justify-center px-4">
         {title.split(" ").map((word: string, index: number) => {

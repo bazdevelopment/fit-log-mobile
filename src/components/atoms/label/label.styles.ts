@@ -1,4 +1,4 @@
-import { IDefaultStylesType } from "./label.interface";
+import { IDefaultStylesType } from "./Label.interface";
 /** default styles for p, h1...h5 */
 export const defaultStyles: IDefaultStylesType = {
   p: "text-base font-primary",

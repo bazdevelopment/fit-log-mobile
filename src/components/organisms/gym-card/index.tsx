@@ -3,10 +3,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { Image, View } from "react-native";
 
 import { Colors } from "../../../styles/colors";
-import Label from "../../atoms/label/label";
-import StarRating from "../../molecules/star-rating/star-rating";
-import Card from "../card/card";
-import { IGymCard, IGymCardBody, IGymCardHeader } from "./gym-card.interface";
+import Label from "../../atoms/label";
+import StarRating from "../../molecules/star-rating";
+import Card from "../card";
+import { IGymCard, IGymCardBody, IGymCardHeader } from "./GymCard.interface";
 
 /**
  * Renders the header section of the Gym Card, displaying the gym's image.

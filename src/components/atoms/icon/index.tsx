@@ -1,8 +1,8 @@
 import { Pressable, View } from "react-native";
 import { twMerge } from "tailwind-merge";
 
-import Label from "../label/label";
-import { IIcon } from "./icon.interface";
+import Label from "../label";
+import { IIcon } from "./Icon.interface";
 
 /**
  * Icon Component

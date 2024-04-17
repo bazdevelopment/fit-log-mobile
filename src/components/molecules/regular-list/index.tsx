@@ -1,6 +1,6 @@
 import { View } from "react-native";
 
-import { IRegularList } from "./regular-list.interface";
+import { IRegularList } from "./RegularList.interface";
 
 /**
  * Component used to display a list o items and displaying a dynamic child component for each item in the list

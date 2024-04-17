@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react-native";
 
-import InputIcons from "./input-icons";
+import InputIcons from ".";
 
 describe("InputIcons", () => {
   it('should render search icon when type is "search"', () => {

@@ -1,7 +1,7 @@
 import { TouchableOpacity, View } from "react-native";
 
-import Label from "../label/label";
-import { IRadioButton } from "./radio-button.interface";
+import Label from "../label";
+import { IRadioButton } from "./RadioButton.interface";
 /**
  * The RadioButton component is a reusable component designed to render a radio button with customizable appearance and behavior.
  * It allows users to select a single option from a list of choices.
@@ -19,7 +19,7 @@ const RadioButton = ({ isSelected, onPress, text, hasBorder }: IRadioButton) => 
         {isSelected && <View className="size-[9px] rounded-full bg-primary-default" />}
       </View>
 
-      <Label labelText={text} as="h5" additionalLabelStyle="font-primary" />
+      <Label labelText={text} as="h4" additionalLabelStyle="font-primary" />
     </TouchableOpacity>
   );
 };

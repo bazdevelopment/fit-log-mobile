@@ -2,17 +2,17 @@ import { useState } from "react";
 import { View } from "react-native";
 
 import Button from "../../../components/atoms/button/button";
-import Label from "../../../components/atoms/label/label";
+import Label from "../../../components/atoms/label";
 import RadioButton from "../../../components/atoms/radio-button";
-import RegularList from "../../../components/molecules/regular-list/regular-list";
+import RegularList from "../../../components/molecules/regular-list";
 import { ACTIVITY_LEVEL, TActivityLevel } from "../../../constants/activity-level";
-import { IActivityLevelScreen } from "./activity-level-screen.interface";
+import { IActivityLevelScreen } from "./ActivityLevelScreen.interface";
 
 /**
  * Component used to display the activity level screen
  */
 export default function ActivityLevelScreen({ goToNext, onboardingData }: IActivityLevelScreen) {
-  const [activityLevel, setActivityLevel] = useState(onboardingData.activityLevel || ACTIVITY_LEVEL.beginner);
+  const [activityLevel, setActivityLevel] = useState(onboardingData.activityLevel || ACTIVITY_LEVEL.BEGINNER);
 
   const checkIsActive = (level: TActivityLevel) => activityLevel === level;
 
@@ -20,20 +20,20 @@ export default function ActivityLevelScreen({ goToNext, onboardingData }: IActiv
 
   const options = [
     {
-      text: ACTIVITY_LEVEL.beginner,
-      isSelected: checkIsActive(ACTIVITY_LEVEL.beginner),
+      text: ACTIVITY_LEVEL.BEGINNER,
+      isSelected: checkIsActive(ACTIVITY_LEVEL.BEGINNER),
       onPress: handleActivityLevel,
       hasBorder: true,
     },
     {
-      text: ACTIVITY_LEVEL.intermediate,
-      isSelected: checkIsActive(ACTIVITY_LEVEL.intermediate),
+      text: ACTIVITY_LEVEL.INTERMEDIATE,
+      isSelected: checkIsActive(ACTIVITY_LEVEL.INTERMEDIATE),
       onPress: handleActivityLevel,
       hasBorder: true,
     },
     {
-      text: ACTIVITY_LEVEL.advance,
-      isSelected: checkIsActive(ACTIVITY_LEVEL.advance),
+      text: ACTIVITY_LEVEL.ADVANCE,
+      isSelected: checkIsActive(ACTIVITY_LEVEL.ADVANCE),
       onPress: handleActivityLevel,
       hasBorder: true,
     },

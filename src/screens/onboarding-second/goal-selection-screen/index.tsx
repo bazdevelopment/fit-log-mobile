@@ -2,11 +2,11 @@ import { useState } from "react";
 import { View } from "react-native";
 
 import Button from "../../../components/atoms/button/button";
-import Label from "../../../components/atoms/label/label";
+import Label from "../../../components/atoms/label";
 import RadioButton from "../../../components/atoms/radio-button";
-import RegularList from "../../../components/molecules/regular-list/regular-list";
+import RegularList from "../../../components/molecules/regular-list";
 import { GOALS, TGoal } from "../../../constants/goals";
-import { IGoalSelectionScreen } from "./goal-selection-screen.interface";
+import { IGoalSelectionScreen } from "./GoalSelectionScreen.interface";
 
 /**
  * Component used to display the goal selection screen
@@ -34,7 +34,7 @@ export default function GoalSelectionScreen({ goToNext, onboardingData }: IGoalS
       <View className="flex-1 items-center ">
         <Label labelText="What's your goal?" as="h2" additionalLabelStyle="font-bold font-primary-bold mb-4" />
         <Label
-          labelText="This helps us to create your personalized plan"
+          labelText="Select at least one goal. This helps us to create your personalized plan"
           as="h5"
           additionalLabelStyle="text-gray-500 px-10 text-center"
         />
@@ -45,7 +45,12 @@ export default function GoalSelectionScreen({ goToNext, onboardingData }: IGoalS
         />
       </View>
       <View className="bottom-10 px-10">
-        <Button buttonText="Continue" onPress={() => goToNext({ goals: selectedGoals })} variant="primary" />
+        <Button
+          buttonText="Continue"
+          disabled={!selectedGoals.length}
+          onPress={() => goToNext({ goals: selectedGoals })}
+          variant="primary"
+        />
       </View>
     </>
   );

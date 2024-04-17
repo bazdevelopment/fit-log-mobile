@@ -1,8 +1,8 @@
 import { View } from "react-native";
 import { twMerge } from "tailwind-merge";
 
-import { IHorizontalLine } from "./horizontal-line.interface";
-import { colorClass, thicknessClass } from "./horizontal-line.styles";
+import { IHorizontalLine } from "./HorizontalLine.interface";
+import { colorClass, thicknessClass } from "./HorizontalLine.styles";
 
 /**
  * The Horizontal Line component is a customizable React component designed to render a horizontal line with dynamic thickness and color.

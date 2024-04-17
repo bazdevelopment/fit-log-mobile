@@ -1,4 +1,4 @@
-import { IOnboardingSecondData } from "../../../components/templates/onboarding-second-flow/onboarding-second-flow.interface";
+import { IOnboardingSecondData } from "../../../components/templates/onboarding-second-flow/OnboardingSecondFlow.interface";
 
 export interface IAgeSelectionScreen {
   goToNext: (data: IOnboardingSecondData) => void;

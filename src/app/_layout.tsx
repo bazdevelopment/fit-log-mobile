@@ -55,7 +55,7 @@ export default function AppLayout() {
         <ThemeProvider>
           <LanguageContextProvider>
             <I18nProvider>
-              <StatusBar style={isDarkColorScheme ? STATUS_BAR_STYLE.light : STATUS_BAR_STYLE.dark} />
+              <StatusBar style={isDarkColorScheme ? STATUS_BAR_STYLE.LIGHT : STATUS_BAR_STYLE.DARK} />
               <Stack screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
                 <Stack.Screen name="onboarding/index" options={{ headerShown: false }} />

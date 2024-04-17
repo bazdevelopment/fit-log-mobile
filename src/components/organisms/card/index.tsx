@@ -3,8 +3,8 @@ import { View } from "react-native";
 import { twMerge } from "tailwind-merge";
 
 import { Colors } from "../../../styles/colors";
-import Icon from "../../atoms/icon/icon";
-import { ICardBase } from "./card.interface";
+import Icon from "../../atoms/icon";
+import { ICardBase } from "./Card.interface";
 
 /**
  * The Card component is a customizable wrapper component designed to encapsulate content within a card-like container.

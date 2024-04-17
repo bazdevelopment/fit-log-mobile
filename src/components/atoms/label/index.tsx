@@ -2,8 +2,8 @@ import { Text as RNText, View } from "react-native";
 
 import { POSITIONS } from "../../../constants/positions";
 import { TYPOGRAPHY_ELEMENTS } from "../../../constants/typography-elements";
-import { ILabel } from "./label.interface";
-import { defaultStyles } from "./label.styles";
+import { ILabel } from "./Label.interface";
+import { defaultStyles } from "./Label.styles";
 
 /**
  *
@@ -30,7 +30,7 @@ const Label = ({
   allowFontScaling = true,
   as = TYPOGRAPHY_ELEMENTS.p,
   icon,
-  iconPosition = POSITIONS.left,
+  iconPosition = POSITIONS.LEFT,
 }: ILabel) => {
   const iconElement = <View className="mr-2">{icon}</View>;
   return (
@@ -39,7 +39,7 @@ const Label = ({
         icon ? `flex flex-row items-center ${additionalContainerStyle as string}` : (additionalContainerStyle as string)
       }
     >
-      {iconPosition === POSITIONS.left && iconElement}
+      {iconPosition === POSITIONS.LEFT && iconElement}
       <RNText
         testID="label-id"
         allowFontScaling={allowFontScaling}
@@ -49,7 +49,7 @@ const Label = ({
       >
         {labelText}
       </RNText>
-      {iconPosition === POSITIONS.right && iconElement}
+      {iconPosition === POSITIONS.RIGHT && iconElement}
     </View>
   );
 };

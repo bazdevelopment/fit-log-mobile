@@ -4,8 +4,8 @@ import React from "react";
 import SearchIcon from "../../../assets/icons/Search";
 import { INPUT_TYPE } from "../../../constants/input-type";
 import { Colors } from "../../../styles/colors";
-import Icon from "../../atoms/icon/icon";
-import { InputIconsProps } from "./input-icons.interface";
+import Icon from "../../atoms/icon";
+import { InputIconsProps } from "./InputIcons.interface";
 /**
  * The InputIcons component renders an icon element based on the provided type, position, and input state.
  */
@@ -24,11 +24,11 @@ const InputIcons = ({
       end: React.ReactNode;
     }
   > = {
-    [INPUT_TYPE.default]: {
+    [INPUT_TYPE.DEFAULT]: {
       front: null,
       end: null,
     },
-    [INPUT_TYPE.search]: {
+    [INPUT_TYPE.SEARCH]: {
       front: <Icon iconElement={<SearchIcon width={25} height={25} fill={Colors.primary} />} withBackground={false} />,
       end: (
         <Icon
@@ -42,7 +42,7 @@ const InputIcons = ({
         />
       ),
     },
-    [INPUT_TYPE.password]: {
+    [INPUT_TYPE.PASSWORD]: {
       front: null,
       end: (
         <Icon
@@ -61,7 +61,7 @@ const InputIcons = ({
         />
       ),
     },
-    [INPUT_TYPE.email]: {
+    [INPUT_TYPE.EMAIL]: {
       front: null,
       end: null,
     },

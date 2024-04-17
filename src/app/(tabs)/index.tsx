@@ -3,7 +3,7 @@ import { Trans } from "@lingui/macro";
 import { Link } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
 
-import LanguagePreference from "../../components/language-preferrence/language-preference";
+import LanguagePreference from "../../components/language-preferrence";
 import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
 import { useTodoMutation } from "../../mutations/use-todo-mutation/use-todo-mutation";
 import { useTodoQuery } from "../../queries/hooks/use-todo-query/use-todo-query";

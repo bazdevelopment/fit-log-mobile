@@ -2,8 +2,8 @@ import { View } from "react-native";
 
 import StarIcon from "../../../assets/icons/Star";
 import { generateStarPercentages } from "../../../utilities/generate-star-percentages";
-import Label from "../../atoms/label/label";
-import { IStarRating } from "./star-rating.interface";
+import Label from "../../atoms/label";
+import { IStarRating } from "./StarRating.interface";
 
 /**
  * The StarRating component is a reusable React Native component used to display a star rating along with optional additional information such as the rating value and number of reviews.

@@ -1,7 +1,7 @@
 export const ACTIVITY_LEVEL = {
-  beginner: "Beginner",
-  intermediate: "Intermediate",
-  advance: "Advance",
+  BEGINNER: "Beginner",
+  INTERMEDIATE: "Intermediate",
+  ADVANCE: "Advance",
 } as const;
 
 export type TActivityLevel = (typeof ACTIVITY_LEVEL)[keyof typeof ACTIVITY_LEVEL];

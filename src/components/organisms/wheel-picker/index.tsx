@@ -3,7 +3,7 @@ import { FlatList, NativeScrollEvent, NativeSyntheticEvent, View } from "react-n
 
 import { WHEEL_PICKER_OPTIONS } from "../../../constants/wheel-picker-options";
 import WheelPickerElement from "../../molecules/wheel-picker-element";
-import { IWheelPicker } from "./wheel-picker.interface";
+import { IWheelPicker } from "./WheelPicker.interface";
 
 /**
  * Wheel picker component

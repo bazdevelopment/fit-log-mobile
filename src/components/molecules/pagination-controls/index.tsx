@@ -3,9 +3,9 @@ import { View } from "react-native";
 import ArrowLeft from "../../../assets/icons/ArrowLeft";
 import ArrowRight from "../../../assets/icons/ArrowRight";
 import { Colors } from "../../../styles/colors";
-import Icon from "../../atoms/icon/icon";
-import PaginationDots from "../../atoms/pagination-dots/pagination-dots";
-import { IPaginationControls } from "./pagination-controls.interface";
+import Icon from "../../atoms/icon";
+import PaginationDots from "../../atoms/pagination-dots";
+import { IPaginationControls } from "./PaginationControls.interface";
 
 /**
  * Component used to display right/left arrow for navigating back and forth between screens

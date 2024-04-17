@@ -1,6 +1,6 @@
 import { View } from "react-native";
 
-import { IPaginationDots } from "./pagination-dots.interface";
+import { IPaginationDots } from "./PaginationDots.interface";
 
 const PaginationDots = ({ activeIndex, totalDots }: IPaginationDots) => (
   <View className="flex-row">

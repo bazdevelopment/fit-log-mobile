@@ -1,8 +1,8 @@
 export const INPUT_TYPE = {
-  default: "default",
-  password: "password",
-  email: "email",
-  search: "search",
+  DEFAULT: "default",
+  PASSWORD: "password",
+  EMAIL: "email",
+  SEARCH: "search",
 } as const;
 
-export type TInputType = keyof typeof INPUT_TYPE;
+export type TInputType = (typeof INPUT_TYPE)[keyof typeof INPUT_TYPE];
