@@ -19,7 +19,7 @@ const RadioButton = ({ isSelected, onPress, text, hasBorder }: IRadioButton) => 
         {isSelected && <View className="size-[9px] rounded-full bg-primary-default" />}
       </View>
 
-      <Label labelText={text} as="h5" additionalLabelStyle="font-inter-medium" />
+      <Label labelText={text} as="h5" additionalLabelStyle="font-primary" />
     </TouchableOpacity>
   );
 };

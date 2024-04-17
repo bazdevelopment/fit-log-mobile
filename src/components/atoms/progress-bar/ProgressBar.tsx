@@ -8,7 +8,6 @@ import { IProgressBar } from "./ProgressBar.interface";
  *  Component which displays a progress bar which is filed dynamically depending on the number of steps
  */
 const ProgressBar = ({ currentStep, totalSteps }: IProgressBar) => {
-  // const progress = (currentStep / totalSteps) * 100;
   const progress = useRef(new Animated.Value(0)).current;
 
   Animated.timing(progress, {
@@ -32,7 +31,7 @@ const ProgressBar = ({ currentStep, totalSteps }: IProgressBar) => {
       </View>
       <Label
         labelText={`${currentStep}/${totalSteps}`}
-        additionalLabelStyle="text-center text-[10px] font-inter-medium text-primary-default"
+        additionalLabelStyle="text-center text-[10px] font-primary text-primary-default"
         additionalContainerStyle="ml-2"
       />
     </View>

@@ -1,6 +1,7 @@
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
 
 import { POSITIONS } from "../../../constants/positions";
+import { Colors } from "../../../styles/colors";
 import { IButton } from "./button.interface";
 import { getButtonStyles } from "./button.styles";
 
@@ -36,7 +37,7 @@ const Button = ({
         <View className={getButtonStyles(variant, size, "wrapper", pressed)}>
           {iconPosition === POSITIONS.left && !isLoading && icon}
           {isLoading ? (
-            <ActivityIndicator color="blue" className="p-3" testID="loading-indicator" />
+            <ActivityIndicator color={Colors.white} className="p-3" testID="loading-indicator" />
           ) : (
             <Text className={getButtonStyles(variant, size, "text", pressed)}>{buttonText}</Text>
           )}

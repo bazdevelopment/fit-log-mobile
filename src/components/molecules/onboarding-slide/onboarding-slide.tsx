@@ -17,7 +17,7 @@ const OnboardingSlide = ({ title, description, image }: IOnboardingSlide) => {
       <View className="mt-6 flex-row flex-wrap justify-center px-4">
         {title.split(" ").map((word: string, index: number) => {
           const color = isOdd(index) ? "text-primary-default" : "text-gray-800";
-          const style = twMerge("font-inter-semi-bold", color);
+          const style = twMerge("font-primary-bold", color);
           return <Label key={`${index}-${word.length}`} labelText={word + " "} additionalLabelStyle={style} as="h2" />;
         })}
         <Label

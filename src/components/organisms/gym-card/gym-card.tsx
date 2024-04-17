@@ -26,11 +26,11 @@ const GymCardHeader = ({ imageSource, layout }: IGymCardHeader) => {
  */
 const GymCardBody = ({ title, subtitle, rating, numReviews, layout }: IGymCardBody) => (
   <View className={`pb-1 pt-2 ${layout === "row" ? "flex-1 px-1" : "w-full px-2"}`}>
-    <Label labelText={title} additionalLabelStyle="text-lg font-inter-medium" />
+    <Label labelText={title} additionalLabelStyle="text-lg font-primary" />
     <Label
       icon={<Ionicons name="location" size={20} color={Colors.primary} />}
       labelText={subtitle}
-      additionalLabelStyle="text-gray-500 mb-1 font-inter-regular mt-1 text-sm"
+      additionalLabelStyle="text-gray-500 mb-1 font-primary mt-1 text-sm"
       additionalContainerStyle={`${layout === "column" ? "w-11/12" : "w-full"}`}
     />
     {rating && numReviews && (
