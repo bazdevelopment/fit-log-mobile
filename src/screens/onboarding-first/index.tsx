@@ -11,7 +11,7 @@ import { DEVICE_DIMENSIONS } from "../../constants/device-dimensions";
 /**
  * First onboarding screen which displays multiple slides that represent a short brief of what the app can offer
  */
-const OnboardingScreen = () => {
+const OnboardingFirst = () => {
   const {
     activeIndex,
     lastIndex,
@@ -53,4 +53,4 @@ const OnboardingScreen = () => {
   );
 };
 
-export default OnboardingScreen;
+export default OnboardingFirst;
