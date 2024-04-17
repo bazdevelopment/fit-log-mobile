@@ -25,23 +25,23 @@ const Button = ({
   buttonText,
   onPress,
   variant = "primary",
-  disabled,
+  disabled = false,
   size = "lg",
   icon,
-  iconPosition = POSITIONS.right,
+  iconPosition = POSITIONS.RIGHT,
   isLoading,
 }: IButton) => {
   return (
     <Pressable accessibilityRole="button" onPress={onPress} disabled={disabled}>
       {({ pressed }) => (
-        <View className={getButtonStyles(variant, size, "wrapper", pressed)}>
-          {iconPosition === POSITIONS.left && !isLoading && icon}
+        <View className={getButtonStyles(variant, size, "wrapper", pressed, disabled)}>
+          {iconPosition === POSITIONS.LEFT && !isLoading && icon}
           {isLoading ? (
             <ActivityIndicator color={Colors.white} className="p-3" testID="loading-indicator" />
           ) : (
-            <Text className={getButtonStyles(variant, size, "text", pressed)}>{buttonText}</Text>
+            <Text className={getButtonStyles(variant, size, "text", pressed, disabled)}>{buttonText}</Text>
           )}
-          {iconPosition === POSITIONS.right && !isLoading && icon}
+          {iconPosition === POSITIONS.RIGHT && !isLoading && icon}
         </View>
       )}
     </Pressable>

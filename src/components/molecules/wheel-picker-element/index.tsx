@@ -1,7 +1,7 @@
 import { TouchableOpacity } from "react-native";
 
-import Label from "../../atoms/label/label";
-import { IWheelPickerElement } from "./wheel-picker-element.interface";
+import Label from "../../atoms/label";
+import { IWheelPickerElement } from "./WheelPickerElement.interface";
 
 /**
  * WheelPickerElement Component

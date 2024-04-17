@@ -2,11 +2,11 @@ import { useState } from "react";
 import { View } from "react-native";
 
 import Button from "../../../components/atoms/button/button";
-import Label from "../../../components/atoms/label/label";
-import WheelPicker from "../../../components/organisms/wheel-picker/wheel-picker";
+import Label from "../../../components/atoms/label";
+import WheelPicker from "../../../components/organisms/wheel-picker";
 import { WHEEL_PICKER_OPTIONS } from "../../../constants/wheel-picker-options";
 import { generateCustomRangeArray } from "../../../utilities/generate-custom-range-array";
-import { IAgeSelectionScreen } from "./age-selection-screen.interface";
+import { IAgeSelectionScreen } from "./AgeSelectionScreen.interface";
 
 /**
  * Component used to display the selection age screen

@@ -2,12 +2,12 @@ import { useState } from "react";
 import { View } from "react-native";
 
 import Button from "../../../components/atoms/button/button";
-import Label from "../../../components/atoms/label/label";
-import WheelPicker from "../../../components/organisms/wheel-picker/wheel-picker";
+import Label from "../../../components/atoms/label";
+import WheelPicker from "../../../components/organisms/wheel-picker";
 import { UNIT } from "../../../constants/unit";
 import { WHEEL_PICKER_OPTIONS } from "../../../constants/wheel-picker-options";
 import { generateCustomRangeArray } from "../../../utilities/generate-custom-range-array";
-import { IHeightSelectionScreen } from "./height-selection-screen.interface";
+import { IHeightSelectionScreen } from "./HeightSelectionScreen.interface";
 
 /**
  * Component used to display the height selection screen
@@ -32,7 +32,7 @@ export default function HeightSelectionScreen({ goToNext, onboardingData }: IHei
             WHEEL_PICKER_OPTIONS.DEFAULT_END_RANGE_INDEX_HEIGHT
           )}
           onChange={(value: number) => setHeight(value)}
-          unit={UNIT.cm}
+          unit={UNIT.CM}
         />
       </View>
       <View className="h-28 rounded-xl px-10 pt-5">

@@ -1,6 +1,6 @@
 export const STATUS_BAR_STYLE = {
-  light: "light",
-  dark: "dark",
-  auto: "auto",
-  inverted: "inverted",
+  LIGHT: "light",
+  DARK: "dark",
+  AUTO: "auto",
+  INVERTED: "inverted",
 } as const;

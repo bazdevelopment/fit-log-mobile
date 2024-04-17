@@ -1,6 +1,6 @@
 export const UNIT = {
-  kg: "kg",
-  cm: "cm",
+  KG: "kg",
+  CM: "cm",
 } as const;
 
-export type TUnit = keyof typeof UNIT;
+export type TUnit = (typeof UNIT)[keyof typeof UNIT];

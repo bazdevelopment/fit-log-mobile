@@ -44,7 +44,7 @@ describe("Button component", () => {
         variant="default"
         onPress={onPressMock}
         icon={<ChevronIcon testID="chevron-icon" />}
-        iconPosition={POSITIONS.left}
+        iconPosition={POSITIONS.LEFT}
       />
     );
     const iconElement = getByTestId("chevron-icon");
@@ -58,7 +58,7 @@ describe("Button component", () => {
         onPress={onPressMock}
         icon={<ChevronIcon testID="chevron-icon" />}
         variant="default"
-        iconPosition={POSITIONS.right}
+        iconPosition={POSITIONS.RIGHT}
       />
     );
     const iconElement = getByTestId("chevron-icon");

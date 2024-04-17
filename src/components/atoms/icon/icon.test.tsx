@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/react-native";
 
 import MuscleIcon from "../../../assets/icons/MuscleIcon";
-import Icon from "./Icon";
+import Icon from ".";
 
 describe("Icon component", () => {
   const onPressMock = jest.fn();

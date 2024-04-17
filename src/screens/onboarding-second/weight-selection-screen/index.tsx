@@ -3,11 +3,11 @@ import { View } from "react-native";
 import { RulerPicker } from "react-native-ruler-picker";
 
 import Button from "../../../components/atoms/button/button";
-import Label from "../../../components/atoms/label/label";
+import Label from "../../../components/atoms/label";
 import { UNIT } from "../../../constants/unit";
 import { Colors } from "../../../styles/colors";
-import { IWeightSelectionScreen } from "./weight-selection-screen.interface";
-import { styles } from "./weight-selection-screen.styles";
+import { IWeightSelectionScreen } from "./WeightSelectionScreen.interface";
+import { styles } from "./WeightSelectionScreen.styles";
 
 /**
  * Component used for selecting the user's weight
@@ -34,7 +34,7 @@ export default function WeightSelectionScreen({ goToNext, onboardingData }: IWei
             fractionDigits={0}
             initialValue={weight}
             onValueChangeEnd={(value: string) => setWeight(Number(value))}
-            unit={UNIT.kg}
+            unit={UNIT.KG}
             valueTextStyle={styles.rullerText}
             unitTextStyle={styles.rullerUnit}
             indicatorColor={Colors.primary}

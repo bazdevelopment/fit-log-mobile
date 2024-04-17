@@ -2,16 +2,16 @@ import { useState } from "react";
 import { View } from "react-native";
 
 import Button from "../../../components/atoms/button/button";
-import GenderButton from "../../../components/atoms/gender-button/gender-button";
-import Label from "../../../components/atoms/label/label";
+import GenderButton from "../../../components/atoms/gender-button";
+import Label from "../../../components/atoms/label";
 import { GENDER, TGender } from "../../../constants/gender";
-import { IGenderSelectionScreen } from "./gender-selection-screen.interface";
+import { IGenderSelectionScreen } from "./GenderSelectionScreen.interface";
 
 /**
  * Screen used for selecting the gender
  */
 export default function GenderSelectionScreen({ goToNext, onboardingData }: IGenderSelectionScreen) {
-  const [gender, setGender] = useState<TGender>(onboardingData.gender || GENDER.Male);
+  const [gender, setGender] = useState<TGender>(onboardingData.gender || GENDER.MALE);
 
   return (
     <>
@@ -25,14 +25,14 @@ export default function GenderSelectionScreen({ goToNext, onboardingData }: IGen
 
         <View className="mt-20 h-[280px] flex-col justify-between">
           <GenderButton
-            onPress={() => setGender(GENDER.Male)}
-            gender={GENDER.Male}
-            isSelected={gender === GENDER.Male}
+            onPress={() => setGender(GENDER.MALE)}
+            gender={GENDER.MALE}
+            isSelected={gender === GENDER.MALE}
           />
           <GenderButton
-            onPress={() => setGender(GENDER.Female)}
-            gender={GENDER.Female}
-            isSelected={gender === GENDER.Female}
+            onPress={() => setGender(GENDER.FEMALE)}
+            gender={GENDER.FEMALE}
+            isSelected={gender === GENDER.FEMALE}
           />
         </View>
       </View>

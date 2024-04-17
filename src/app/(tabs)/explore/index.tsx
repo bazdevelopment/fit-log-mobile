@@ -1,4 +1,4 @@
-import Label from "../../../components/atoms/label/label";
+import Label from "../../../components/atoms/label";
 import { TYPOGRAPHY_ELEMENTS } from "../../../constants/typography-elements";
 
 const Page = () => {

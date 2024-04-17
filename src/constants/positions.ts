@@ -1,6 +1,6 @@
 export const POSITIONS = {
-  left: "left",
-  right: "right",
+  LEFT: "left",
+  RIGHT: "right",
 } as const;
 
-export type TPositions = keyof typeof POSITIONS;
+export type TPositions = (typeof POSITIONS)[keyof typeof POSITIONS];

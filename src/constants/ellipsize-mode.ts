@@ -1,8 +1,8 @@
-export const EllipsizeModeType = {
-  head: "head", // start of the text is truncated (... is added)
-  middle: "middle", // the middle of the text is truncated (... is added)
-  tail: "tail", // the end of the text is truncated (... is added)
-  clip: "clip", // no text is shown after the limit of the container (... is not added)
+export const ELLIPSIZE_MODE_TYPE = {
+  HEAD: "head", // start of the text is truncated (... is added)
+  MIDDLE: "middle", // the middle of the text is truncated (... is added)
+  TAIL: "tail", // the end of the text is truncated (... is added)
+  CLIP: "clip", // no text is shown after the limit of the container (... is not added)
 } as const;
 
-export type TEllipsizeMode = (typeof EllipsizeModeType)[keyof typeof EllipsizeModeType];
+export type TEllipsizeMode = (typeof ELLIPSIZE_MODE_TYPE)[keyof typeof ELLIPSIZE_MODE_TYPE];

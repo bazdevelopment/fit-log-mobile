@@ -2,8 +2,8 @@ import { View } from "react-native";
 
 import CongratsIllustration from "../../../assets/images/illustrations/Congrats";
 import Button from "../../../components/atoms/button/button";
-import Label from "../../../components/atoms/label/label";
-import { ISuccessOnboardingScreen } from "./success-onboarding-screen.interface";
+import Label from "../../../components/atoms/label";
+import { ISuccessOnboardingScreen } from "./SuccessOnboardingScreen.interface";
 /**
  * Component used to display the success onboarding screen
  */
