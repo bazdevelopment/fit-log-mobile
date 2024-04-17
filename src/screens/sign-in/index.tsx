@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { View } from "react-native";
 
 import Button from "../../components/atoms/button/button";
@@ -36,7 +37,13 @@ const SignInScreen = () => {
       </View>
       <View className="mt-20 flex-row items-center justify-center">
         <Label labelText="Don't have an account?" as="h4" additionalLabelStyle="text-gray-600" />
-        <Button buttonText="Sign up" size="lg" variant="link" onPress={() => {}} additionalContainerStyle="ml-1" />
+        <Button
+          buttonText="Sign up"
+          size="lg"
+          variant="link"
+          onPress={() => router.navigate("/sign-up")}
+          additionalContainerStyle="ml-1"
+        />
       </View>
     </ScreenWrapper>
   );
