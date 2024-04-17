@@ -16,7 +16,7 @@ export default function GenderSelectionScreen({ goToNext, onboardingData }: IGen
   return (
     <>
       <View className="flex-1 items-center">
-        <Label labelText="Tell us about yourself!" as="h2" additionalLabelStyle="font-bold font-inter-semi-bold mb-4" />
+        <Label labelText="Tell us about yourself!" as="h2" additionalLabelStyle="font-primary-bold mb-4" />
         <Label
           labelText="To give you a better experience we need to know your gender"
           as="h5"

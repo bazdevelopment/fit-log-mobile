@@ -20,13 +20,13 @@ const WheelPickerElement = ({ value, onScrollToIndex, isSelected, maximumWidth =
     >
       <Label
         labelText={value.toString()}
-        additionalLabelStyle={`text-center text-[28px] ${isSelected ? "font-inter-bold text-[32px] text-primary-default mt-1" : "font-inter-medium"}`}
+        additionalLabelStyle={`text-center text-[28px] p-1 ${isSelected ? "font-primary-bold text-[32px] text-primary-default mt-2" : "font-primary"}`}
         as="h1"
       />
       {!!unit && (
         <Label
           labelText={unit}
-          additionalLabelStyle={`${isSelected ? "font-inter-bold text-primary-default" : ""}`}
+          additionalLabelStyle={`${isSelected ? "font-primary-bold text-primary-default" : ""}`}
           additionalContainerStyle="mt-2 ml-2"
           as="h5"
         />

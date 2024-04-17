@@ -19,7 +19,7 @@ export default function WeightSelectionScreen({ goToNext, onboardingData }: IWei
   return (
     <>
       <View className="flex-1 items-center">
-        <Label labelText="What's your weight?" as="h2" additionalLabelStyle="font-bold font-inter-semi-bold mb-4" />
+        <Label labelText="What's your weight?" as="h2" additionalLabelStyle="font-bold font-primary-bold mb-4" />
         <Label
           labelText="You can also change it later"
           as="h5"
@@ -43,7 +43,7 @@ export default function WeightSelectionScreen({ goToNext, onboardingData }: IWei
           />
         </View>
       </View>
-      <View className="h-28 rounded-xl bg-white px-10 pt-5 shadow">
+      <View className="h-28 rounded-xl px-10 pt-5">
         <Button buttonText="Continue" onPress={() => goToNext({ weight })} variant="primary" />
       </View>
     </>

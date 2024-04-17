@@ -44,7 +44,7 @@ export default function ActivityLevelScreen({ goToNext, onboardingData }: IActiv
         <Label
           labelText="Tell us about your regular physical activity level"
           as="h2"
-          additionalLabelStyle="font-bold font-inter-semi-bold mb-4 text-center"
+          additionalLabelStyle="font-bold font-primary-bold mb-4 text-center"
           additionalContainerStyle="px-6"
         />
         <Label

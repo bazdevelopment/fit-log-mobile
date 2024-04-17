@@ -6,15 +6,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inter: "Inter-Regular",
-        "inter-bold": "Inter-Bold",
-        "inter-black": "Inter-Black",
-        "inter-extra-bold": "Inter-ExtraBold",
-        "inter-extra-light": "Inter-ExtraLight",
-        "inter-light": "Inter-Light",
-        "inter-medium": "Inter-Medium",
-        "inter-semi-bold": "Inter-SemiBold",
-        "inter-thin": "Inter-Thin",
+        primary: "Primary-Regular",
+        "primary-bold": "Primary-Bold",
+        "primary-light": "Primary-Light",
+        "primary-italic": "Primary-Italic",
+        "primary-bold-italic": "Primary-Bold-Italic",
       },
       colors: {
         primary: {

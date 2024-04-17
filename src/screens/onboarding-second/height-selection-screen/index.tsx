@@ -6,7 +6,7 @@ import Label from "../../../components/atoms/label/label";
 import WheelPicker from "../../../components/organisms/wheel-picker/wheel-picker";
 import { UNIT } from "../../../constants/unit";
 import { WHEEL_PICKER_OPTIONS } from "../../../constants/wheel-picker-options";
-import { generateCustomRangeArray } from "../../../utilities/generatee-cusom-range-array";
+import { generateCustomRangeArray } from "../../../utilities/generate-custom-range-array";
 import { IHeightSelectionScreen } from "./height-selection-screen.interface";
 
 /**
@@ -19,7 +19,7 @@ export default function HeightSelectionScreen({ goToNext, onboardingData }: IHei
   return (
     <>
       <View className="flex-1 items-center">
-        <Label labelText="What's your height?" as="h2" additionalLabelStyle="font-bold font-inter-semi-bold mb-4" />
+        <Label labelText="What's your height?" as="h2" additionalLabelStyle="font-bold font-primary-bold mb-4" />
         <Label
           labelText="This helps us to create your personalized plan"
           as="h5"
@@ -35,7 +35,7 @@ export default function HeightSelectionScreen({ goToNext, onboardingData }: IHei
           unit={UNIT.cm}
         />
       </View>
-      <View className="h-28 rounded-xl bg-white px-10 pt-5 shadow">
+      <View className="h-28 rounded-xl px-10 pt-5">
         <Button buttonText="Continue" onPress={() => goToNext({ height })} variant="primary" />
       </View>
     </>

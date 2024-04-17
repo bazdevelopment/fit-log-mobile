@@ -50,7 +50,7 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
           <InputIcons position="front" type={type} inputValue={inputValue} handleResetInput={handleResetInput} />
         </View>
         <RNTextInput
-          className="font-inter-regular h-9 flex-1 tracking-wide text-gray-700"
+          className="h-9 flex-1 font-primary tracking-wide text-gray-700"
           value={inputValue}
           onChangeText={handleChangeText}
           placeholder={placeholder}
@@ -72,7 +72,7 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
       {!!error && (
         <Label
           labelText={error}
-          additionalLabelStyle="text-red-500 font-inter-semi-bold text-sm"
+          additionalLabelStyle="text-red-500 font-primary-bold text-sm"
           additionalContainerStyle="mt-1"
           icon={<MaterialIcons name="error" size={22} color={Colors.error} />}
         />

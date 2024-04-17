@@ -5,7 +5,7 @@ import Button from "../../../components/atoms/button/button";
 import Label from "../../../components/atoms/label/label";
 import WheelPicker from "../../../components/organisms/wheel-picker/wheel-picker";
 import { WHEEL_PICKER_OPTIONS } from "../../../constants/wheel-picker-options";
-import { generateCustomRangeArray } from "../../../utilities/generatee-cusom-range-array";
+import { generateCustomRangeArray } from "../../../utilities/generate-custom-range-array";
 import { IAgeSelectionScreen } from "./age-selection-screen.interface";
 
 /**
@@ -19,7 +19,7 @@ export default function AgeSelectionScreen({ goToNext, onboardingData }: IAgeSel
   return (
     <>
       <View className="flex-1 items-center">
-        <Label labelText="How old are you?" as="h2" additionalLabelStyle="font-bold font-inter-semi-bold mb-4" />
+        <Label labelText="How old are you?" as="h2" additionalLabelStyle="font-bold font-primary-bold mb-4" />
         <Label
           labelText="This helps us to create your personalized plan"
           as="h5"
@@ -35,7 +35,7 @@ export default function AgeSelectionScreen({ goToNext, onboardingData }: IAgeSel
         />
       </View>
 
-      <View className="h-28 rounded-xl bg-white px-10 pt-5 shadow">
+      <View className="h-28 rounded-xl px-10 pt-5 ">
         <Button buttonText="Continue" onPress={() => goToNext({ age })} variant="primary" />
       </View>
     </>

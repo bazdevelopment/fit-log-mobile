@@ -32,7 +32,7 @@ export default function GoalSelectionScreen({ goToNext, onboardingData }: IGoalS
   return (
     <>
       <View className="flex-1 items-center ">
-        <Label labelText="What's your goal?" as="h2" additionalLabelStyle="font-bold font-inter-semi-bold mb-4" />
+        <Label labelText="What's your goal?" as="h2" additionalLabelStyle="font-bold font-primary-bold mb-4" />
         <Label
           labelText="This helps us to create your personalized plan"
           as="h5"

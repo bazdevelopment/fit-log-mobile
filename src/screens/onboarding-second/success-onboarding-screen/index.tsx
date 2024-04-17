@@ -14,7 +14,7 @@ export default function SuccessOnboardingScreen({ onFinish }: ISuccessOnboarding
       <Label
         labelText="Congratulations! 🏆"
         as="h1"
-        additionalLabelStyle="font-inter-semi-bold text-primary-default text-center p-4"
+        additionalLabelStyle="font-primary-bold text-primary-default text-center p-4"
       />
 
       <Label

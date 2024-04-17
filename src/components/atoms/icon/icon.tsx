@@ -1,7 +1,6 @@
 import { Pressable, View } from "react-native";
 import { twMerge } from "tailwind-merge";
 
-import { debounce } from "../../../utilities/debounce";
 import Label from "../label/label";
 import { IIcon } from "./icon.interface";
 
@@ -39,11 +38,17 @@ const Icon = ({
       onPress={onPress}
       testID="icon-pressable-id"
     >
-      <View className={`rounded-full ${additionalInnerClassName ? `${additionalInnerClassName} p-3` : "bg-white p-4"}`}>
-        {iconElement}
-      </View>
-      {heading && (
-        <Label labelText={heading} additionalLabelStyle={`text-${textSize as string} mt-1 font-inter-medium`} />
+      {({ pressed }) => (
+        <>
+          <View
+            className={`rounded-full ${additionalInnerClassName ? `${additionalInnerClassName} p-3` : "bg-white p-4"} ${pressed ? "opacity-70" : "opacity-100"}`}
+          >
+            {iconElement}
+          </View>
+          {heading && (
+            <Label labelText={heading} additionalLabelStyle={`text-${textSize as string} mt-1 font-primary`} />
+          )}
+        </>
       )}
     </Pressable>
   );
