@@ -59,9 +59,12 @@ export default function ActivityLevelScreen({ goToNext, onboardingData }: IActiv
           additionalContainerStyle="flex-col w-full gap-4 p-6 mt-20"
         />
       </View>
-      <View className="bottom-10 px-10">
-        <Button buttonText="Continue" onPress={() => goToNext({ activityLevel })} variant="primary" />
-      </View>
+      <Button
+        buttonText="Continue"
+        onPress={() => goToNext({ activityLevel })}
+        variant="primary"
+        additionalContainerStyle="bottom-10 px-10"
+      />
     </>
   );
 }

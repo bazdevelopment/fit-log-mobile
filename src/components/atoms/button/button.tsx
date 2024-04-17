@@ -30,9 +30,10 @@ const Button = ({
   icon,
   iconPosition = POSITIONS.RIGHT,
   isLoading,
+  additionalContainerStyle,
 }: IButton) => {
   return (
-    <Pressable accessibilityRole="button" onPress={onPress} disabled={disabled}>
+    <Pressable accessibilityRole="button" onPress={onPress} disabled={disabled} className={additionalContainerStyle}>
       {({ pressed }) => (
         <View className={getButtonStyles(variant, size, "wrapper", pressed, disabled)}>
           {iconPosition === POSITIONS.LEFT && !isLoading && icon}

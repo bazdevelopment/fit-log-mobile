@@ -35,9 +35,12 @@ export default function HeightSelectionScreen({ goToNext, onboardingData }: IHei
           unit={UNIT.CM}
         />
       </View>
-      <View className="h-28 rounded-xl px-10 pt-5">
-        <Button buttonText="Continue" onPress={() => goToNext({ height })} variant="primary" />
-      </View>
+      <Button
+        buttonText="Continue"
+        onPress={() => goToNext({ height })}
+        variant="primary"
+        additionalContainerStyle="h-28 rounded-xl px-10 pt-5"
+      />
     </>
   );
 }

@@ -37,9 +37,13 @@ const OnboardingFirst = () => {
       </ScrollView>
 
       {activeIndex < lastIndex && (
-        <View className="absolute right-8 top-14">
-          <Button buttonText="Skip" onPress={handleFinishOnboarding} variant="default" size="lg" />
-        </View>
+        <Button
+          buttonText="Skip"
+          onPress={handleFinishOnboarding}
+          variant="default"
+          size="lg"
+          additionalContainerStyle="absolute right-8 top-14"
+        />
       )}
 
       <PaginationControls

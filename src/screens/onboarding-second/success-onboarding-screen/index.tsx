@@ -22,9 +22,12 @@ export default function SuccessOnboardingScreen({ onFinish }: ISuccessOnboarding
         as="h5"
         additionalLabelStyle="text-gray-500 px-8 text-center"
       />
-      <View className="top-8 w-1/2">
-        <Button buttonText="Get started! 💪" onPress={onFinish} variant="primary" />
-      </View>
+      <Button
+        buttonText="Get started! 💪"
+        onPress={onFinish}
+        variant="primary"
+        additionalContainerStyle="top-8 w-1/2"
+      />
     </View>
   );
 }

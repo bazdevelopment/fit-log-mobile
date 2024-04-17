@@ -36,9 +36,12 @@ export default function GenderSelectionScreen({ goToNext, onboardingData }: IGen
           />
         </View>
       </View>
-      <View className="bottom-10 px-10">
-        <Button buttonText="Continue" onPress={() => goToNext({ gender })} variant="primary" />
-      </View>
+      <Button
+        buttonText="Continue"
+        onPress={() => goToNext({ gender })}
+        variant="primary"
+        additionalContainerStyle="bottom-10 px-10"
+      />
     </>
   );
 }

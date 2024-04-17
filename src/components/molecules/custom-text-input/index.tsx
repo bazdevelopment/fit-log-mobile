@@ -21,9 +21,13 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
     setShowPassword(prevState => !prevState);
   };
 
+  const hideShowPassword = () => {
+    setShowPassword(false);
+  };
+
   const handleChangeText = (text: string) => {
-    setInputValue(text);
-    if (!text && type === INPUT_TYPE.PASSWORD) toggleShowPassword();
+    setInputValue(text.trim());
+    if (!text && type === INPUT_TYPE.PASSWORD) hideShowPassword();
   };
 
   const handleResetInput = () => {
@@ -33,7 +37,9 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
   return (
     <View>
       <View className="mb-1 flex-row items-center">
-        {!!label && <Label labelText={label} additionalLabelStyle="text-[13px] mr-1 tracking-wide" />}
+        {!!label && (
+          <Label labelText={label} additionalLabelStyle="text-md mr-1 tracking-wide font-primary-semi-bold" />
+        )}
         {!!labelInfo && (
           <Icon
             iconElement={<MaterialIcons name="info" size={22} color={Colors.information} />}
@@ -43,22 +49,21 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
         )}
       </View>
 
-      <View
-        className={`flex-row items-center rounded-lg bg-gray-100 px-2 py-1.5 ${error ? "border-[1.5px] border-red-500" : ""}`}
-      >
+      <View className={`flex-row rounded-lg bg-slate-100 ${error ? "border-[1.5px] border-red-500" : ""}`}>
         <View className={type ? "mr-2" : ""}>
           <InputIcons position="front" type={type} inputValue={inputValue} handleResetInput={handleResetInput} />
         </View>
         <RNTextInput
-          className="h-9 flex-1 font-primary tracking-wide text-gray-700"
+          className={`h-12 flex-1 pb-2  pl-3 font-primary text-lg tracking-wide text-gray-700 ${type === "password" && !inputValue ? "pt-3" : ""} `}
           value={inputValue}
           onChangeText={handleChangeText}
           placeholder={placeholder}
           placeholderTextColor={Colors.grey}
           autoCapitalize="none"
           secureTextEntry={type === INPUT_TYPE.PASSWORD && !showPassword}
-          spellCheck={true}
-          autoCorrect={true}
+          spellCheck
+          autoCorrect
+          multiline={false}
         />
         <InputIcons
           position="end"
@@ -67,6 +72,7 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
           toggleShowPassword={toggleShowPassword}
           handleResetInput={handleResetInput}
           inputValue={inputValue}
+          additionalInnerIconStyle="p-0"
         />
       </View>
       {!!error && (

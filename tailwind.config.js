@@ -8,6 +8,8 @@ module.exports = {
       fontFamily: {
         primary: "Primary-Regular",
         "primary-bold": "Primary-Bold",
+        "primary-semi-bold": "Primary-Semi-Bold",
+        "primary-medium": "Primary-Medium",
         "primary-light": "Primary-Light",
         "primary-italic": "Primary-Italic",
         "primary-bold-italic": "Primary-Bold-Italic",
