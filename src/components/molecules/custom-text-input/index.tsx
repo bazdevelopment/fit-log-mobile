@@ -38,7 +38,7 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
     <View>
       <View className="mb-1 flex-row items-center">
         {!!label && (
-          <Label labelText={label} additionalLabelStyle="text-md mr-1 tracking-wide font-primary-semi-bold" />
+          <Label labelText={label} additionalLabelStyle="text-base mr-1 tracking-wide font-primary-semi-bold" />
         )}
         {!!labelInfo && (
           <Icon
