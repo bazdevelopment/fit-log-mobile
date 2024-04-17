@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import { KeyboardAvoidingView, SafeAreaView, ScrollView } from "react-native";
 
 import { DEVICE_TYPE } from "../../../constants/device-type";
 import { Colors } from "../../../styles/colors";
