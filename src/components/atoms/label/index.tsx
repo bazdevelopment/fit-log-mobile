@@ -3,7 +3,7 @@ import { Text as RNText, View } from "react-native";
 import { POSITIONS } from "../../../constants/positions";
 import { TYPOGRAPHY_ELEMENTS } from "../../../constants/typography-elements";
 import { ILabel } from "./Label.interface";
-import { defaultStyles } from "./Label.styles";
+import { defaultStyles } from "./label.styles";
 
 /**
  *
