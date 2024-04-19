@@ -3,7 +3,7 @@ import { View } from "react-native";
 
 import Button from "../../components/atoms/button/button";
 import Label from "../../components/atoms/label";
-import Checkbox from "../../components/molecules/checkbox";
+import Checkbox from "../../components/atoms/checkbox";
 import CustomTextInput from "../../components/molecules/custom-text-input";
 import ScreenWrapper from "../../components/templates/screen-wrapper";
 /**
@@ -30,7 +30,7 @@ const SignUpScreen = () => {
         </View>
         <Button
           buttonText="Sign up"
-          onPress={() => console.log("Sign up!")}
+          onPress={() => router.navigate("/verify-otp-code")}
           variant="primary"
           size="lg"
           additionalContainerStyle="mt-10 w-full px-6"

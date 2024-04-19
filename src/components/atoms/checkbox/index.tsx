@@ -3,8 +3,8 @@ import { Pressable, View } from "react-native";
 
 import ThickIcon from "../../../assets/icons/ThickIcon";
 import { Colors } from "../../../styles/colors";
-import Icon from "../../atoms/icon";
-import Label from "../../atoms/label";
+import Icon from "../icon";
+import Label from "../label";
 import { ICheckbox } from "./checkbox.interface";
 
 /**
@@ -12,7 +12,7 @@ import { ICheckbox } from "./checkbox.interface";
  * Can accept a text
  */
 const Checkbox = ({ checkboxText }: ICheckbox) => {
-  const [isChecked, setIsChecked] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
 
   const toggleCheckbox = () => {
     setIsChecked(!isChecked);
@@ -20,7 +20,9 @@ const Checkbox = ({ checkboxText }: ICheckbox) => {
 
   return (
     <Pressable accessibilityRole="button" onPress={toggleCheckbox} className="flex-row items-center gap-2">
-      <View className="size-6 items-center justify-center rounded-md bg-primary-default">
+      <View
+        className={`size-6 items-center justify-center rounded-md ${isChecked ? "bg-primary-default" : "border-[1.5px] border-primary-default"}`}
+      >
         {isChecked && (
           <Icon
             onPress={toggleCheckbox}
