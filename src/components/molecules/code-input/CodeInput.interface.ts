@@ -1,6 +1,5 @@
 import { ForwardedRef, MutableRefObject, RefObject } from "react";
-import { Animated } from "react-native";
-import { TextInput } from "react-native";
+import { Animated, TextInput } from "react-native";
 
 export type TextInputRef = RefObject<TextInput>[];
 
