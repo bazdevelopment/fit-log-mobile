@@ -1,6 +1,7 @@
 import { Platform } from "react-native";
 import { Easing, interpolate, useAnimatedStyle, useDerivedValue, withTiming } from "react-native-reanimated";
 
+import { DEVICE_TYPE } from "../../../../../constants/device-type";
 import { useHeaderLayout } from "../../../../../context/header-layout-context";
 import { useScrollContext } from "../../../../../context/scroll-context";
 
@@ -13,7 +14,7 @@ const TRANSITION_QUICK = {
  * Custom hook to handle the header logic when the screen is being scroller
  */
 export const useHeaderAnimation = () => {
-  const isTabBarCollapseEffectEnabled = false;
+  const isTabBarCollapseEffectEnabled = DEVICE_TYPE.ANDROID;
   const { scrollValue } = useScrollContext();
   const { headerHeight } = useHeaderLayout();
   // Derived animated values
@@ -36,7 +37,7 @@ export const useHeaderAnimation = () => {
   );
   const animatedTextStyle = useAnimatedStyle(
     () => ({
-      opacity: interpolate(correctValue.value, [0, 1], [1, Platform.OS === "android" ? 0.75 : 0]),
+      opacity: interpolate(correctValue.value, [0, 1], [1, 0]),
       transform:
         Platform.OS === "android"
           ? [

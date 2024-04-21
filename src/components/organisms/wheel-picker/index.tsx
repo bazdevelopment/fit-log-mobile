@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { FlatList, NativeScrollEvent, NativeSyntheticEvent, View } from "react-native";
 
+import { DEVICE_TYPE } from "../../../constants/device-type";
 import { WHEEL_PICKER_OPTIONS } from "../../../constants/wheel-picker-options";
 import WheelPickerElement from "../../molecules/wheel-picker-element";
 import { IWheelPicker } from "./WheelPicker.interface";
@@ -27,6 +28,7 @@ const WheelPicker = ({ selectedIndex, onChange, values, unit }: IWheelPicker) =>
   const handleScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const offsetY = event.nativeEvent.contentOffset.y;
     const index = Math.round(offsetY / WHEEL_PICKER_OPTIONS.DEFAULT_ITEM_HEIGHT);
+
     if (index !== selectedIndex) {
       onChange(index + firstValue); //15 because indicator is moved 3 position below + index start from 15 (15+3)
     }
@@ -37,6 +39,8 @@ const WheelPicker = ({ selectedIndex, onChange, values, unit }: IWheelPicker) =>
       index: index - firstValue,
       animated: true,
     });
+    //! this is an workaround only for android because onMomentumScrollEnd is not triggered by scrollToIndex
+    DEVICE_TYPE.ANDROID && onChange(index);
   };
 
   const handleRenderItem = ({ item, index }: { item: number; index: number }) => (
@@ -51,7 +55,7 @@ const WheelPicker = ({ selectedIndex, onChange, values, unit }: IWheelPicker) =>
   const getKeyExtractor = (_, index: number) => index.toString();
 
   return (
-    <View className="mb-[50px] mt-[30px] flex-1">
+    <View className={`mt-[30px] flex-1 ${DEVICE_TYPE.IOS ? "pb-[50px]" : "pb-[15px]"}`}>
       {/*  top = 180px = > 3 * WHEEL_PICKER_OPTIONS.DEFAULT_ITEM_HEIGHT  */}
       <View className="absolute top-[180px] h-[60px] w-[100px] border-x-0 border-y-[3px] border-primary-default" />
 
