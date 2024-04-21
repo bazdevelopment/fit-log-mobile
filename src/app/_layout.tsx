@@ -11,6 +11,7 @@ import { StatusBar } from "expo-status-bar";
 
 import { STATUS_BAR_STYLE } from "../constants/status-bar";
 import { LanguageContextProvider } from "../context/language-context/language-context";
+import { ScrollContextProvider } from "../context/scroll-context";
 import { ThemeProvider } from "../context/theme-context/theme-context";
 import { useThemeScheme } from "../hooks/use-theme-scheme/use-theme-scheme";
 import I18nProvider from "../locale/i18n-provider";
@@ -53,18 +54,20 @@ export default function AppLayout() {
   }
   return (
     <QueryClientProvider client={queryClient}>
-      <NavigationTeamProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-        <ThemeProvider>
-          <LanguageContextProvider>
-            <I18nProvider>
-              <StatusBar style={isDarkColorScheme ? STATUS_BAR_STYLE.LIGHT : STATUS_BAR_STYLE.DARK} />
-              <Stack screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              </Stack>
-            </I18nProvider>
-          </LanguageContextProvider>
-        </ThemeProvider>
-      </NavigationTeamProvider>
+      <ScrollContextProvider>
+        <NavigationTeamProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+          <ThemeProvider>
+            <LanguageContextProvider>
+              <I18nProvider>
+                <StatusBar style={isDarkColorScheme ? STATUS_BAR_STYLE.LIGHT : STATUS_BAR_STYLE.DARK} />
+                <Stack screenOptions={{ headerShown: false }}>
+                  <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                </Stack>
+              </I18nProvider>
+            </LanguageContextProvider>
+          </ThemeProvider>
+        </NavigationTeamProvider>
+      </ScrollContextProvider>
     </QueryClientProvider>
   );
 }

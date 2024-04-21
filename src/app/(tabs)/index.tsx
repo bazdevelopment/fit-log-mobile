@@ -4,6 +4,7 @@ import { Link } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
 
 import LanguagePreference from "../../components/language-preferrence";
+import { ContentScroller } from "../../components/organisms/content-scroller";
 import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
 import { useTodoMutation } from "../../mutations/use-todo-mutation/use-todo-mutation";
 import { useTodoQuery } from "../../queries/hooks/use-todo-query/use-todo-query";
@@ -15,6 +16,7 @@ export const Test = () => {
 
   return (
     <View className="mb-10 flex flex-row justify-center">
+      <ContentScroller />
       <TouchableOpacity onPress={() => mutate()} accessibilityRole="button">
         <Text>
           <Trans>Press to trigger todo mutation</Trans>
@@ -31,11 +33,13 @@ export default function Root() {
   const { toggleColorScheme } = useThemeScheme();
   return (
     <View className="flex-1 bg-white">
-      <LanguagePreference />
+      <ContentScroller />
+
+      {/* <LanguagePreference />
       <Test />
       <TouchableOpacity accessibilityRole="button" onPress={toggleColorScheme}>
         <Text>Toggle light/dark mode</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }
