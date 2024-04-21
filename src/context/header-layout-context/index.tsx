@@ -5,5 +5,5 @@ import { IHeaderLayoutContext } from "./header-layout.interface";
 export const HeaderLayoutContext = createContext<IHeaderLayoutContext>({ headerHeight: 0, handleLayout: () => {} });
 /** Provider declaration */
 export const { Provider: HeaderLayoutProvider } = HeaderLayoutContext;
-/** Utility function for accessing the context */
+/** Utility function for accessing the */
 export const useHeaderLayout = () => useContext(HeaderLayoutContext);

@@ -1,4 +1,6 @@
+import { LayoutChangeEvent } from "react-native";
+
 export interface IHeaderLayoutContext {
   headerHeight: number;
-  handleLayout: () => void;
+  handleLayout: (event: LayoutChangeEvent) => void;
 }

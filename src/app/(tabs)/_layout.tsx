@@ -5,9 +5,10 @@ import { LayoutChangeEvent, Text, View } from "react-native";
 
 import TabBarIcon from "../../components/atoms/tab-bar-icon/tab-bar-icon";
 import { CustomScreenHeader } from "../../components/organisms/custom-header";
-import { HeaderLayoutProvider, useHeaderLayout } from "../../context/header-layout-context";
+import { HeaderLayoutProvider } from "../../context/header-layout-context";
 import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
 import { tabScreens } from "../../navigation/tabs";
+import { ITabsNavigationScreen } from "../../navigation/tabs/tabs.interface";
 import { getTabBarStyles } from "../../navigation/tabs/tabs.styles";
 import { Colors } from "../../styles/colors";
 
@@ -48,9 +49,9 @@ export default function TabLayout() {
           tabBarStyle: styles.tabBarContainer,
         }}
       >
-        {tabScreens.map((screen, index) => (
+        {tabScreens.map((screen: ITabsNavigationScreen) => (
           <Tabs.Screen
-            key={index}
+            key={screen.id}
             name={screen.name}
             options={{
               title: screen.title,
