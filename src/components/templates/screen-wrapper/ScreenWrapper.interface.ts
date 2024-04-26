@@ -6,4 +6,5 @@ export interface IScreenWrapper {
   keyboardVerticalOffset?: number;
   isScrollEnabled?: boolean;
   isBackNavigationEnabled?: boolean;
+  title?: string;
 }

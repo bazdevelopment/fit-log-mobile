@@ -1,10 +1,11 @@
 import { router } from "expo-router";
-import { KeyboardAvoidingView, SafeAreaView, ScrollView } from "react-native";
+import { KeyboardAvoidingView, SafeAreaView, ScrollView, View } from "react-native";
 
 import ArrowLeft from "../../../assets/icons/ArrowLeft";
 import { DEVICE_TYPE } from "../../../constants/device-type";
 import { Colors } from "../../../styles/colors";
 import Icon from "../../atoms/icon";
+import Label from "../../atoms/label";
 import { IScreenWrapper } from "./ScreenWrapper.interface";
 
 /**
@@ -17,6 +18,7 @@ export default function ScreenWrapper({
   keyboardVerticalOffset = undefined,
   isScrollEnabled = true,
   isBackNavigationEnabled = false,
+  title,
 }: IScreenWrapper) {
   return (
     <SafeAreaView className="flex-1">
@@ -32,14 +34,17 @@ export default function ScreenWrapper({
           keyboardShouldPersistTaps="handled"
           className="flex-1"
         >
-          {isBackNavigationEnabled && (
-            <Icon
-              iconElement={<ArrowLeft width={23} height={23} color={Colors.blackPantone} />}
-              additionalInnerClassName="border-slate-300 border-[1px]"
-              additionalClassName="items-start justify-start mt-2 ml-4"
-              onPress={() => router.back()}
-            />
-          )}
+          <View className="flex-row items-center gap-5">
+            {isBackNavigationEnabled && (
+              <Icon
+                iconElement={<ArrowLeft width={23} height={23} color={Colors.blackPantone} />}
+                additionalInnerClassName="border-slate-300 border-[1px]"
+                additionalClassName="items-start justify-start mt-2 ml-4"
+                onPress={() => router.back()}
+              />
+            )}
+            {!!title && <Label labelText={title} as="h3" additionalLabelStyle="font-primary-semi-bold text-gray-900" />}
+          </View>
           {children}
         </ScrollView>
       </KeyboardAvoidingView>

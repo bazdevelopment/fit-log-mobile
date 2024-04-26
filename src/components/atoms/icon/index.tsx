@@ -41,7 +41,7 @@ const Icon = ({
       {({ pressed }) => (
         <>
           <View
-            className={`rounded-full ${additionalInnerClassName ? `${additionalInnerClassName} p-3` : "bg-white p-4"} ${pressed ? "opacity-70" : "opacity-100"}`}
+            className={`items-center justify-center rounded-full ${additionalInnerClassName ? `${additionalInnerClassName} p-3` : "bg-white p-4"} ${pressed ? "opacity-70" : "opacity-100"}`}
           >
             {iconElement}
           </View>
