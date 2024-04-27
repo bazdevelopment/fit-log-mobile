@@ -80,3 +80,5 @@ storybook-static
 coverage
 
 # @end expo-cli
+android/
+ios/

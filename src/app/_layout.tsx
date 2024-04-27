@@ -7,7 +7,9 @@ import { Theme as ITheme, ThemeProvider as NavigationTeamProvider } from "@react
 import { QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router/stack";
+import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
+import { useEffect } from "react";
 
 import { STATUS_BAR_STYLE } from "../constants/status-bar";
 import { LanguageContextProvider } from "../context/language-context/language-context";
@@ -27,11 +29,10 @@ const DARK_THEME: ITheme = {
   colors: NAV_THEME.dark,
 };
 
-export const unstable_settings = {
-  initialRouteName: "onboarding/index",
-};
+// Prevent the splash screen from auto-hiding before asset loading is complete.
+SplashScreen.preventAutoHideAsync();
 export default function AppLayout() {
-  const [fontsLoaded, fontError] = useFonts({
+  const [fontsLoaded] = useFonts({
     "Primary-Regular": require("../assets/fonts/HankenGrotesk-Regular.ttf"),
     "Primary-Medium": require("../assets/fonts/HankenGrotesk-Medium.otf"),
     "Primary-Bold": require("../assets/fonts/HankenGrotesk-Bold.ttf"),
@@ -49,7 +50,14 @@ export default function AppLayout() {
  */
 
   const { isDarkColorScheme } = useThemeScheme();
-  if (!fontsLoaded && !fontError) {
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
     return null;
   }
   return (

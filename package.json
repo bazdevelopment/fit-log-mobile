@@ -74,7 +74,8 @@
     "react-native-web": "^0.19.10",
     "storybook": "^7.0.10",
     "tailwind-merge": "^2.2.1",
-    "ts-jest": "^29.1.2"
+    "ts-jest": "^29.1.2",
+    "expo-splash-screen": "~0.26.5"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
