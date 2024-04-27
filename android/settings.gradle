@@ -1,4 +1,4 @@
-rootProject.name = 'fit-log-mobile'
+rootProject.name = 'Fit Log'
 
 dependencyResolutionManagement {
   versionCatalogs {
