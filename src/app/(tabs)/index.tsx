@@ -32,7 +32,7 @@ i18n.loadAndActivate({ locale: "ro", messages: undefined });
 export default function Root() {
   const { toggleColorScheme } = useThemeScheme();
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1">
       <ContentScroller />
 
       {/* <LanguagePreference />

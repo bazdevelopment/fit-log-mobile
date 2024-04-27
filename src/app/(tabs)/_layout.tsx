@@ -28,24 +28,7 @@ export default function TabLayout() {
         screenOptions={{
           tabBarActiveTintColor: Colors.primary,
           /**TODO: consider to create a custom top navigation bar */
-          header: props => (
-            <CustomScreenHeader
-              {...props}
-              options={{
-                headerLeft: () => (
-                  <View>
-                    <Text>Header Left</Text>
-                  </View>
-                ),
-                headerRight: () => (
-                  <View>
-                    <Text>Header Right</Text>
-                  </View>
-                ),
-              }}
-              onLayout={handleLayout}
-            />
-          ),
+
           tabBarStyle: styles.tabBarContainer,
         }}
       >
@@ -55,6 +38,26 @@ export default function TabLayout() {
             name={screen.name}
             options={{
               title: screen.title,
+              header: props => (
+                <CustomScreenHeader
+                  {...props}
+                  options={{
+                    headerTitle: screen.title,
+                    headerLeft: () => (
+                      <View>
+                        <Text>Header Left</Text>
+                      </View>
+                    ),
+                    headerRight: () => (
+                      <View>
+                        <Text>Header Right</Text>
+                      </View>
+                    ),
+                  }}
+                  onLayout={handleLayout}
+                />
+              ),
+
               tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
                 <TabBarIcon icon={screen.icon(color)} focused={focused} />
               ),
