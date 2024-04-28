@@ -24,7 +24,7 @@ const SegmentedControl = ({
   const internalPadding = 20;
   const segmentedControlWidth = DEVICE_DIMENSIONS.DEVICE_WIDTH - spacing * (options.length - 1);
   const itemWidth = (segmentedControlWidth - internalPadding) / options.length;
-  const selectedOptionIndex = options.findIndex(option => option.title === selectedOption.title);
+  const selectedOptionIndex = options.findIndex(option => option.title === selectedOption?.title);
 
   const rStyle = useAnimatedStyle(() => {
     return {
@@ -44,7 +44,9 @@ const SegmentedControl = ({
           },
         ]}
       >
-        <Animated.View style={[rStyle, { ...styles.activeBox, width: itemWidth, backgroundColor: tabActiveColor }]} />
+        {Boolean(selectedOption) && (
+          <Animated.View style={[rStyle, { ...styles.activeBox, width: itemWidth, backgroundColor: tabActiveColor }]} />
+        )}
         {options.map(option => {
           return (
             <SegmentedControlTab
