@@ -10,6 +10,7 @@ export const ScrollContext = createContext<ScrollContextTuple>(INITIAL_VALUE);
 export const ScrollContextProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const scrollValue = useSharedValue(0);
 
+  /* method that will trigger screen header appearance */
   const handleResetHeader = () => {
     scrollValue.value = withTiming(0, { duration: 150, easing: Easing.out(Easing.cubic) });
   };
