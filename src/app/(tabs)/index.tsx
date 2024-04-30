@@ -1,11 +1,14 @@
 import { i18n } from "@lingui/core";
 import { Trans } from "@lingui/macro";
+import { useFocusEffect, useScrollToTop } from "@react-navigation/native";
 import { Link } from "expo-router";
+import { useCallback, useRef } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 import LanguagePreference from "../../components/language-preferrence";
-import { ContentScroller } from "../../components/organisms/content-scroller";
+import ContentScroller from "../../components/organisms/content-scroller";
 import WeekBlock from "../../components/organisms/week-block";
+import { useScrollContext } from "../../context/scroll-context";
 import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
 import { useTodoMutation } from "../../mutations/use-todo-mutation/use-todo-mutation";
 import { useTodoQuery } from "../../queries/hooks/use-todo-query/use-todo-query";
@@ -31,12 +34,21 @@ export const Test = () => {
 i18n.loadAndActivate({ locale: "ro", messages: undefined });
 
 export default function Root() {
-  const { toggleColorScheme } = useThemeScheme();
+  const { resetHeader } = useScrollContext();
 
+  const scrollViewRef = useRef(null);
+
+  useScrollToTop(scrollViewRef);
+
+  useFocusEffect(
+    useCallback(() => {
+      resetHeader();
+    }, [])
+  );
   return (
     <View className="mt-28 flex-1">
       <WeekBlock />
-      <ContentScroller />
+      <ContentScroller ref={scrollViewRef} />
 
       {/* <LanguagePreference />
       <Test />

@@ -11,16 +11,20 @@ import { useHeaderAnimation } from "./hooks/use-header-animation/use-header-anim
 /**
  * Custom Header component
  */
-export const CustomScreenHeader = ({ route, options, onLayout }: ICustomHeader) => {
+export const CustomScreenHeader = ({ route, options, onLayout, isHeaderCollapsed }: ICustomHeader) => {
   const { top } = useSafeAreaInsets();
   const title = getHeaderTitle(options, route.name);
 
   const { animatedStyle, animatedTextStyle } = useHeaderAnimation();
 
   return (
-    <Animated.View style={[styles.root, { paddingTop: Math.max(top, 16) }, animatedStyle]}>
+    <Animated.View style={[styles.root, { paddingTop: Math.max(top, 16) }, isHeaderCollapsed && animatedStyle]}>
       <BlurView style={[StyleSheet.absoluteFill, styles.background]} />
-      <Animated.View style={animatedTextStyle} className="flex-row items-center" onLayout={onLayout}>
+      <Animated.View
+        style={isHeaderCollapsed && animatedTextStyle}
+        className="flex-row items-center"
+        onLayout={onLayout}
+      >
         {Boolean(options.headerLeft) && <View className="flex-1">{options.headerLeft()}</View>}
         <View className="flex-1" style={styles.padding}>
           <Animated.Text style={styles.title}>{title}</Animated.Text>

@@ -38,13 +38,21 @@ export const useContentScroller = () => {
   const scrollHandler = useAnimatedScrollHandler(
     event => {
       const { y } = event.contentOffset;
+      const { contentSize, layoutMeasurement } = event;
+      /** calculate the maximum scroll offset */
+      const maxScrollOffset = contentSize.height - layoutMeasurement.height;
 
       if (y < 0 || y > event.contentSize.height) {
         return;
       }
-
-      scrollValue.value = clamp(scrollValue.value + (y - previousScrollValue.value) / SCROLL_DISTANCE, 0, 1);
-      previousScrollValue.value = y;
+      /**
+       * Check if the user is not at the bottom of the screen
+       */
+      if (y < maxScrollOffset) {
+        /* logic for header show/hide animation here */
+        scrollValue.value = clamp(scrollValue.value + (y - previousScrollValue.value) / SCROLL_DISTANCE, 0, 1);
+        previousScrollValue.value = y;
+      }
     },
     [bottom]
   );
