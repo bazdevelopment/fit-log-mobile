@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import { Image, StyleSheet, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { Text } from "react-native-svg";
@@ -6,7 +6,7 @@ import { Text } from "react-native-svg";
 import { useContentScroller } from "../../../hooks/use-content-scroller/use-content-scroller";
 import WelcomeMessage from "../../molecules/welcome-message";
 
-export const ContentScroller: React.FC = () => {
+const ContentScroller = forwardRef((_, ref) => {
   const { contentContainerStyle, scrollHandler } = useContentScroller();
 
   return (
@@ -16,6 +16,7 @@ export const ContentScroller: React.FC = () => {
       contentContainerStyle={[styles.container, contentContainerStyle]}
       onScroll={scrollHandler}
       showsVerticalScrollIndicator={false}
+      ref={ref}
     >
       <WelcomeMessage username="Marian" />
       <View className="mt-4">
@@ -28,7 +29,10 @@ export const ContentScroller: React.FC = () => {
       </View>
     </Animated.ScrollView>
   );
-};
+});
+
+export default ContentScroller;
+
 const data = [
   { id: 1, text: "Item 1", color: "red" },
   { id: 2, text: "Item 2", color: "red" },

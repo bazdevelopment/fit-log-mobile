@@ -41,6 +41,7 @@ export default function TabLayout() {
               header: props => (
                 <CustomScreenHeader
                   {...props}
+                  isHeaderCollapsed={screen.title !== "Schedule"}
                   options={{
                     headerTitle: screen.title,
                     headerLeft: () => (
