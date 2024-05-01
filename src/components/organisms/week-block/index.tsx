@@ -42,6 +42,10 @@ const WeekBlock = ({ workoutSections, onScrollToIndex }: IWeekBlock) => {
       } else {
         handleChangeSelection(initialDayFocused as ISegmentedControlOption);
         const indexes = findSectionIndexToScroll(initialDayFocused.id, workoutSections);
+        /**
+         *  Delay added to ensure the UI has time to update before scrolling
+         * TODO: maybe the check ofr indexes && can be replace with something more specific
+         */
         indexes && wait(500).then(() => onScrollToIndex(indexes.sectionIndex, indexes.itemIndex));
       }
     };

@@ -23,8 +23,8 @@ const Page = () => {
   );
 
   const onScrollToIndex = (sectionIndex: number, itemIndex: number) => {
-    if (scrollViewRef !== null && scrollViewRef.current?.scrollToLocation !== null) {
-      scrollViewRef.current?.scrollToLocation({ sectionIndex, itemIndex });
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollToLocation({ sectionIndex, itemIndex });
     }
   };
 
