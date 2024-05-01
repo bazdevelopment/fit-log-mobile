@@ -7,7 +7,6 @@ import { Text, TouchableOpacity, View } from "react-native";
 
 import LanguagePreference from "../../components/language-preferrence";
 import ContentScroller from "../../components/organisms/content-scroller";
-import WeekBlock from "../../components/organisms/week-block";
 import { useScrollContext } from "../../context/scroll-context";
 import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
 import { useTodoMutation } from "../../mutations/use-todo-mutation/use-todo-mutation";
@@ -47,7 +46,6 @@ export default function Root() {
   );
   return (
     <View className="mt-28 flex-1">
-      <WeekBlock />
       <ContentScroller ref={scrollViewRef} />
 
       {/* <LanguagePreference />
