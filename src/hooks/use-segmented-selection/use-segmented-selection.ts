@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import { ISegmentedControlOption } from "../../components/organisms/segmented-control/SegmentedControl.interface";
 
