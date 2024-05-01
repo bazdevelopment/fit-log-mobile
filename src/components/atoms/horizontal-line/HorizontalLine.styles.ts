@@ -5,5 +5,5 @@ export const thicknessClass = {
 
 export const colorClass = {
   dark: "bg-tertiary-default",
-  light: "bg-gray-light",
+  light: "bg-slate-200",
 };

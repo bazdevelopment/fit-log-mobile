@@ -5,8 +5,8 @@ import { ISegmentedControlOption } from "../../components/organisms/segmented-co
 /**
  * Custom hook used to handle the segmented tab selection
  */
-export const useSegmentedSelection = () => {
-  const [selectedOption, setSelectedOption] = useState<ISegmentedControlOption | null>(null);
+export const useSegmentedSelection = (initialDayFocused: ISegmentedControlOption) => {
+  const [selectedOption, setSelectedOption] = useState<ISegmentedControlOption | null>(initialDayFocused);
 
   const checkIsActive = (optionId: number) => {
     return selectedOption?.id === optionId;
