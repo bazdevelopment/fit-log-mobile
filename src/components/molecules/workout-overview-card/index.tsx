@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { View } from "react-native";
 
 import { IWorkoutItem } from "../../../__mocks__/workout-schedule-mock";
@@ -23,7 +24,14 @@ const WorkoutOverviewCard = ({ workout }: { workout: IWorkoutItem }) => {
       <View className="mr-[-10px]">
         <Icon
           iconElement={<ChevronIcon width={14} height={14} fill={Colors.grey} />}
-          onPress={() => console.log("press workout card")}
+          onPress={() =>
+            router.push({
+              pathname: "workout-details-screen",
+              params: {
+                day: "20 Apr - Saturday",
+              },
+            })
+          }
         />
       </View>
     </View>

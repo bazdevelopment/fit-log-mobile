@@ -40,7 +40,7 @@ export default function ScreenWrapper({
                 iconElement={<ArrowLeft width={23} height={23} color={Colors.blackPantone} />}
                 additionalInnerClassName="border-slate-300 border-[1px]"
                 additionalClassName="items-start justify-start mt-2 ml-4"
-                onPress={() => router.back()}
+                onPress={() => router.canGoBack() && router.back()}
               />
             )}
             {!!title && <Label labelText={title} as="h3" additionalLabelStyle="font-primary-semi-bold text-gray-900" />}
