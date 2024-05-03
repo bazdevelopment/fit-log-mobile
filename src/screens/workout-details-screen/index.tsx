@@ -20,6 +20,9 @@ const WorkoutDetailScreen = () => {
         actionLabel="Create workout 💪"
         onActionPress={() => router.navigate("muscle-group-selection")}
       />
+      {/* TODO: add a short overview of the workout here
+    if the user wants to edit it he can do it by pressing an edit button, and be redirected to the more detailed screen
+    */}
     </ScreenWrapper>
   );
 };
