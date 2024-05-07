@@ -10,4 +10,5 @@ export interface IWorkoutSelectedExercise {
   dispatch: Dispatch<TWorkoutAction>;
   isEditable: boolean;
   onUpdateInputs: (record: IWorkoutInputChanged) => void;
+  isSwipeEnabled: boolean;
 }

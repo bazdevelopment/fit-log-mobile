@@ -17,6 +17,7 @@ const WorkoutSelectedExercise = ({
   dispatch,
   isEditable,
   onUpdateInputs,
+  isSwipeEnabled,
 }: IWorkoutSelectedExercise) => {
   return (
     <>
@@ -37,12 +38,13 @@ const WorkoutSelectedExercise = ({
           groupName={groupName}
           isEditable={isEditable}
           onUpdateInputs={onUpdateInputs}
+          isSwipeEnabled={isSwipeEnabled}
         />
       )}
 
       {isEditable && (
         <Button
-          additionalContainerStyle="flex-row justify-end mt-4 mr-2"
+          additionalContainerStyle="flex-row self-end mt-4 mr-2"
           variant="link"
           size="md"
           buttonText="Add set"

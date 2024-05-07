@@ -63,6 +63,7 @@ const WorkoutDetailScreen = () => {
                 exercises={exercises[muscleGroup]}
                 dispatch={dispatch}
                 isEditable={false}
+                isSwipeEnabled={false}
               />
               <HorizontalLine thickness="sm" color="light" additionalClassName="mt-4" />
             </React.Fragment>
