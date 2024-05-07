@@ -102,6 +102,7 @@ const WorkoutRepsDetailsScreen = () => {
                   exercises={selectedExercises}
                   dispatch={dispatch}
                   isEditable
+                  isSwipeEnabled
                   onUpdateInputs={onUpdateInputs}
                 />
               )}

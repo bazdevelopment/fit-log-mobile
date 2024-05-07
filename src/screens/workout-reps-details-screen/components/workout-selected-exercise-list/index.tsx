@@ -11,6 +11,7 @@ const WorkoutSelectedExerciseList = ({
   dispatch,
   isEditable,
   onUpdateInputs,
+  isSwipeEnabled,
 }: IWorkoutSelectedExerciseList) => {
   return (
     <>
@@ -22,6 +23,7 @@ const WorkoutSelectedExerciseList = ({
           groupName={groupName}
           dispatch={dispatch}
           onUpdateInputs={onUpdateInputs}
+          isSwipeEnabled={isSwipeEnabled}
         />
       ))}
     </>

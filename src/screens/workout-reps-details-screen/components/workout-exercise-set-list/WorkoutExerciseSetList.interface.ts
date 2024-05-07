@@ -6,4 +6,5 @@ export interface IWorkoutExerciseSetList {
   isEditable: boolean;
   groupName: string;
   onUpdateInputs: (record: IWorkoutInputChanged) => void;
+  isSwipeEnabled: boolean;
 }

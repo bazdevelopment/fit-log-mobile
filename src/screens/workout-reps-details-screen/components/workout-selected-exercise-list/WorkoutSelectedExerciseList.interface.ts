@@ -9,6 +9,7 @@ export interface IWorkoutSelectedExerciseList {
   dispatch: Dispatch<TWorkoutAction>;
   isEditable: boolean;
   onUpdateInputs: (record: IWorkoutInputChanged) => void;
+  isSwipeEnabled: boolean;
 }
 
 export interface IWorkoutInputChanged {
