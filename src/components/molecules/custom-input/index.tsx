@@ -1,7 +1,9 @@
 import { TextInput as RNTextInput } from "react-native";
 
 import { ICustomTextInputProps } from "./CustomInput.interface";
-
+/**
+ * Custom input component
+ */
 const CustomInput = ({
   accessibilityLabel,
   accessibilityHint,
