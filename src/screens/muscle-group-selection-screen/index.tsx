@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import { View } from "react-native";
 
 import { IMuscleGroup, muscleGroups } from "../../__mocks__/muscle-groups";
@@ -15,21 +15,14 @@ import TricepsIcon from "../../assets/icons/muscle-groups/Triceps";
 import Button from "../../components/atoms/button/button";
 import MuscleGroupCard from "../../components/molecules/muscle-group-card";
 import ScreenWrapper from "../../components/templates/screen-wrapper";
+import { useWorkout } from "../../context/workout-context";
 import { Colors } from "../../styles/colors";
 /**
  * Screen used to select one or multiple muscle groups
  */
 const MuscleGroupSelectionScreen = () => {
-  const [selectedMuscleGroups, setSelectedMuscleGroups] = useState<string[]>([]);
-
-  const toggleGroupSelection = (groupName: string) => {
-    if (selectedMuscleGroups.includes(groupName)) {
-      setSelectedMuscleGroups(selectedMuscleGroups.filter(name => name !== groupName));
-    } else {
-      setSelectedMuscleGroups([...selectedMuscleGroups, groupName]);
-    }
-  };
-
+  const { dispatch, state } = useWorkout();
+  const selectedMuscleGroups = state.muscleGroups;
   return (
     <ScreenWrapper isScrollEnabled={false} isBackNavigationEnabled title="Pick you muscle groups">
       <View className="mt-10 w-full flex-1 flex-row flex-wrap gap-[15px] p-[24px]">
@@ -38,7 +31,7 @@ const MuscleGroupSelectionScreen = () => {
             key={muscleGroup.id}
             isSelected={selectedMuscleGroups.includes(muscleGroup.groupName)}
             title={muscleGroup.groupName}
-            onPress={() => toggleGroupSelection(muscleGroup.groupName)}
+            onPress={() => dispatch({ type: "ADD_MUSCLE_GROUP", payload: muscleGroup.groupName })}
             icon={muscleIcons[muscleGroup.groupName]}
           />
         ))}
@@ -48,14 +41,14 @@ const MuscleGroupSelectionScreen = () => {
           buttonText="Choose exercises 🏋️"
           variant="primary"
           disabled={!selectedMuscleGroups.length}
-          onPress={() =>
+          onPress={() => {
             router.push({
               pathname: "workout-reps-details",
               params: {
                 selectedMuscleGroups,
               },
-            })
-          }
+            });
+          }}
           additionalContainerStyle="w-[200px] mt-10"
         />
       </View>
