@@ -15,6 +15,7 @@ import { STATUS_BAR_STYLE } from "../constants/status-bar";
 import { LanguageContextProvider } from "../context/language-context/language-context";
 import { ScrollContextProvider } from "../context/scroll-context";
 import { ThemeProvider } from "../context/theme-context/theme-context";
+import { WorkoutContextProvider } from "../context/workout-context";
 import { useThemeScheme } from "../hooks/use-theme-scheme/use-theme-scheme";
 import I18nProvider from "../locale/i18n-provider";
 import { queryClient } from "../queries/query-client/query-client";
@@ -66,12 +67,18 @@ export default function AppLayout() {
         <NavigationTeamProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
           <ThemeProvider>
             <LanguageContextProvider>
-              <I18nProvider>
-                <StatusBar style={isDarkColorScheme ? STATUS_BAR_STYLE.LIGHT : STATUS_BAR_STYLE.DARK} />
-                <Stack screenOptions={{ headerShown: false }}>
-                  <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                </Stack>
-              </I18nProvider>
+              <WorkoutContextProvider>
+                <I18nProvider>
+                  <StatusBar style={isDarkColorScheme ? STATUS_BAR_STYLE.LIGHT : STATUS_BAR_STYLE.DARK} />
+                  <Stack screenOptions={{ headerShown: false }}>
+                    <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                    <Stack.Screen
+                      name="modal-stack"
+                      options={{ headerShown: false, presentation: "modal", gestureEnabled: false }}
+                    />
+                  </Stack>
+                </I18nProvider>
+              </WorkoutContextProvider>
             </LanguageContextProvider>
           </ThemeProvider>
         </NavigationTeamProvider>

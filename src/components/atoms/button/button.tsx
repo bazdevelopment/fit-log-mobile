@@ -35,12 +35,12 @@ const Button = ({
   return (
     <Pressable accessibilityRole="button" onPress={onPress} disabled={disabled} className={additionalContainerStyle}>
       {({ pressed }) => (
-        <View className={getButtonStyles(variant, size, "wrapper", pressed, disabled)}>
+        <View className={`${getButtonStyles(variant, size, "wrapper", pressed, disabled)}`}>
           {iconPosition === POSITIONS.LEFT && !isLoading && icon}
           {isLoading ? (
             <ActivityIndicator color={Colors.white} className="p-3" testID="loading-indicator" />
           ) : (
-            <Text className={getButtonStyles(variant, size, "text", pressed, disabled)}>{buttonText}</Text>
+            <Text className={`${getButtonStyles(variant, size, "text", pressed, disabled)}`}>{buttonText}</Text>
           )}
           {iconPosition === POSITIONS.RIGHT && !isLoading && icon}
         </View>

@@ -19,6 +19,7 @@ export default function ScreenWrapper({
   isScrollEnabled = true,
   isBackNavigationEnabled = false,
   title,
+  handleGoBack,
 }: IScreenWrapper) {
   return (
     <SafeAreaView className="flex-1">
@@ -40,10 +41,17 @@ export default function ScreenWrapper({
                 iconElement={<ArrowLeft width={23} height={23} color={Colors.blackPantone} />}
                 additionalInnerClassName="border-slate-300 border-[1px]"
                 additionalClassName="items-start justify-start mt-2 ml-4"
-                onPress={() => router.canGoBack() && router.back()}
+                onPress={() => (handleGoBack ? handleGoBack() : router.canGoBack() && router.back())}
               />
             )}
-            {!!title && <Label labelText={title} as="h3" additionalLabelStyle="font-primary-semi-bold text-gray-900" />}
+            {Boolean(title) && (
+              <Label
+                labelText={title as string}
+                as="h3"
+                additionalLabelStyle="font-primary-semi-bold text-gray-900"
+                additionalContainerStyle={`${!isBackNavigationEnabled && "mt-2 ml-5"}`}
+              />
+            )}
           </View>
           {children}
         </ScrollView>

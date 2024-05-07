@@ -15,7 +15,7 @@ export const getButtonStyles = (
       wrapper: flexStyle,
     },
     primary: {
-      text: `text-${size} font-primary text-white p-3 text-center`,
+      text: `text-${size} font-primary text-white ${padding[size]} text-center`,
       wrapper: `${flexStyle} rounded-full bg-primary-default ${pressed ? "opacity-90" : "opacity-100"} ${disabled ? "opacity-50" : ""}`,
     },
     secondary: {
@@ -36,4 +36,11 @@ export const getButtonStyles = (
     },
   };
   return style[variant][element];
+};
+
+const padding = {
+  sm: "p-1",
+  md: "p-2",
+  lg: "p-3",
+  xl: "p-4",
 };

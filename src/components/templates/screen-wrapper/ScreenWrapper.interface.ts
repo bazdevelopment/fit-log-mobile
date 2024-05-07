@@ -7,4 +7,5 @@ export interface IScreenWrapper {
   isScrollEnabled?: boolean;
   isBackNavigationEnabled?: boolean;
   title?: string;
+  handleGoBack?: () => void;
 }
