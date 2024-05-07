@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from "expo-router";
-import { useState } from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 
 import CloseIcon from "../../assets/icons/Close";
@@ -10,7 +10,6 @@ import Icon from "../../components/atoms/icon";
 import Label from "../../components/atoms/label";
 import ScreenWrapper from "../../components/templates/screen-wrapper";
 import { useWorkout } from "../../context/workout-context";
-import { ISet } from "../../context/workout-context/workout-context.interface";
 import { Colors } from "../../styles/colors";
 import WorkoutSelectedExerciseList from "./components/workout-selected-exercise-list";
 import { IWorkoutInputChanged } from "./components/workout-selected-exercise-list/WorkoutSelectedExerciseList.interface";
@@ -26,7 +25,7 @@ const WorkoutRepsDetailsScreen = () => {
     dispatch,
   } = useWorkout();
 
-  const [inputs, setInputs] = useState<ISet | {}>({});
+  const [inputs, setInputs] = useState<Record<string, { weight: string; reps: string; group: string }>>({});
 
   const onUpdateInputs = ({ groupName, setId, field, newValue }: IWorkoutInputChanged) => {
     setInputs(prevState => ({
@@ -92,13 +91,8 @@ const WorkoutRepsDetailsScreen = () => {
           const hasExerciseSelected = Boolean(selectedExercises?.length);
 
           return (
-            <>
-              <Label
-                key={muscleGroupIndex}
-                labelText={groupName}
-                as="h2"
-                additionalLabelStyle="font-primary-bold mt-4 text-primary-default"
-              />
+            <React.Fragment key={muscleGroupIndex}>
+              <Label labelText={groupName} as="h2" additionalLabelStyle="font-primary-bold mt-4 text-primary-default" />
               {!hasExerciseSelected && (
                 <Label labelText="No exercises." as="h5" additionalLabelStyle="font-primary text-gray-800" />
               )}
@@ -107,7 +101,7 @@ const WorkoutRepsDetailsScreen = () => {
                   groupName={groupName}
                   exercises={selectedExercises}
                   dispatch={dispatch}
-                  isEditable={true}
+                  isEditable
                   onUpdateInputs={onUpdateInputs}
                 />
               )}
@@ -127,7 +121,7 @@ const WorkoutRepsDetailsScreen = () => {
                 additionalContainerStyle="w-[160px] right-[-40px] self-end my-5"
               />
               <HorizontalLine thickness="sm" color="light" />
-            </>
+            </React.Fragment>
           );
         })}
       </View>

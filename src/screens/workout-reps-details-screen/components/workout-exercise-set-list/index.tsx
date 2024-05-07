@@ -12,7 +12,7 @@ const WorkoutExerciseSetList = ({ sets, isEditable, groupName, onUpdateInputs }:
         <WorkoutExerciseRow
           groupName={groupName}
           isEditable={isEditable}
-          key={index}
+          key={`${index}-${groupName}-${set.id}`}
           set={set}
           additionalContainerStyle="w-[85%] flex-row items-center self-end"
           index={index}

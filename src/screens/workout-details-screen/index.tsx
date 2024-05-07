@@ -1,4 +1,5 @@
 import { router, useLocalSearchParams } from "expo-router";
+import React from "react";
 import { View } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
@@ -51,22 +52,20 @@ const WorkoutDetailScreen = () => {
       {Boolean(selectedMuscleGroups.length) ? (
         <View className="w-[85%] self-center">
           {selectedMuscleGroups.map((muscleGroup: string, index: number) => (
-            <>
+            <React.Fragment key={`${index}-${muscleGroup}`}>
               <Label
-                key={index}
                 labelText={muscleGroup}
                 as="h2"
                 additionalLabelStyle="font-primary-bold text-gray-800 mt-4 text-primary-default"
               />
               <WorkoutSelectedExerciseList
-                key={index}
                 groupName="Legs"
                 exercises={exercises[muscleGroup]}
                 dispatch={dispatch}
                 isEditable={false}
               />
               <HorizontalLine thickness="sm" color="light" additionalClassName="mt-4" />
-            </>
+            </React.Fragment>
           ))}
         </View>
       ) : (

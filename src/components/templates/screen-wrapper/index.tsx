@@ -44,9 +44,9 @@ export default function ScreenWrapper({
                 onPress={() => (handleGoBack ? handleGoBack() : router.canGoBack() && router.back())}
               />
             )}
-            {!!title && (
+            {Boolean(title) && (
               <Label
-                labelText={title}
+                labelText={title as string}
                 as="h3"
                 additionalLabelStyle="font-primary-semi-bold text-gray-900"
                 additionalContainerStyle={`${!isBackNavigationEnabled && "mt-2 ml-5"}`}
