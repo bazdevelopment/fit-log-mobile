@@ -1,7 +1,8 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-ignores-invert-colors */
-import { Image, View } from "react-native";
+import { View } from "react-native";
 
 import Button from "../../../../components/atoms/button/button";
+import Image from "../../../../components/atoms/image";
 import Label from "../../../../components/atoms/label";
 import { generateUniqueId } from "../../../../utilities/generate-unique-id";
 import WorkoutExerciseHeader from "../workout-exercise-header";
@@ -22,7 +23,7 @@ const WorkoutSelectedExercise = ({
   return (
     <>
       <View className="left-[-15px] mt-4 flex-row items-center">
-        <Image source={{ uri: exercise.gifUrl }} className=" size-[50px]" />
+        <Image source={{ uri: exercise.gifUrl }} className="size-[50px]" />
         <Label labelText={exercise.name} as="h3" additionalLabelStyle="text-gray-800 font-primary-bold" />
       </View>
       {Boolean(exercise.sets?.length) && (
