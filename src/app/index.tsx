@@ -1,5 +1,5 @@
 import { Redirect, useNavigationContainerRef } from "expo-router";
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
 
 /** While navigation is still loading show an activity indicator
@@ -8,7 +8,7 @@ import { ActivityIndicator } from "react-native";
 export default function Page() {
   const isOnboardingDone = true;
   const navigation = useNavigationContainerRef();
-  const [ready, setReady] = React.useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (!navigation?.isReady) return;

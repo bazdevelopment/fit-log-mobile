@@ -1,8 +1,9 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-ignores-invert-colors */
 import { Ionicons } from "@expo/vector-icons";
-import { Image, View } from "react-native";
+import { View } from "react-native";
 
 import { Colors } from "../../../styles/colors";
+import Image from "../../atoms/image";
 import Label from "../../atoms/label";
 import StarRating from "../../molecules/star-rating";
 import Card from "../card";

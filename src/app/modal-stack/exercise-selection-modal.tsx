@@ -2,11 +2,12 @@
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Image, ScrollView, TouchableOpacity, View } from "react-native";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 
 import { fitnessExercises } from "../../__mocks__/fitness-exercises";
 import HorizontalLine from "../../components/atoms/horizontal-line";
 import Icon from "../../components/atoms/icon";
+import Image from "../../components/atoms/image";
 import Label from "../../components/atoms/label";
 import { useWorkout } from "../../context/workout-context";
 import { Colors } from "../../styles/colors";
@@ -53,14 +54,7 @@ export default function Modal() {
             <View className="m-1 flex-row justify-between p-1">
               <View className="flex-1 flex-row items-center">
                 <View>
-                  <Image
-                    source={{ uri: exercise.gifUrl }}
-                    style={{
-                      width: 40,
-                      height: 40,
-                      borderRadius: 100,
-                    }}
-                  />
+                  <Image source={{ uri: exercise.gifUrl }} className="size-[40px] rounded-full" />
                   {isSelected(exercise.name) && (
                     <View
                       style={{
@@ -82,7 +76,7 @@ export default function Modal() {
                         iconElement={<FontAwesome5 name="check" size={20} color={Colors.white} testID="search-icon" />}
                         withBackground={false}
                         additionalInnerClassName="p-0"
-                        onPress={() => console.log("view exercise deails")}
+                        onPress={() => dispatch({ type: "ADD_EXERCISE", payload: { group: groupName, exercise } })}
                       />
                     </View>
                   )}

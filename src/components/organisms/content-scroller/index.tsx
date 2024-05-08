@@ -1,9 +1,11 @@
+/* eslint-disable react-native-a11y/has-valid-accessibility-ignores-invert-colors */
 import { forwardRef } from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { Text } from "react-native-svg";
 
 import { useContentScroller } from "../../../hooks/use-content-scroller/use-content-scroller";
+import Image from "../../atoms/image";
 import WelcomeMessage from "../../molecules/welcome-message";
 
 const ContentScroller = forwardRef((_, ref) => {
@@ -21,9 +23,9 @@ const ContentScroller = forwardRef((_, ref) => {
       <WelcomeMessage username="Marian" />
       <View className="mt-4">
         {data.map((item, index) => (
-          <View key={index} style={{ height: 300 }}>
+          <View key={index} style={{ height: 200 }}>
             <Text style={{ color: item.color }}>{item.text}</Text>
-            <Image style={{ width: "100%", height: 200 }} source={{ uri: "https://picsum.photos/200/300" }} />
+            <Image className="h-48 w-full" source={{ uri: "https://picsum.photos/200/300" }} />
           </View>
         ))}
       </View>

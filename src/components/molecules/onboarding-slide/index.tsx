@@ -1,9 +1,10 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-ignores-invert-colors */
-import { Image, View } from "react-native";
+import { View } from "react-native";
 import { twMerge } from "tailwind-merge";
 
 import { DEVICE_DIMENSIONS } from "../../../constants/device-dimensions";
 import { isOdd } from "../../../utilities/is-odd";
+import Image from "../../atoms/image";
 import Label from "../../atoms/label";
 import { IOnboardingSlide } from "./OnboardingSlide.interface";
 
@@ -13,7 +14,7 @@ import { IOnboardingSlide } from "./OnboardingSlide.interface";
 const OnboardingSlide = ({ title, description, image }: IOnboardingSlide) => {
   return (
     <View className="items-center justify-center" style={{ width: DEVICE_DIMENSIONS.DEVICE_WIDTH }}>
-      <Image source={image} className="h-[400px] w-full" resizeMode="contain" />
+      <Image source={image} className="h-[400px] w-full" contentFit="scale-down" />
       <View className="mt-6 flex-row flex-wrap justify-center px-4">
         {title.split(" ").map((word: string, index: number) => {
           const color = isOdd(index) ? "text-primary-default" : "text-gray-800";
