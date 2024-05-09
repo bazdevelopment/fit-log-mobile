@@ -1,5 +1,6 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-ignores-invert-colors */
-import { View } from "react-native";
+import { router } from "expo-router";
+import { Pressable, View } from "react-native";
 
 import Button from "../../../../components/atoms/button/button";
 import Image from "../../../../components/atoms/image";
@@ -23,7 +24,19 @@ const WorkoutSelectedExercise = ({
   return (
     <>
       <View className="left-[-15px] mt-4 flex-row items-center">
-        <Image source={{ uri: exercise.gifUrl }} className="size-[50px]" />
+        <Pressable
+          accessibilityRole="button"
+          onPress={() =>
+            router.push({
+              pathname: "/modal-stack/exercise-details-modal",
+              params: {
+                exerciseName: exercise.name,
+              },
+            })
+          }
+        >
+          <Image source={{ uri: exercise.gifUrl }} className="size-[50px]" />
+        </Pressable>
         <Label labelText={exercise.name} as="h3" additionalLabelStyle="text-gray-800 font-primary-bold" />
       </View>
       {Boolean(exercise.sets?.length) && (
