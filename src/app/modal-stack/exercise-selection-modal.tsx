@@ -1,6 +1,6 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-ignores-invert-colors */
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
-import { Stack, useLocalSearchParams } from "expo-router";
+import { router, Stack, useLocalSearchParams } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 
@@ -93,7 +93,14 @@ export default function Modal() {
                 iconElement={<Ionicons name="eye-outline" size={24} color={Colors.primary} testID="search-icon" />}
                 withBackground={false}
                 additionalInnerClassName="p-0"
-                onPress={() => console.log("view exercise deails")}
+                onPress={() =>
+                  router.push({
+                    pathname: "/modal-stack/exercise-details-modal",
+                    params: {
+                      exerciseName: exercise.name,
+                    },
+                  })
+                }
               />
             </View>
 
