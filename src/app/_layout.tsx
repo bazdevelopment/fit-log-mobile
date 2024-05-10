@@ -4,13 +4,13 @@ import "../../global.css";
 // import { useReactNavigationDevTools } from "@dev-plugins/react-navigation";
 // import { useReactQueryDevTools } from "@dev-plugins/react-query";
 import { Theme as ITheme, ThemeProvider as NavigationTeamProvider } from "@react-navigation/native";
-import { QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router/stack";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 
+import { APIProvider } from "../api/common";
 import { STATUS_BAR_STYLE } from "../constants/status-bar";
 import { LanguageContextProvider } from "../context/language-context/language-context";
 import { ScrollContextProvider } from "../context/scroll-context";
@@ -18,7 +18,6 @@ import { ThemeProvider } from "../context/theme-context/theme-context";
 import { WorkoutContextProvider } from "../context/workout-context";
 import { useThemeScheme } from "../hooks/use-theme-scheme/use-theme-scheme";
 import I18nProvider from "../locale/i18n-provider";
-import { queryClient } from "../queries/query-client/query-client";
 import { NAV_THEME } from "../styles/theme";
 
 const LIGHT_THEME: ITheme = {
@@ -47,7 +46,6 @@ export default function AppLayout() {
    * TODO to be enabled later on
  *    const navigationRef = useNavigationContainerRef();
    useReactNavigationDevTools(navigationRef);
-   useReactQueryDevTools(queryClient);
  */
 
   const { isDarkColorScheme } = useThemeScheme();
@@ -62,7 +60,7 @@ export default function AppLayout() {
     return null;
   }
   return (
-    <QueryClientProvider client={queryClient}>
+    <APIProvider>
       <ScrollContextProvider>
         <NavigationTeamProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
           <ThemeProvider>
@@ -83,6 +81,6 @@ export default function AppLayout() {
           </ThemeProvider>
         </NavigationTeamProvider>
       </ScrollContextProvider>
-    </QueryClientProvider>
+    </APIProvider>
   );
 }
