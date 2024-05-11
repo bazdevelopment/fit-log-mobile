@@ -28,7 +28,7 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="fit-log-mobile-app"/>
-        <data android:scheme="com.bazdevelopment.fitlogmobile"/>
+        <data android:scheme="com.bazdevelopment.fitlogmobile.development"/>
         <data android:scheme="exp+fit-log-mobile"/>
       </intent-filter>
     </activity>
