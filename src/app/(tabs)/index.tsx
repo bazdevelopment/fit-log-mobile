@@ -5,9 +5,11 @@ import { Link } from "expo-router";
 import { useCallback, useRef } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
+import Label from "../../components/atoms/label";
 import LanguagePreference from "../../components/language-preferrence";
 import ContentScroller from "../../components/organisms/content-scroller";
 import { useScrollContext } from "../../context/scroll-context";
+import useArduinoSocket from "../../hooks/use-arduino-socket";
 import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
 import { useTodoMutation } from "../../mutations/use-todo-mutation/use-todo-mutation";
 import { useTodoQuery } from "../../queries/hooks/use-todo-query/use-todo-query";
@@ -34,7 +36,7 @@ i18n.loadAndActivate({ locale: "ro", messages: undefined });
 
 export default function Root() {
   const { resetHeader } = useScrollContext();
-
+  const { cardScanned } = useArduinoSocket();
   const scrollViewRef = useRef(null);
 
   useScrollToTop(scrollViewRef);
@@ -44,8 +46,10 @@ export default function Root() {
       resetHeader();
     }, [])
   );
+
   return (
     <View className="mt-28 flex-1">
+      <Label labelText={cardScanned} as="h2" />
       <ContentScroller ref={scrollViewRef} />
 
       {/* <LanguagePreference />

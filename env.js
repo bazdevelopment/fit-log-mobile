@@ -77,6 +77,8 @@ const client = z.object({
 
   // ADD YOUR CLIENT ENV VARS HERE
   API_URL: z.string(),
+  LOCAL_HOST_ADDRESS: z.string(),
+  SOCKET_IO_SERVER_PORT: z.string(),
 });
 
 const buildTime = z.object({
@@ -100,7 +102,9 @@ const _clientEnv = {
   VERSION: packageJSON.version,
 
   // ADD YOUR ENV VARS HERE TOO
-  API_URL: process.env.API_URL,
+  API_URL: process.env.EXPO_PUBLIC_API_URL,
+  LOCAL_HOST_ADDRESS: process.env.EXPO_PUBLIC_LOCAL_HOST_ADDRESS,
+  SOCKET_IO_SERVER_PORT: process.env.EXPO_PUBLIC_SOCKET_IO_SERVER_PORT,
 };
 
 /**
@@ -110,7 +114,7 @@ const _clientEnv = {
 const _buildTimeEnv = {
   EXPO_ACCOUNT_OWNER,
   EAS_PROJECT_ID,
-  SECRET_KEY: process.env.SECRET_KEY,
+  SECRET_KEY: process.env.EXPO_PUBLIC_SECRET_KEY,
 };
 
 /**
