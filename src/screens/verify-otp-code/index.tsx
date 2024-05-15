@@ -24,7 +24,7 @@ const VerifyOtpCodeScreen = () => {
       </View>
       <View className="mt-10 items-center justify-center">
         <CodeInput
-          numberOfCodeInputs={4}
+          numberOfCodeInputs={6}
           onComplete={() => {
             throw new Error("An error occurred during completion");
           }}

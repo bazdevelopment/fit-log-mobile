@@ -9,6 +9,7 @@ import { Stack } from "expo-router/stack";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
+import FlashMessage from "react-native-flash-message";
 
 import { APIProvider } from "../api/common";
 import { STATUS_BAR_STYLE } from "../constants/status-bar";
@@ -68,6 +69,7 @@ export default function AppLayout() {
               <WorkoutContextProvider>
                 <I18nProvider>
                   <StatusBar style={isDarkColorScheme ? STATUS_BAR_STYLE.LIGHT : STATUS_BAR_STYLE.DARK} />
+                  <FlashMessage position="top" />
                   <Stack screenOptions={{ headerShown: false }}>
                     <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
                     <Stack.Screen

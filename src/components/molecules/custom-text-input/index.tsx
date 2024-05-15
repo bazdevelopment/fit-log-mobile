@@ -38,13 +38,16 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
     <View>
       <View className="mb-1 flex-row items-center">
         {!!label && (
-          <Label labelText={label} additionalLabelStyle="text-base mr-1 tracking-wide font-primary-semi-bold" />
+          <Label
+            labelText={label as string}
+            additionalLabelStyle="text-base mr-1 tracking-wide font-primary-semi-bold"
+          />
         )}
-        {!!labelInfo && (
+        {labelInfo && (
           <Icon
             iconElement={<MaterialIcons name="info" size={22} color={Colors.information} />}
             withBackground={false}
-            onPress={() => Alert.alert(labelInfo)}
+            onPress={() => Alert.alert(labelInfo as string)}
           />
         )}
       </View>

@@ -18,7 +18,7 @@ export default function Page() {
 
   //  todo: use the condition below after second onboarding floe is ready
   //if (ready) return <Redirect href={isOnboardingDone ? "(tabs)" : "/onboarding"} />;
-  if (ready) return <Redirect href={isOnboardingDone ? "(tabs)" : "/onboarding-second-flow"} />;
+  if (ready) return <Redirect href={isOnboardingDone ? "/sign-up" : "/onboarding-second-flow"} />;
 
   return <ActivityIndicator style={{ marginTop: 100, width: 100, height: 100 }} />;
 }

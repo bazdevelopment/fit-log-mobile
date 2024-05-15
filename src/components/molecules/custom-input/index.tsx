@@ -1,16 +1,25 @@
-import { TextInput as RNTextInput } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Alert, TextInput as RNTextInput, View } from "react-native";
 
+import { Colors } from "../../../styles/colors";
+import Icon from "../../atoms/icon";
+import Label from "../../atoms/label";
+import InputIcons from "../input-icons";
 import { ICustomTextInputProps } from "./CustomInput.interface";
 /**
  * Custom input component
  */
 const CustomInput = ({
   accessibilityLabel,
+  label,
+  labelInfo,
   accessibilityHint,
   placeholder,
   ref,
   className,
   onChangeText,
+  onReset,
+  error,
   value,
   maxLength,
   keyboardType,
@@ -20,35 +29,74 @@ const CustomInput = ({
   onFocus,
   type,
   showPassword,
+  onToggleShowPassword,
   multiline = false,
   defaultValue,
   isEditable = false,
   onBlur,
 }: ICustomTextInputProps) => {
   return (
-    <RNTextInput
-      accessibilityLabel={accessibilityLabel}
-      accessibilityHint={accessibilityHint}
-      placeholder={placeholder}
-      ref={ref}
-      onBlur={onBlur}
-      className={className}
-      onChangeText={onChangeText}
-      value={value}
-      defaultValue={defaultValue}
-      maxLength={maxLength}
-      keyboardType={keyboardType}
-      returnKeyType={returnKeyType}
-      autoFocus={autoFocus}
-      placeholderTextColor={placeholderTextColor}
-      onFocus={onFocus}
-      autoCapitalize="none"
-      secureTextEntry={type === "password" && !showPassword}
-      spellCheck
-      autoCorrect
-      multiline={multiline}
-      editable={isEditable}
-    />
+    <View className="flex-col">
+      <View className="mb-1 flex-row items-center">
+        {!!label && (
+          <Label labelText={label} additionalLabelStyle="text-base mr-1 tracking-wide font-primary-semi-bold" />
+        )}
+        {Boolean(labelInfo?.length) && (
+          <Icon
+            iconElement={<MaterialIcons name="info" size={22} color={Colors.information} />}
+            withBackground={false}
+            onPress={() => Alert.alert(labelInfo as string)}
+          />
+        )}
+      </View>
+      <View className={`flex-row rounded-lg bg-slate-100 ${error ? "border-[1.5px] border-red-500" : ""}`}>
+        <View className={type ? "mr-2" : ""}>
+          <InputIcons position="front" type={type} inputValue={value as string} handleResetInput={onReset} />
+        </View>
+        <RNTextInput
+          accessibilityLabel={accessibilityLabel}
+          accessibilityHint={accessibilityHint}
+          placeholder={placeholder}
+          ref={ref}
+          onBlur={onBlur}
+          className={className}
+          onChangeText={onChangeText}
+          value={value}
+          defaultValue={defaultValue}
+          maxLength={maxLength}
+          keyboardType={keyboardType}
+          returnKeyType={returnKeyType}
+          autoFocus={autoFocus}
+          placeholderTextColor={placeholderTextColor}
+          onFocus={onFocus}
+          autoCapitalize="none"
+          secureTextEntry={type === "password" && !showPassword}
+          spellCheck
+          autoCorrect
+          multiline={multiline}
+          editable={isEditable}
+        />
+        <InputIcons
+          position="end"
+          type={type}
+          showPassword={showPassword}
+          toggleShowPassword={onToggleShowPassword}
+          handleResetInput={onReset}
+          inputValue={value as string}
+          additionalInnerIconStyle="p-0"
+        />
+      </View>
+
+      {Boolean(error?.length) && (
+        <Label
+          labelText={error as string}
+          additionalLabelStyle="text-red-500 font-primary-bold text-sm"
+          additionalContainerStyle="mt-1"
+          icon={<MaterialIcons name="error" size={22} color={Colors.error} />}
+        />
+      )}
+      {/* </View> */}
+    </View>
   );
 };
 

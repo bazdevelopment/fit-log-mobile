@@ -22,7 +22,7 @@ const CodeInput = forwardRef<TextInput, ICodeInput>((props, ref) => {
         accessibilityHint="Enter the digit here"
         placeholder={currentActiveIndex !== index ? "-" : ""}
         ref={ref}
-        className={`m-2 h-16 w-20 rounded-xl bg-slate-200 text-center font-primary text-xl ${error ? "border-2 border-red-500" : ""}`}
+        className={`m-1 h-12 w-14 rounded-xl bg-slate-200 text-center font-primary text-xl ${error ? "border-2 border-red-500" : ""}`}
         onChangeText={text => handleTextChange(text, index)}
         value={digit}
         maxLength={1}
