@@ -1,7 +1,11 @@
 import React from "react";
 import { TextInputProps } from "react-native";
 
+import { TInputType } from "../../../constants/input-type";
+
 export interface ICustomTextInputProps extends TextInputProps {
+  label?: string;
+  labelInfo?: string;
   accessibilityLabel?: string;
   accessibilityHint?: string;
   placeholder?: string;
@@ -16,7 +20,7 @@ export interface ICustomTextInputProps extends TextInputProps {
   autoFocus?: boolean;
   placeholderTextColor?: string;
   onFocus?: () => void;
-  type?: string;
+  type?: TInputType;
   showPassword?: boolean;
   multiline?: boolean;
   isEditable?: boolean;

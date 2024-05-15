@@ -4,7 +4,9 @@ import { useFocusEffect, useScrollToTop } from "@react-navigation/native";
 import { Link } from "expo-router";
 import { useCallback, useRef } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import { showMessage } from "react-native-flash-message";
 
+import Button from "../../components/atoms/button/button";
 import Label from "../../components/atoms/label";
 import LanguagePreference from "../../components/language-preferrence";
 import ContentScroller from "../../components/organisms/content-scroller";
@@ -50,6 +52,19 @@ export default function Root() {
   return (
     <View className="mt-28 flex-1">
       <Label labelText={cardScanned} as="h2" />
+
+      <Button
+        variant="primary"
+        onPress={() => {
+          showMessage({
+            message: "Simple message",
+            type: "danger",
+            duration: 4000,
+            // floating: true,
+          });
+        }}
+        buttonText="Request Details"
+      />
       <ContentScroller ref={scrollViewRef} />
 
       {/* <LanguagePreference />

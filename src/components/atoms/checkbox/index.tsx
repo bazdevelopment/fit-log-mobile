@@ -11,11 +11,12 @@ import { ICheckbox } from "./checkbox.interface";
  * A customizable checkbox component
  * Can accept a text
  */
-const Checkbox = ({ checkboxText }: ICheckbox) => {
+const Checkbox = ({ checkboxText, onChangeCheckbox }: ICheckbox) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const toggleCheckbox = () => {
     setIsChecked(!isChecked);
+    onChangeCheckbox && onChangeCheckbox(!isChecked);
   };
 
   return (
