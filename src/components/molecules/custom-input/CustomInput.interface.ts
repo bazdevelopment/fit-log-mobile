@@ -10,6 +10,8 @@ export interface ICustomTextInputProps extends TextInputProps {
   accessibilityHint?: string;
   placeholder?: string;
   ref?: React.Ref<any>;
+  onReset?: () => void;
+  error?: string;
   className?: string;
   onChangeText?: (text: string) => void;
   value?: string;
@@ -20,7 +22,8 @@ export interface ICustomTextInputProps extends TextInputProps {
   autoFocus?: boolean;
   placeholderTextColor?: string;
   onFocus?: () => void;
-  type?: TInputType;
+  onToggleShowPassword?: () => void;
+  type: TInputType;
   showPassword?: boolean;
   multiline?: boolean;
   isEditable?: boolean;

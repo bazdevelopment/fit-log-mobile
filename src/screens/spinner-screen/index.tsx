@@ -1,7 +1,5 @@
 import { useIsFetching, useIsMutating } from "@tanstack/react-query";
-import { Modal } from "react-native";
-import { View } from "react-native";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, Modal, View } from "react-native";
 
 import { Colors } from "../../styles/colors";
 

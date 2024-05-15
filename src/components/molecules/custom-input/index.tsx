@@ -41,17 +41,17 @@ const CustomInput = ({
         {!!label && (
           <Label labelText={label} additionalLabelStyle="text-base mr-1 tracking-wide font-primary-semi-bold" />
         )}
-        {!!labelInfo && (
+        {Boolean(labelInfo?.length) && (
           <Icon
             iconElement={<MaterialIcons name="info" size={22} color={Colors.information} />}
             withBackground={false}
-            onPress={() => Alert.alert(labelInfo)}
+            onPress={() => Alert.alert(labelInfo as string)}
           />
         )}
       </View>
       <View className={`flex-row rounded-lg bg-slate-100 ${error ? "border-[1.5px] border-red-500" : ""}`}>
         <View className={type ? "mr-2" : ""}>
-          <InputIcons position="front" type={type} inputValue={value} handleResetInput={onReset} />
+          <InputIcons position="front" type={type} inputValue={value as string} handleResetInput={onReset} />
         </View>
         <RNTextInput
           accessibilityLabel={accessibilityLabel}
@@ -82,14 +82,14 @@ const CustomInput = ({
           showPassword={showPassword}
           toggleShowPassword={onToggleShowPassword}
           handleResetInput={onReset}
-          inputValue={value}
+          inputValue={value as string}
           additionalInnerIconStyle="p-0"
         />
       </View>
 
-      {!!error && (
+      {Boolean(error?.length) && (
         <Label
-          labelText={error}
+          labelText={error as string}
           additionalLabelStyle="text-red-500 font-primary-bold text-sm"
           additionalContainerStyle="mt-1"
           icon={<MaterialIcons name="error" size={22} color={Colors.error} />}
