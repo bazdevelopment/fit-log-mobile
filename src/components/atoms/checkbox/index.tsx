@@ -15,8 +15,11 @@ const Checkbox = ({ checkboxText, onChangeCheckbox }: ICheckbox) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const toggleCheckbox = () => {
-    setIsChecked(!isChecked);
-    onChangeCheckbox?.(!isChecked);
+    setIsChecked(prev => {
+      const newState = !prev;
+      onChangeCheckbox && onChangeCheckbox(newState);
+      return newState;
+    });
   };
 
   return (

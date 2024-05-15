@@ -37,13 +37,13 @@ const CustomTextInput = ({ label, labelInfo, placeholder, type, error }: ICustom
   return (
     <View>
       <View className="mb-1 flex-row items-center">
-        {Boolean(label?.length) && (
+        {!!label && (
           <Label
             labelText={label as string}
             additionalLabelStyle="text-base mr-1 tracking-wide font-primary-semi-bold"
           />
         )}
-        {Boolean(labelInfo?.length) && (
+        {labelInfo && (
           <Icon
             iconElement={<MaterialIcons name="info" size={22} color={Colors.information} />}
             withBackground={false}
