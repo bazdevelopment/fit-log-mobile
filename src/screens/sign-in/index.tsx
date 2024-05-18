@@ -1,4 +1,5 @@
-import { router } from "expo-router";
+import { router, useNavigation } from "expo-router";
+import { useEffect } from "react";
 import { View } from "react-native";
 
 import Button from "../../components/atoms/button/button";
@@ -12,6 +13,11 @@ import ScreenWrapper from "../../components/templates/screen-wrapper";
  * if he user already has an account he can navigate directly to sign up page by pressing sign up button
  */
 const SignInScreen = () => {
+  const { setOptions } = useNavigation();
+
+  useEffect(() => {
+    setOptions({ gestureEnabled: false });
+  }, [setOptions]);
   return (
     <ScreenWrapper keyboardAvoiding keyboardVerticalOffset={10}>
       <View className="mt-20 flex-col items-center">

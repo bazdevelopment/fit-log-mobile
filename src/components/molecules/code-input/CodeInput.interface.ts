@@ -9,7 +9,9 @@ export interface ICodeInput {
   handleTextChange: (text: string, index: number) => void;
   digit: string;
   error: boolean;
+  success: boolean;
   animationValue: Animated.Value;
   ref: ForwardedRef<TextInput>;
   inputsRef: MutableRefObject<TextInputRef>;
+  isOtpCodeIncomplete: boolean;
 }

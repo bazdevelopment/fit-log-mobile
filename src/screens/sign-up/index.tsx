@@ -17,7 +17,6 @@ import SpinnerScreen from "../spinner-screen";
  */
 const SignUpScreen = () => {
   const { mutate } = useCreateUser();
-
   const [registerCredentials, setRegisterCredentials] = useState({
     userName: "",
     email: "",

@@ -25,13 +25,13 @@ const ForgotPasswordCodeVerification = () => {
       </View>
       <View className="mt-10 items-center justify-center">
         <CodeInput
-          numberOfCodeInputs={4}
+          numberOfCodeInputs={6}
           onComplete={() => {
             router.navigate("/create-new-password");
           }}
         />
         <View className="mt-12">
-          <Label labelText="Didn't received the code?" as="h4" additionalLabelStyle="text-gray-600" />
+          <Label labelText="Didn't received the code or expired?" as="h4" additionalLabelStyle="text-gray-600" />
           <Button buttonText="Resend code" size="lg" variant="link" onPress={() => {}} />
         </View>
       </View>
