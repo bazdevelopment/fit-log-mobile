@@ -3,13 +3,19 @@ import { router } from "expo-router";
 import { showMessage } from "react-native-flash-message";
 
 import { wait } from "../../utilities/wait";
-import { registerUser, verifyOptCode } from "./auth.requests";
-import { IErrorResponse, IResisterUserResponse, ISuccessResponse, IUseVerifyOtpCodeOptions } from "./auth.types";
+import { login, register, verifyOptCode } from "./auth.requests";
+import {
+  IErrorResponse,
+  ILoginSuccessResponse,
+  IResisterUserResponse,
+  ISuccessResponse,
+  IUseVerifyOtpCodeOptions,
+} from "./auth.types";
 
 /** custom hook for handling user registration mutation */
 export const useCreateUser = () => {
   return useMutation({
-    mutationFn: registerUser,
+    mutationFn: register,
     onError: (error: IErrorResponse) =>
       showMessage({
         message: error.message,
@@ -30,6 +36,19 @@ export const useCreateUser = () => {
     },
   });
 };
+
+export const useLogin = options => {
+  return useMutation({
+    mutationFn: login,
+    onError: (error: IErrorResponse) => {
+      options.onError(error);
+    },
+    onSuccess(data: ILoginSuccessResponse) {
+      options.onSuccess(data);
+    },
+  });
+};
+
 /** custom hook for handling verification otp mutation */
 export const useVerifyOtpCode = (options: IUseVerifyOtpCodeOptions) => {
   return useMutation({

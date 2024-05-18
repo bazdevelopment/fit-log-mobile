@@ -8,6 +8,10 @@ export interface IRegisterUserFields {
   password: string;
   userName: string;
 }
+export interface ILoginFields {
+  email: string;
+  password: string;
+}
 
 export interface IResisterUserResponse {
   message: string;
@@ -43,4 +47,11 @@ export interface ISuccessResponse {
   message: string;
   statusCode: number;
   success: boolean;
+}
+interface ILoginRecord {
+  accessToken: string;
+  refreshToken: string;
+}
+export interface ILoginSuccessResponse extends ISuccessResponse {
+  record: ILoginRecord;
 }
