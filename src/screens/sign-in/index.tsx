@@ -5,6 +5,7 @@ import { showMessage } from "react-native-flash-message";
 
 import { useLogin } from "../../api/auth/auth.hooks";
 import { IErrorResponse, ILoginSuccessResponse } from "../../api/auth/auth.types";
+import { setStorageItem } from "../../api/common/storage";
 import Button from "../../components/atoms/button/button";
 import Label from "../../components/atoms/label";
 import CustomInput from "../../components/molecules/custom-input";
@@ -18,18 +19,18 @@ import { Colors } from "../../styles/colors";
  */
 const SignInScreen = () => {
   const { setOptions } = useNavigation();
-  const handleOnSuccess = (data: ILoginSuccessResponse) => {
+  const handleOnSuccess = async (data: ILoginSuccessResponse) => {
     showMessage({
       message: data.message,
       type: "success",
       duration: 5000,
     });
 
-    /**
-     * TODO : add navigation + store access token/refresh token
-     */
+    setStorageItem("access_token", data.record.accessToken);
+    setStorageItem("refresh_token", data.record.refreshToken);
+    setStorageItem("is_authenticated", "true");
 
-    //  router.navigate("/sign-in")
+    router.navigate("(tabs)");
   };
 
   const handleOnError = (error: IErrorResponse) => {
