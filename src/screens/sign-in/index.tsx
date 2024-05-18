@@ -1,11 +1,15 @@
 import { router, useNavigation } from "expo-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
+import { showMessage } from "react-native-flash-message";
 
+import { useLogin } from "../../api/auth/auth.hooks";
+import { IErrorResponse, ILoginSuccessResponse } from "../../api/auth/auth.types";
 import Button from "../../components/atoms/button/button";
 import Label from "../../components/atoms/label";
-import CustomTextInput from "../../components/molecules/custom-text-input";
+import CustomInput from "../../components/molecules/custom-input";
 import ScreenWrapper from "../../components/templates/screen-wrapper";
+import { Colors } from "../../styles/colors";
 
 /**
  * Sign in screen that displays two inputs (email and password)
@@ -14,6 +18,43 @@ import ScreenWrapper from "../../components/templates/screen-wrapper";
  */
 const SignInScreen = () => {
   const { setOptions } = useNavigation();
+  const handleOnSuccess = (data: ILoginSuccessResponse) => {
+    showMessage({
+      message: data.message,
+      type: "success",
+      duration: 5000,
+    });
+
+    /**
+     * TODO : add navigation + store access token/refresh token
+     */
+
+    //  router.navigate("/sign-in")
+  };
+
+  const handleOnError = (error: IErrorResponse) => {
+    showMessage({
+      message: error.message,
+      type: "danger",
+      duration: 10000,
+    });
+  };
+  const { mutate: handleLogin } = useLogin({
+    onSuccess: handleOnSuccess,
+    onError: handleOnError,
+  });
+
+  const [loginCredentials, setLoginCredentials] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (fieldName: string, value: string) => {
+    setLoginCredentials(prevState => ({
+      ...prevState,
+      [fieldName]: value,
+    }));
+  };
 
   useEffect(() => {
     setOptions({ gestureEnabled: false });
@@ -27,18 +68,37 @@ const SignInScreen = () => {
         </View>
 
         <View className="mt-16 w-[90%] gap-6">
-          <CustomTextInput type="email" placeholder="example@gmail.com" label="Email" />
-          <CustomTextInput type="password" placeholder="*********" label="Password" />
+          <CustomInput
+            isEditable
+            type="email"
+            placeholder="example@gmail.com"
+            placeholderTextColor={Colors.grey}
+            label="Email"
+            value={loginCredentials.email}
+            onChangeText={(text: string) => handleInputChange("email", text)}
+            className="h-12  flex-1 pb-2 pl-3 font-primary text-lg tracking-wide text-gray-700"
+          />
+          <CustomInput
+            isEditable
+            type="password"
+            placeholder="*********"
+            placeholderTextColor={Colors.grey}
+            label="Password"
+            value={loginCredentials.password}
+            onChangeText={(text: string) => handleInputChange("password", text)}
+            className="h-12  flex-1 pb-2 pl-3 font-primary text-lg tracking-wide text-gray-700"
+          />
         </View>
         <View className="mr-1 mt-3 w-full flex-row justify-end">
           <Button buttonText="Forgot password?" size="md" variant="link" onPress={() => {}} />
         </View>
         <Button
           buttonText="Sign in"
-          onPress={() => console.log("Sign in!")}
+          onPress={() => handleLogin({ email: loginCredentials.email, password: loginCredentials.password })}
           variant="primary"
           size="lg"
           additionalContainerStyle="mt-10 w-full px-6"
+          disabled={!(loginCredentials.email && loginCredentials.password)}
         />
       </View>
       <View className="mt-20 flex-row items-center justify-center">
