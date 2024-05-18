@@ -19,7 +19,8 @@ import { Colors } from "../../styles/colors";
  */
 const SignInScreen = () => {
   const { setOptions } = useNavigation();
-  const handleOnSuccess = async (data: ILoginSuccessResponse) => {
+
+  const handleOnSuccess = (data: ILoginSuccessResponse) => {
     showMessage({
       message: data.message,
       type: "success",
