@@ -15,25 +15,23 @@ const OtpCodeInputs = ({ numberOfCodeInputs, onComplete, animationValue }: IOtpC
     });
 
   return (
-    <>
-      <View className="flex-row justify-center">
-        {otpCode.map((digit: string, index: number) => (
-          <CodeInput
-            key={index}
-            index={index}
-            isOtpCodeIncomplete={isOtpCodeIncomplete}
-            handleTextChange={handleTextChange}
-            digit={digit}
-            error={!!errorRef.current}
-            success={!!successRef.current}
-            animationValue={animationValue}
-            ref={inputsRef.current[index]}
-            inputsRef={inputsRef}
-            currentActiveIndex={currentActiveIndex}
-          />
-        ))}
-      </View>
-    </>
+    <View className="flex-row justify-center">
+      {otpCode.map((digit: string, index: number) => (
+        <CodeInput
+          key={index}
+          index={index}
+          isOtpCodeIncomplete={isOtpCodeIncomplete}
+          handleTextChange={handleTextChange}
+          digit={digit}
+          error={!!errorRef.current}
+          success={!!successRef.current}
+          animationValue={animationValue}
+          ref={inputsRef.current[index]}
+          inputsRef={inputsRef}
+          currentActiveIndex={currentActiveIndex}
+        />
+      ))}
+    </View>
   );
 };
 export default OtpCodeInputs;
