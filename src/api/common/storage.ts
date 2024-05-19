@@ -16,3 +16,7 @@ export function setStorageItem(key: string, value: string) {
 export function removeStorageItem(key: string) {
   storage.delete(key);
 }
+/** utility function used to get a boolean item from storage by key */
+export function getStorageBoolean(key: string): boolean {
+  return storage.getBoolean(key) || false;
+}

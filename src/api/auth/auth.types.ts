@@ -3,6 +3,11 @@ export interface IUseVerifyOtpCodeOptions {
   onSuccess: (data: ISuccessResponse) => void;
 }
 
+export interface IUserLoginOptions {
+  onError: (error: IErrorResponse) => void;
+  onSuccess: (data: ILoginSuccessResponse) => void;
+}
+
 export interface IRegisterUserFields {
   email: string;
   password: string;

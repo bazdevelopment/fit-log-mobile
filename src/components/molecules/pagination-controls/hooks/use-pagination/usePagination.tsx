@@ -20,7 +20,7 @@ export const usePagination = (pagesLength: number) => {
   const handleChangeActiveIndex = (newActiveIndex: number) => setActiveIndex(newActiveIndex);
 
   const handleFinishOnboarding = () => {
-    router.navigate("(tabs)");
+    router.navigate("/onboarding-second-flow");
   };
 
   const handleNextPress = () => {

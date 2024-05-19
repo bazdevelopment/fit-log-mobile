@@ -1,5 +1,11 @@
+import { router } from "expo-router";
 import { useState } from "react";
+import { showMessage } from "react-native-flash-message";
+import { useMMKVBoolean } from "react-native-mmkv";
 
+import { IErrorResponse, ISuccessResponse } from "../../api/auth/auth.types";
+import { storage } from "../../api/common/storage";
+import { useCurrentUser, useUpdateUser } from "../../api/user/user.hooks";
 import OnboardingSecondFlow from "../../components/templates/onboarding-second-flow";
 import { IOnboardingSecondData } from "../../components/templates/onboarding-second-flow/OnboardingSecondFlow.interface";
 import ActivityLevelScreen from "../../screens/onboarding-second/activity-level-screen";
@@ -16,6 +22,8 @@ import WeightSelectionScreen from "../../screens/onboarding-second/weight-select
  * The information can be related to age, height, activity level, weight, goal
  */
 export default function OnboardingSecondFlowPage() {
+  const [_, setIsOnboardedLocal] = useMMKVBoolean("is_onboarded_local", storage);
+
   const [onboardingData, setOnboardingData] = useState({
     gender: null,
     age: null,
@@ -24,6 +32,36 @@ export default function OnboardingSecondFlowPage() {
     goals: null,
     activityLevel: null,
   });
+
+  const handleOnSuccess = (data: ISuccessResponse) => {
+    showMessage({
+      message: data.message,
+      type: "success",
+      duration: 5000,
+    });
+
+    setIsOnboardedLocal(true);
+    router.navigate("(tabs)");
+  };
+
+  const handleOnError = (error: IErrorResponse) => {
+    showMessage({
+      message: error.message,
+      type: "danger",
+      duration: 10000,
+    });
+  };
+
+  const { mutate: handleSendPartialUserInfo } = useUpdateUser({
+    onSuccess: handleOnSuccess,
+    onError: handleOnError,
+  });
+  const {
+    data: {
+      record: { id: userId },
+    },
+  } = useCurrentUser();
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleOnNext = (stepData: IOnboardingSecondData) => {
@@ -36,7 +74,7 @@ export default function OnboardingSecondFlowPage() {
   };
 
   const handleOnFinish = () => {
-    console.log("Finish onboarding!!", onboardingData);
+    handleSendPartialUserInfo({ ...onboardingData, isOnboarded: true, userId });
   };
 
   return (
