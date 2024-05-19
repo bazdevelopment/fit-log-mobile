@@ -1,6 +1,7 @@
 import { API_AXIOS_CLIENT } from "../common/client";
 import {
   ILoginFields,
+  ILoginSuccessResponse,
   IRegisterUserFields,
   IResisterUserResponse,
   ISuccessResponse,
@@ -23,9 +24,9 @@ export const register = async (registerUserFields: IRegisterUserFields): Promise
 /**
  * function used to perform the login request with the mandatory fields
  */
-export const login = async (loginFields: ILoginFields): Promise<IResisterUserResponse> => {
+export const login = async (loginFields: ILoginFields): Promise<ILoginSuccessResponse> => {
   try {
-    const { data }: { data: IResisterUserResponse } = await API_AXIOS_CLIENT.post("/api/auth/login", loginFields);
+    const { data }: { data: ILoginSuccessResponse } = await API_AXIOS_CLIENT.post("/api/auth/login", loginFields);
     return data;
   } catch (error) {
     throw error.response.data; // Rethrow the error to be caught by the caller

@@ -5,7 +5,7 @@ import { showMessage } from "react-native-flash-message";
 
 import { useLogin } from "../../api/auth/auth.hooks";
 import { IErrorResponse, ILoginSuccessResponse } from "../../api/auth/auth.types";
-import { setStorageItem } from "../../api/common/storage";
+import { getStorageBoolean, setStorageItem } from "../../api/common/storage";
 import Button from "../../components/atoms/button/button";
 import Label from "../../components/atoms/label";
 import CustomInput from "../../components/molecules/custom-input";
@@ -19,6 +19,8 @@ import { Colors } from "../../styles/colors";
  */
 const SignInScreen = () => {
   const { setOptions } = useNavigation();
+  const isUserOnboardedLocal = getStorageBoolean("is_onboarded_local");
+  const redirectPath = isUserOnboardedLocal ? "(tabs)" : "/onboarding-first-flow";
 
   const handleOnSuccess = (data: ILoginSuccessResponse) => {
     showMessage({
@@ -31,7 +33,7 @@ const SignInScreen = () => {
     setStorageItem("refresh_token", data.record.refreshToken);
     setStorageItem("is_authenticated", "true");
 
-    router.navigate("(tabs)");
+    router.navigate(redirectPath);
   };
 
   const handleOnError = (error: IErrorResponse) => {

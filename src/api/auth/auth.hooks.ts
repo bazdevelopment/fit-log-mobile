@@ -9,6 +9,7 @@ import {
   ILoginSuccessResponse,
   IResisterUserResponse,
   ISuccessResponse,
+  IUserLoginOptions,
   IUseVerifyOtpCodeOptions,
 } from "./auth.types";
 
@@ -37,7 +38,8 @@ export const useCreateUser = () => {
   });
 };
 
-export const useLogin = options => {
+/** custom hook for handling login mutation*/
+export const useLogin = (options: IUserLoginOptions) => {
   return useMutation({
     mutationFn: login,
     onError: (error: IErrorResponse) => {

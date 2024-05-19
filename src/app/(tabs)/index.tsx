@@ -1,11 +1,12 @@
 import { i18n } from "@lingui/core";
 import { Trans } from "@lingui/macro";
 import { useFocusEffect, useScrollToTop } from "@react-navigation/native";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useCallback, useRef } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { showMessage } from "react-native-flash-message";
 
+import { setStorageItem } from "../../api/common/storage";
 import Button from "../../components/atoms/button/button";
 import Label from "../../components/atoms/label";
 import LanguagePreference from "../../components/language-preferrence";
@@ -53,6 +54,23 @@ export default function Root() {
     <View className="mt-28 flex-1">
       <Label labelText={cardScanned} as="h2" />
 
+      <Button
+        buttonText="Log out"
+        variant="primary"
+        onPress={() => {
+          setStorageItem("access_token", null);
+          setStorageItem("refresh_token", null);
+          setStorageItem("is_authenticated", "false");
+          router.navigate("/sign-in");
+
+          showMessage({
+            message: "Logged out",
+            type: "danger",
+            duration: 4000,
+            floating: true,
+          });
+        }}
+      />
       <Button
         variant="primary"
         onPress={() => {
