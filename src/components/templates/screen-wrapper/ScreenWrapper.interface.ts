@@ -8,4 +8,5 @@ export interface IScreenWrapper {
   isBackNavigationEnabled?: boolean;
   title?: string;
   handleGoBack?: () => void;
+  canSwipeLeft?: boolean;
 }

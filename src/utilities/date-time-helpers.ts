@@ -1,3 +1,5 @@
+import { Dayjs } from "dayjs";
+
 import { ISegmentedControlOption } from "../components/organisms/segmented-control/SegmentedControl.interface";
 import dayjs from "../lib/dayjs";
 import { IDayOfWeek } from "../types/date-time.types";
@@ -81,3 +83,13 @@ export const getWeekInterval = (year: number, weekNumber: number): string => {
  * Utility function used to get the current day in ddd format like "Mon"
  */
 export const getCurrentDay = (): string => dayjs().format("ddd");
+
+/**
+ * Utility function which returns the start and end week
+ */
+export const getStartAndEndWeek = (year: number, weekNumber: number): { startOfWeek: Dayjs; endOfWeek: Dayjs } => {
+  const startOfWeek = dayjs().year(year).isoWeek(weekNumber).startOf("isoWeek"); // Get the start of the specified week with offset
+  const endOfWeek = dayjs().year(year).isoWeek(weekNumber).endOf("isoWeek"); // Get the end of the specified week with offset: ;
+
+  return { startOfWeek, endOfWeek };
+};

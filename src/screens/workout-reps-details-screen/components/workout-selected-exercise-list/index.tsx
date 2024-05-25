@@ -1,4 +1,4 @@
-import { IFitnessExercise } from "../../../../__mocks__/fitness-exercises";
+import { TExerciseWithSets } from "../../../../api/workout/workout.types";
 import WorkoutSelectedExercise from "../workout-selected-exercise";
 import { IWorkoutSelectedExerciseList } from "./WorkoutSelectedExerciseList.interface";
 
@@ -6,22 +6,18 @@ import { IWorkoutSelectedExerciseList } from "./WorkoutSelectedExerciseList.inte
  * Component used to display all the exercises linked to a specific workout
  */
 const WorkoutSelectedExerciseList = ({
-  groupName,
   exercises,
-  dispatch,
   isEditable,
   onUpdateInputs,
   isSwipeEnabled,
 }: IWorkoutSelectedExerciseList) => {
   return (
     <>
-      {exercises.map((exercise: IFitnessExercise) => (
+      {exercises.map((exerciseDetails: TExerciseWithSets) => (
         <WorkoutSelectedExercise
           isEditable={isEditable}
-          key={exercise.id}
-          exercise={exercise}
-          groupName={groupName}
-          dispatch={dispatch}
+          key={exerciseDetails.id}
+          exerciseDetails={exerciseDetails}
           onUpdateInputs={onUpdateInputs}
           isSwipeEnabled={isSwipeEnabled}
         />

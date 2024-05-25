@@ -2,6 +2,7 @@ import { router, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import { View } from "react-native";
 
+import { useUserWorkoutsByDate } from "../../api/workout/workout.hooks";
 import CloseIcon from "../../assets/icons/Close";
 import ThickIcon from "../../assets/icons/ThickIcon";
 import Button from "../../components/atoms/button/button";
@@ -9,7 +10,6 @@ import HorizontalLine from "../../components/atoms/horizontal-line";
 import Icon from "../../components/atoms/icon";
 import Label from "../../components/atoms/label";
 import ScreenWrapper from "../../components/templates/screen-wrapper";
-import { useWorkout } from "../../context/workout-context";
 import { Colors } from "../../styles/colors";
 import WorkoutSelectedExerciseList from "./components/workout-selected-exercise-list";
 import { IWorkoutInputChanged } from "./components/workout-selected-exercise-list/WorkoutSelectedExerciseList.interface";
@@ -18,12 +18,10 @@ import { IWorkoutInputChanged } from "./components/workout-selected-exercise-lis
  * The user has possibility to add the number of sets/reps for each exercise
  */
 const WorkoutRepsDetailsScreen = () => {
-  const { selectedMuscleGroups } = useLocalSearchParams();
-  const muscleGroups = selectedMuscleGroups.split(",");
-  const {
-    state: { exercises },
-    dispatch,
-  } = useWorkout();
+  const { day } = useLocalSearchParams();
+
+  const { data } = useUserWorkoutsByDate(day as string);
+  const workouts = data?.record;
 
   const [inputs, setInputs] = useState<Record<string, { weight: string; reps: string; group: string }>>({});
 
@@ -56,7 +54,7 @@ const WorkoutRepsDetailsScreen = () => {
     router.push({
       pathname: "workout-details-screen",
       params: {
-        day: "20 Apr - Saturday",
+        day,
       },
     });
   };
@@ -65,42 +63,43 @@ const WorkoutRepsDetailsScreen = () => {
     <ScreenWrapper isScrollEnabled keyboardAvoiding title="Workout">
       <View className="absolute right-4 top-3 z-10 mb-2 flex-row gap-3">
         <Icon
-          //TODO :display an alert to inform the user that the data is not saved yet and if he want to leave the screen
           onPress={() =>
             router.push({
               pathname: "workout-details-screen",
               params: {
-                day: "20 Apr - Saturday",
+                day,
               },
             })
           }
           additionalInnerClassName="bg-black"
           iconElement={<CloseIcon width={16} height={16} fill={Colors.white} />}
         />
-        {Boolean(Object.values(exercises).length) && (
-          <Icon
-            onPress={onEditInputs}
-            additionalInnerClassName="bg-black"
-            iconElement={<ThickIcon width={16} height={16} color={Colors.white} />}
-          />
-        )}
+        {/* {Boolean(Object.values(exercises).length) && ( */}
+        <Icon
+          onPress={onEditInputs}
+          additionalInnerClassName="bg-black"
+          iconElement={<ThickIcon width={16} height={16} color={Colors.white} />}
+        />
+        {/* )} */}
       </View>
       <View className="px-6">
-        {muscleGroups.map((groupName: string, muscleGroupIndex: number) => {
-          const selectedExercises = exercises[groupName];
-          const hasExerciseSelected = Boolean(selectedExercises?.length);
+        {workouts?.map(({ name: workoutName, id: workoutId, exercises: workoutExercises }) => {
+          const selectedExercises = workoutExercises;
+          const hasExerciseSelected = Boolean(workoutExercises?.length);
 
           return (
-            <React.Fragment key={muscleGroupIndex}>
-              <Label labelText={groupName} as="h2" additionalLabelStyle="font-primary-bold mt-4 text-primary-default" />
+            <React.Fragment key={workoutId}>
+              <Label
+                labelText={workoutName}
+                as="h2"
+                additionalLabelStyle="font-primary-bold mt-4 text-primary-default"
+              />
               {!hasExerciseSelected && (
                 <Label labelText="No exercises." as="h5" additionalLabelStyle="font-primary text-gray-800" />
               )}
               {hasExerciseSelected && (
                 <WorkoutSelectedExerciseList
-                  groupName={groupName}
                   exercises={selectedExercises}
-                  dispatch={dispatch}
                   isEditable
                   isSwipeEnabled
                   onUpdateInputs={onUpdateInputs}
@@ -115,7 +114,7 @@ const WorkoutRepsDetailsScreen = () => {
                   router.push({
                     pathname: "/modal-stack/exercise-selection-modal",
                     params: {
-                      groupName,
+                      groupName: "Chest",
                     },
                   })
                 }

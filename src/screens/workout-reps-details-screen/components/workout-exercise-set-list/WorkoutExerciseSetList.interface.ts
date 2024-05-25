@@ -4,7 +4,6 @@ import { IWorkoutInputChanged } from "../workout-selected-exercise-list/WorkoutS
 export interface IWorkoutExerciseSetList {
   sets: ISet[];
   isEditable: boolean;
-  groupName: string;
   onUpdateInputs: (record: IWorkoutInputChanged) => void;
   isSwipeEnabled: boolean;
 }

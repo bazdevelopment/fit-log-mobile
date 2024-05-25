@@ -1,6 +1,7 @@
 import { ScrollView, View } from "react-native";
 
 import { onboardingDataMock as onboardingData } from "../../__mocks__/onboarding-data-mock";
+import { setStorageItem } from "../../api/common/storage";
 import Button from "../../components/atoms/button/button";
 import OnboardingSlide from "../../components/molecules/onboarding-slide";
 import PaginationControls from "../../components/molecules/pagination-controls";
