@@ -11,24 +11,23 @@ import Icon from "../../atoms/icon";
 import Label from "../../atoms/label";
 import SegmentedControl from "../segmented-control";
 import { ISegmentedControlOption } from "../segmented-control/SegmentedControl.interface";
-import { useWeekNavigation } from "./hooks/use-week-navigation/use-week-navigation";
 import { IWeekBlock } from "./week-block.interface";
 
 /**
  * Component used do display segmented tab bar for handling weekly navigation
  */
-const WeekBlock = ({ workoutSections, onScrollToIndex }: IWeekBlock) => {
-  const {
-    weekOffset,
-    segmentedDays,
-    interval,
-    weekNumber,
-    currentMonth,
-    currentYear,
-    initialDayFocused,
-    changeWeekOffset,
-  } = useWeekNavigation();
-
+const WeekBlock = ({
+  workoutSections,
+  onScrollToIndex,
+  weekOffset,
+  initialDayFocused,
+  changeWeekOffset,
+  weekNumber,
+  currentMonth,
+  interval,
+  currentYear,
+  segmentedDays,
+}: IWeekBlock) => {
   const { checkIsActive, handleChangeSelection, selectedOption } = useSegmentedSelection(initialDayFocused);
 
   /**

@@ -7,6 +7,7 @@ import {
   getCurrentMonth,
   getDaysOfWeek,
   getSegmentedDays,
+  getStartAndEndWeek,
   getWeekInterval,
   getWeekNumber,
   getYearFromWeekOffset,
@@ -17,7 +18,6 @@ import {
  */
 export const useWeekNavigation = () => {
   const [weekOffset, setWeekOffset] = useState<number>(0);
-
   const weekNumber: number = getWeekNumber(weekOffset);
   const currentYear = getYearFromWeekOffset(weekOffset);
   const weekDates: IDayOfWeek[] = getDaysOfWeek(weekNumber, currentYear);
@@ -25,6 +25,8 @@ export const useWeekNavigation = () => {
   const segmentedDays = getSegmentedDays(weekDates);
   const interval = getWeekInterval(currentYear, weekNumber);
   const currentDay = getCurrentDay();
+
+  const { startOfWeek, endOfWeek } = getStartAndEndWeek(currentYear, weekNumber);
   const initialDayFocused = segmentedDays.find(day => day.title === currentDay);
 
   const changeWeekOffset = (iconPosition: TPositions) => {
@@ -47,5 +49,7 @@ export const useWeekNavigation = () => {
     currentDay,
     changeWeekOffset,
     initialDayFocused,
+    startOfWeek,
+    endOfWeek,
   };
 };

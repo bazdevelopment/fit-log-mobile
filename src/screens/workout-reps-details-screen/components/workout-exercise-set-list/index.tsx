@@ -12,19 +12,12 @@ import { IWorkoutExerciseSetList } from "./WorkoutExerciseSetList.interface";
 /**
  * Component used to display the list wth all the sets per exercise
  */
-const WorkoutExerciseSetList = ({
-  sets,
-  isEditable,
-  groupName,
-  onUpdateInputs,
-  isSwipeEnabled,
-}: IWorkoutExerciseSetList) => {
+const WorkoutExerciseSetList = ({ sets, isEditable, onUpdateInputs, isSwipeEnabled }: IWorkoutExerciseSetList) => {
   return (
     <GestureHandlerRootView>
       {sets.map((set: ISet, index: number) => (
         <SwipeableRow renderRightActions={getSetRightSwipeAction} key={set.id} isSwipeEnabled={isSwipeEnabled}>
           <WorkoutExerciseRow
-            groupName={groupName}
             isEditable={isEditable}
             set={set}
             additionalContainerStyle="w-[85%] flex-row items-center self-end"

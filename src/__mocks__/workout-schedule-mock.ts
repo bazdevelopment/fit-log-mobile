@@ -1,11 +1,18 @@
+interface IWorkoutResponse {
+  userId: string;
+  name: string;
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface IWorkoutItem {
-  id: number;
   day: string;
-  workout: string;
+  data: IWorkoutResponse[];
 }
 
 export interface IWorkoutSection {
-  month: string;
+  month: Date;
   data: IWorkoutItem[];
 }
 

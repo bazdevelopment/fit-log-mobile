@@ -6,6 +6,5 @@ export interface IWorkoutExerciseRow {
   set: ISet;
   index: number;
   isEditable: boolean;
-  groupName: string;
   onUpdateInputs: (record: IWorkoutInputChanged) => void;
 }

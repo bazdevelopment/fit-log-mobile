@@ -1,12 +1,8 @@
-import { Dispatch } from "react";
-
-import { IFitnessExercise } from "../../../../__mocks__/fitness-exercises";
-import { ISet, TWorkoutAction } from "../../../../context/workout-context/workout-context.interface";
+import { TExerciseWithSets } from "../../../../api/workout/workout.types";
+import { ISet } from "../../../../context/workout-context/workout-context.interface";
 
 export interface IWorkoutSelectedExerciseList {
-  groupName: string;
-  exercises: IFitnessExercise[];
-  dispatch: Dispatch<TWorkoutAction>;
+  exercises: TExerciseWithSets[];
   isEditable: boolean;
   onUpdateInputs: (record: IWorkoutInputChanged) => void;
   isSwipeEnabled: boolean;

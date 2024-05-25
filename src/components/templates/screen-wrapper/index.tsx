@@ -1,4 +1,5 @@
-import { router } from "expo-router";
+import { router, useNavigation } from "expo-router";
+import { useEffect } from "react";
 import { KeyboardAvoidingView, SafeAreaView, ScrollView, View } from "react-native";
 
 import ArrowLeft from "../../../assets/icons/ArrowLeft";
@@ -20,7 +21,13 @@ export default function ScreenWrapper({
   isBackNavigationEnabled = false,
   title,
   handleGoBack,
+  canSwipeLeft = false,
 }: IScreenWrapper) {
+  const { setOptions } = useNavigation();
+
+  useEffect(() => {
+    setOptions({ gestureEnabled: canSwipeLeft });
+  }, [setOptions, canSwipeLeft]);
   return (
     <SafeAreaView className="flex-1">
       <KeyboardAvoidingView

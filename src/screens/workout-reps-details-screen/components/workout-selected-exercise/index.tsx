@@ -5,7 +5,6 @@ import { Pressable, View } from "react-native";
 import Button from "../../../../components/atoms/button/button";
 import Image from "../../../../components/atoms/image";
 import Label from "../../../../components/atoms/label";
-import { generateUniqueId } from "../../../../utilities/generate-unique-id";
 import WorkoutExerciseHeader from "../workout-exercise-header";
 import WorkoutExerciseSetList from "../workout-exercise-set-list";
 import { IWorkoutSelectedExercise } from "./WorkoutSelectedExercise.interface";
@@ -14,13 +13,12 @@ import { IWorkoutSelectedExercise } from "./WorkoutSelectedExercise.interface";
  * Component used to display the selected exercises with the header / sets / add set button
  */
 const WorkoutSelectedExercise = ({
-  exercise,
-  groupName,
-  dispatch,
+  exerciseDetails,
   isEditable,
   onUpdateInputs,
   isSwipeEnabled,
 }: IWorkoutSelectedExercise) => {
+  const { exercise, set } = exerciseDetails;
   return (
     <>
       <View className="left-[-15px] mt-4 flex-row items-center">
@@ -39,17 +37,16 @@ const WorkoutSelectedExercise = ({
         </Pressable>
         <Label labelText={exercise.name} as="h3" additionalLabelStyle="text-gray-800 font-primary-bold" />
       </View>
-      {Boolean(exercise.sets?.length) && (
+      {Boolean(set.length) && (
         <View className="mb-2 w-[85%] flex-row self-end">
           <WorkoutExerciseHeader title="Prev. result" />
           <WorkoutExerciseHeader title="Weight (kg)" />
           <WorkoutExerciseHeader title="Reps" />
         </View>
       )}
-      {Boolean(exercise.sets?.length) && (
+      {Boolean(set.length) && (
         <WorkoutExerciseSetList
-          sets={exercise.sets}
-          groupName={groupName}
+          sets={set}
           isEditable={isEditable}
           onUpdateInputs={onUpdateInputs}
           isSwipeEnabled={isSwipeEnabled}
@@ -62,16 +59,7 @@ const WorkoutSelectedExercise = ({
           variant="link"
           size="md"
           buttonText="Add set"
-          onPress={() =>
-            dispatch({
-              type: "ADD_SET",
-              payload: {
-                group: groupName,
-                exerciseName: exercise.name,
-                set: { weight: "0", reps: "0", id: generateUniqueId() },
-              },
-            })
-          }
+          onPress={() => console.log("add set")}
         />
       )}
     </>

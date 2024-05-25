@@ -15,7 +15,6 @@ const WorkoutExerciseRow = ({
   set,
   index,
   isEditable,
-  groupName,
   onUpdateInputs,
 }: IWorkoutExerciseRow) => {
   const defaultWeight = Boolean(+set.weight) ? String(set.weight) : "-";

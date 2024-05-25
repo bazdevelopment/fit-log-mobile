@@ -6,7 +6,7 @@ import { useCallback, useRef } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { showMessage } from "react-native-flash-message";
 
-import { setStorageItem } from "../../api/common/storage";
+import { getStorageItem, setStorageItem } from "../../api/common/storage";
 import Button from "../../components/atoms/button/button";
 import Label from "../../components/atoms/label";
 import LanguagePreference from "../../components/language-preferrence";
@@ -42,6 +42,8 @@ export default function Root() {
   const { cardScanned } = useArduinoSocket();
   const scrollViewRef = useRef(null);
 
+  const at = getStorageItem("access_token");
+  console.log("at", at);
   useScrollToTop(scrollViewRef);
 
   useFocusEffect(
