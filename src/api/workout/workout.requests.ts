@@ -1,5 +1,6 @@
 import { API_AXIOS_CLIENT } from "../common/client";
 import {
+  IAddMultipleExercisesToWorkoutSuccessResponse,
   ICreateWorkoutFields,
   ICreateWorkoutSuccessResponse,
   IDailyUserWorkoutsByDate,
@@ -50,6 +51,25 @@ export const getUserWorkoutsByDate = async (date: string): Promise<IDailyUserWor
 export const getUserWorkoutById = async (workoutId: string) => {
   try {
     const { data } = await API_AXIOS_CLIENT.get(`/api/workout/${workoutId}`);
+    return data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+/**function used to add multiple exercises to an workout */
+export const addMultipleExercisesToWorkout = async ({
+  workoutId,
+  exercisesIds,
+}: {
+  workoutId: string;
+  exercisesIds: string[];
+}): Promise<IAddMultipleExercisesToWorkoutSuccessResponse> => {
+  try {
+    const { data }: { data: IAddMultipleExercisesToWorkoutSuccessResponse } = await API_AXIOS_CLIENT.post(
+      `/api/workout/${workoutId}/exercises`,
+      { exercisesIds }
+    );
     return data;
   } catch (error) {
     throw error.response.data;

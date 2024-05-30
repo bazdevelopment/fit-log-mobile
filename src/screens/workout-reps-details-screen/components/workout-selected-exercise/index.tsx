@@ -37,6 +37,20 @@ const WorkoutSelectedExercise = ({
         </Pressable>
         <Label labelText={exercise.name} as="h3" additionalLabelStyle="text-gray-800 font-primary-bold" />
       </View>
+      {!Boolean(set.length) && (
+        <View className="flex-row items-center justify-center">
+          <Label labelText="No set added!" as="h5" additionalLabelStyle="text-gray-800 text-center" />
+          {isEditable && (
+            <Button
+              additionalContainerStyle="ml-2"
+              variant="link"
+              size="md"
+              buttonText="Add set"
+              onPress={() => console.log("add set")}
+            />
+          )}
+        </View>
+      )}
       {Boolean(set.length) && (
         <View className="mb-2 w-[85%] flex-row self-end">
           <WorkoutExerciseHeader title="Prev. result" />
@@ -53,7 +67,7 @@ const WorkoutSelectedExercise = ({
         />
       )}
 
-      {isEditable && (
+      {isEditable && Boolean(set.length) && (
         <Button
           additionalContainerStyle="flex-row self-end mt-4 mr-2"
           variant="link"
