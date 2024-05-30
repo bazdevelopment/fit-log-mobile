@@ -72,6 +72,14 @@ const WorkoutDetailScreen = () => {
                   ))}
                 </View>
               </View>
+              {!exercises.length && (
+                <Label
+                  labelText="No exercises yet"
+                  additionalContainerStyle="mt-2"
+                  as="h5"
+                  additionalLabelStyle="font-primary-medium text-gray-800"
+                />
+              )}
               <WorkoutSelectedExerciseList exercises={exercises} isEditable={false} isSwipeEnabled={false} />
               <HorizontalLine thickness="sm" color="light" additionalClassName="mt-4" />
             </React.Fragment>

@@ -60,7 +60,7 @@ const WorkoutRepsDetailsScreen = () => {
   };
 
   return (
-    <ScreenWrapper isScrollEnabled keyboardAvoiding title="Workout">
+    <ScreenWrapper isScrollEnabled keyboardAvoiding title={workouts?.length > 0 ? "Workouts" : "Workout"}>
       <View className="absolute right-4 top-3 z-10 mb-2 flex-row gap-3">
         <Icon
           onPress={() =>
@@ -83,7 +83,7 @@ const WorkoutRepsDetailsScreen = () => {
         {/* )} */}
       </View>
       <View className="px-6">
-        {workouts?.map(({ name: workoutName, id: workoutId, exercises: workoutExercises }) => {
+        {workouts?.map(({ name: workoutName, id: workoutId, exercises: workoutExercises, musclesGroupTarget }) => {
           const selectedExercises = workoutExercises;
           const hasExerciseSelected = Boolean(workoutExercises?.length);
 
@@ -114,7 +114,8 @@ const WorkoutRepsDetailsScreen = () => {
                   router.push({
                     pathname: "/modal-stack/exercise-selection-modal",
                     params: {
-                      groupName: "Chest",
+                      musclesGroupTarget,
+                      workoutId,
                     },
                   })
                 }

@@ -2,28 +2,67 @@
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { router, Stack, useLocalSearchParams } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
+import { showMessage } from "react-native-flash-message";
 
-import { fitnessExercises } from "../../__mocks__/fitness-exercises";
+import { IErrorResponse } from "../../api/auth/auth.types";
+import { queryClient } from "../../api/common";
+import { useExercisesByMuscleTarget } from "../../api/exercise/exercise.hooks";
+import { IExerciseResponse } from "../../api/exercise/exercise.types";
+import { useAddMultipleExercisesToWorkout } from "../../api/workout/workout.hooks";
+import { IAddMultipleExercisesToWorkoutSuccessResponse } from "../../api/workout/workout.types";
 import HorizontalLine from "../../components/atoms/horizontal-line";
 import Icon from "../../components/atoms/icon";
 import Image from "../../components/atoms/image";
 import Label from "../../components/atoms/label";
-import { useWorkout } from "../../context/workout-context";
 import { Colors } from "../../styles/colors";
 
+const handleOnSuccess = (data: IAddMultipleExercisesToWorkoutSuccessResponse) => {
+  showMessage({
+    message: data.message,
+    type: "success",
+    duration: 5000,
+  });
+
+  router.back();
+  queryClient.invalidateQueries({ queryKey: ["user-workouts-by-date"] });
+};
+
+const handleOnError = (error: IErrorResponse) => {
+  showMessage({
+    message: error.message,
+    type: "danger",
+    duration: 10000,
+  });
+};
+
 export default function Modal() {
-  const { groupName } = useLocalSearchParams();
-  const { dispatch, state } = useWorkout();
-  const selectedExercises = state.exercises[groupName] || [];
-  const isSelected = (exerciseName: string) => Boolean(selectedExercises.filter(ex => ex.name === exerciseName).length);
+  const { musclesGroupTarget, workoutId } = useLocalSearchParams();
+  const { data } = useExercisesByMuscleTarget(JSON.stringify(musclesGroupTarget?.split(",")), 100, 0);
+
+  const [selectedExercises, setSelectedExercises] = useState<string[]>([]);
+  const { mutate: handleAddExercisesToWorkout } = useAddMultipleExercisesToWorkout({
+    onSuccess: handleOnSuccess,
+    onError: handleOnError,
+  });
+
+  const toggleSelectedExercises = (exerciseId: string) => {
+    if (selectedExercises.includes(exerciseId)) {
+      setSelectedExercises(selectedExercises.filter(existingExerciseId => existingExerciseId !== exerciseId));
+    } else {
+      setSelectedExercises(prevSelectedExercises => [...prevSelectedExercises, exerciseId]);
+    }
+  };
+
+  const isSelected = (exerciseId: string) => selectedExercises.includes(exerciseId);
 
   return (
     <View className="mt-6 flex-1">
       <StatusBar style="light" />
       <Stack.Screen
         options={{
-          title: groupName,
+          title: musclesGroupTarget,
           headerRight: () =>
             Boolean(selectedExercises.length) && (
               <View className="flex-row items-center gap-4">
@@ -35,7 +74,7 @@ export default function Modal() {
                 <Icon
                   iconElement={<FontAwesome5 name="check" size={12} color={Colors.white} testID="search-icon" />}
                   additionalInnerClassName="p-[4px] border-[1.25px] border-white"
-                  onPress={() => console.log("view exercise deails")}
+                  onPress={() => handleAddExercisesToWorkout({ workoutId, exercisesIds: selectedExercises })}
                 />
               </View>
             ),
@@ -43,19 +82,19 @@ export default function Modal() {
       />
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        {fitnessExercises.map(exercise => (
+        {data?.record.map((exercise: IExerciseResponse) => (
           <TouchableOpacity
             accessibilityRole="button"
             key={exercise.id}
             // ${isSelected(exercise.name) && "bg-primary-default opacity-85"}
             className={`flex-col ${isSelected(exercise.name) && "bg-slate-100"}`}
-            onPress={() => dispatch({ type: "ADD_EXERCISE", payload: { group: groupName, exercise } })}
+            onPress={() => toggleSelectedExercises(exercise.id)}
           >
             <View className="m-1 flex-row justify-between p-1">
               <View className="flex-1 flex-row items-center">
                 <View>
                   <Image source={{ uri: exercise.gifUrl }} className="size-[40px] rounded-full" />
-                  {isSelected(exercise.name) && (
+                  {isSelected(exercise.id) && (
                     <View
                       style={{
                         position: "absolute",
@@ -76,7 +115,7 @@ export default function Modal() {
                         iconElement={<FontAwesome5 name="check" size={20} color={Colors.white} testID="search-icon" />}
                         withBackground={false}
                         additionalInnerClassName="p-0"
-                        onPress={() => dispatch({ type: "ADD_EXERCISE", payload: { group: groupName, exercise } })}
+                        onPress={() => toggleSelectedExercises(exercise.id)}
                       />
                     </View>
                   )}

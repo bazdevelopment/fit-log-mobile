@@ -44,6 +44,7 @@ export default function Root() {
 
   const at = getStorageItem("access_token");
   console.log("at", at);
+
   useScrollToTop(scrollViewRef);
 
   useFocusEffect(

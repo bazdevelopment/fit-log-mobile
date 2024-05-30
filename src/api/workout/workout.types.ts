@@ -8,8 +8,17 @@ interface ICreateWorkoutResponse {
   createdAt: string;
   updatedAt: string;
 }
+interface IWorkoutExerciseGrouped {
+  id: string;
+  workoutId: string;
+  exerciseId: string;
+}
 export interface ICreateWorkoutSuccessResponse extends ISuccessResponse {
   record: ICreateWorkoutResponse;
+}
+
+export interface IAddMultipleExercisesToWorkoutSuccessResponse extends ISuccessResponse {
+  record: IWorkoutExerciseGrouped[];
 }
 
 export interface ICreateWorkoutFields {
@@ -53,4 +62,9 @@ export type TExerciseWithSets = {
 export interface ICreateWorkoutOptions {
   onError: (error: IErrorResponse) => void;
   onSuccess: (data: ISuccessResponse) => void;
+}
+
+export interface IAddMultipleExercisesToWorkout {
+  onError: (error: IErrorResponse) => void;
+  onSuccess: (data: IAddMultipleExercisesToWorkoutSuccessResponse) => void;
 }
