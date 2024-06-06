@@ -1,9 +1,7 @@
 import { router, useLocalSearchParams } from "expo-router";
-import React, { useState } from "react";
+import React from "react";
 import { Keyboard, View } from "react-native";
-import { showMessage } from "react-native-flash-message";
 
-import { IErrorResponse, ISuccessResponse } from "../../api/auth/auth.types";
 import { useUserWorkoutsByDate } from "../../api/workout/workout.hooks";
 import CloseIcon from "../../assets/icons/Close";
 import ThickIcon from "../../assets/icons/ThickIcon";
