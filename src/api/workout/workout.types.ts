@@ -68,3 +68,13 @@ export interface IAddMultipleExercisesToWorkout {
   onError: (error: IErrorResponse) => void;
   onSuccess: (data: IAddMultipleExercisesToWorkoutSuccessResponse) => void;
 }
+
+export interface IAddSetToWorkoutExercise {
+  onError: (error: IErrorResponse) => void;
+  onSuccess: (data) => void;
+}
+
+export interface IAddMultipleSetsToWorkoutExercise {
+  onError: (error: IErrorResponse) => void;
+  onSuccess: (data) => void;
+}

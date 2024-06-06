@@ -1,6 +1,10 @@
 import { Animated } from "react-native";
+import { showMessage } from "react-native-flash-message";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
+import { IErrorResponse } from "../../../../api/auth/auth.types";
+import { queryClient } from "../../../../api/common";
+import { useAddSetToWorkoutExercise, useUpdateSet } from "../../../../api/workout/workout.hooks";
 import TrashIcon from "../../../../assets/icons/Trash";
 import Icon from "../../../../components/atoms/icon";
 import SwipeableRow from "../../../../components/atoms/swipeable-row";
@@ -9,10 +13,30 @@ import { Colors } from "../../../../styles/colors";
 import WorkoutExerciseRow from "../workout-exercise-set-row";
 import { IWorkoutExerciseSetList } from "./WorkoutExerciseSetList.interface";
 
+const handleOnError = (error: IErrorResponse) => {
+  showMessage({
+    message: error.message,
+    type: "danger",
+    duration: 10000,
+  });
+};
 /**
  * Component used to display the list wth all the sets per exercise
  */
-const WorkoutExerciseSetList = ({ sets, isEditable, onUpdateInputs, isSwipeEnabled }: IWorkoutExerciseSetList) => {
+const WorkoutExerciseSetList = ({ sets, isEditable, isSwipeEnabled, workoutExerciseId }: IWorkoutExerciseSetList) => {
+  const { mutate: handleAddSetToWorkoutExercise } = useAddSetToWorkoutExercise({
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user-workouts-by-date"] });
+    },
+    onError: handleOnError,
+  });
+
+  const { mutate: handleUpdateSet } = useUpdateSet({
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user-workouts-by-date"] });
+    },
+  });
+
   return (
     <GestureHandlerRootView>
       {sets.map((set: ISet, index: number) => (
@@ -22,7 +46,9 @@ const WorkoutExerciseSetList = ({ sets, isEditable, onUpdateInputs, isSwipeEnabl
             set={set}
             additionalContainerStyle="w-[85%] flex-row items-center self-end"
             index={index}
-            onUpdateInputs={onUpdateInputs}
+            workoutExerciseId={workoutExerciseId}
+            handleAddSetToWorkoutExercise={handleAddSetToWorkoutExercise}
+            handleUpdateSet={handleUpdateSet}
           />
         </SwipeableRow>
       ))}

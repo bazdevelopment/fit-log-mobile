@@ -15,39 +15,49 @@ const WorkoutExerciseRow = ({
   set,
   index,
   isEditable,
-  onUpdateInputs,
+  workoutExerciseId,
+  handleAddSetToWorkoutExercise,
+  handleUpdateSet,
 }: IWorkoutExerciseRow) => {
   const defaultWeight = Boolean(+set.weight) ? String(set.weight) : "-";
   const defaultReps = Boolean(+set.reps) ? String(set.reps) : "-";
+  const defaultSetId = set.id || undefined;
 
-  const [localSets, setLocalSets] = useState<ISet>({
-    [set.id]: { weight: defaultWeight, reps: defaultReps },
+  const [localSets, setLocalSets] = useState({
+    [workoutExerciseId]: { weight: defaultWeight, reps: defaultReps },
   });
 
-  const handleFocus = (setId: string, field: keyof ISet) => {
-    if (localSets[setId][field] === "-") {
+  const handleFocus = (field: keyof ISet) => {
+    if (localSets[workoutExerciseId][field] === "-") {
       setLocalSets(prevState => ({
-        ...prevState,
-        [setId]: { ...prevState[setId], [field]: "" },
+        [workoutExerciseId]: { ...prevState[workoutExerciseId], [field]: "" },
       }));
     }
   };
 
-  const handleBlur = (setId: string, field: keyof ISet) => {
-    if (!localSets[setId][field]) {
+  const handleBlur = (field: keyof ISet) => {
+    if (!localSets[workoutExerciseId][field]) {
       setLocalSets(prevState => ({
-        ...prevState,
-        [setId]: { ...prevState[setId], [field]: "-" },
+        [workoutExerciseId]: { ...prevState[workoutExerciseId], [field]: "-" },
       }));
+    }
+
+    const { reps, weight } = localSets[workoutExerciseId] || {};
+    if (reps && reps !== "-" && weight && weight !== "-") {
+      defaultSetId
+        ? handleUpdateSet({ setId: defaultSetId, reps: Number(reps), weight: Number(weight) })
+        : handleAddSetToWorkoutExercise({ workoutExerciseId, reps: Number(reps), weight: Number(weight) });
     }
   };
 
-  const handleChangeText = (groupName, setId: string, field: keyof ISet, newValue: string) => {
+  const handleChangeText = (field: keyof ISet, newValue: string) => {
     setLocalSets(prevState => ({
-      ...prevState,
-      [setId]: { ...prevState[setId], [field]: newValue },
+      [workoutExerciseId]: {
+        ...prevState[workoutExerciseId],
+        [field]: newValue,
+      },
     }));
-    onUpdateInputs({ groupName, setId, field, newValue });
+    // onUpdateInputs({ workoutExerciseId, field, newValue, uniqueKey: index });
   };
 
   return (
@@ -71,12 +81,12 @@ const WorkoutExerciseRow = ({
             accessibilityHint="Text input field"
             className={`w-[50px] self-center rounded py-[2px] text-center font-primary-semi-bold text-base leading-[0px] ${isEditable ? "border border-gray-300" : "border-none"}`}
             keyboardType="numeric"
-            value={localSets[set.id].weight}
+            value={localSets[workoutExerciseId].weight}
             maxLength={3}
             isEditable={isEditable}
-            onFocus={() => handleFocus(set.id, "weight")}
-            onBlur={() => handleBlur(set.id, "weight")}
-            onChangeText={(newValue: string) => handleChangeText(groupName, set.id, "weight", newValue)}
+            onFocus={() => handleFocus("weight")}
+            onBlur={() => handleBlur("weight")}
+            onChangeText={(newValue: string) => handleChangeText("weight", newValue)}
           />
         </View>
         <View className="flex-1">
@@ -85,12 +95,12 @@ const WorkoutExerciseRow = ({
             accessibilityHint="Text input field"
             className={`w-[50px] self-center rounded py-[2px] text-center font-primary-semi-bold text-base leading-[0px] ${isEditable ? "border border-gray-300" : "border-none"}`}
             keyboardType="numeric"
-            value={localSets[set.id].reps}
+            value={localSets[workoutExerciseId].reps}
             maxLength={3}
             isEditable={isEditable}
-            onFocus={() => handleFocus(set.id, "reps")}
-            onBlur={() => handleBlur(set.id, "reps")}
-            onChangeText={(newValue: string) => handleChangeText(groupName, set.id, "reps", newValue)}
+            onFocus={() => handleFocus("reps")}
+            onBlur={() => handleBlur("reps")}
+            onChangeText={(newValue: string) => handleChangeText("reps", newValue)}
           />
         </View>
       </View>

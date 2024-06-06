@@ -22,7 +22,6 @@ import WorkoutSelectedExerciseList from "../workout-reps-details-screen/componen
  */
 const WorkoutDetailScreen = () => {
   const { day } = useLocalSearchParams();
-
   const { data } = useUserWorkoutsByDate(day as string);
   const dayWorkouts = data?.record;
   const dot = <View className="size-[8px] rounded-full bg-secondary-default" />;

@@ -75,3 +75,50 @@ export const addMultipleExercisesToWorkout = async ({
     throw error.response.data;
   }
 };
+
+/**function used to add a new set to  an exercise */
+export const addSetToWorkoutExercise = async ({
+  workoutExerciseId,
+  weight,
+  reps,
+}: {
+  workoutExerciseId: string;
+  weight: number;
+  reps: number;
+}) => {
+  try {
+    const { data }: { data: any } = await API_AXIOS_CLIENT.post(
+      `/api/workout/workout-exercise-set/${workoutExerciseId}`,
+      { weight, reps }
+    );
+
+    return data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+/**function used to add multiple sets to an workout exercise*/
+export const addMultipleSetsToWorkoutExercise = async sets => {
+  console.log("sets here boss", sets);
+  try {
+    const { data }: { data: any } = await API_AXIOS_CLIENT.post("api/workout/workout-exercise-sets", { sets });
+
+    return data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+/**function used to update a specific set by set id*/
+export const updateSetBySetId = async fields => {
+  const { setId, ...rest } = fields;
+  console.log("setId, fields", setId, fields);
+  try {
+    const { data }: { data: any } = await API_AXIOS_CLIENT.patch(`api/workout/workout-sets/${setId}`, { ...rest });
+
+    return data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
