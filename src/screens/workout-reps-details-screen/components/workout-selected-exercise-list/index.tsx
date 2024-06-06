@@ -5,12 +5,7 @@ import { IWorkoutSelectedExerciseList } from "./WorkoutSelectedExerciseList.inte
 /**
  * Component used to display all the exercises linked to a specific workout
  */
-const WorkoutSelectedExerciseList = ({
-  exercises,
-  isEditable,
-  onUpdateInputs,
-  isSwipeEnabled,
-}: IWorkoutSelectedExerciseList) => {
+const WorkoutSelectedExerciseList = ({ exercises, isEditable, isSwipeEnabled }: IWorkoutSelectedExerciseList) => {
   return (
     <>
       {exercises.map((exerciseDetails: TExerciseWithSets) => (
@@ -18,7 +13,6 @@ const WorkoutSelectedExerciseList = ({
           isEditable={isEditable}
           key={exerciseDetails.id}
           exerciseDetails={exerciseDetails}
-          onUpdateInputs={onUpdateInputs}
           isSwipeEnabled={isSwipeEnabled}
         />
       ))}

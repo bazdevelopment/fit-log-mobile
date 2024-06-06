@@ -4,12 +4,11 @@ import { ISet } from "../../../../context/workout-context/workout-context.interf
 export interface IWorkoutSelectedExerciseList {
   exercises: TExerciseWithSets[];
   isEditable: boolean;
-  onUpdateInputs: (record: IWorkoutInputChanged) => void;
   isSwipeEnabled: boolean;
 }
 
 export interface IWorkoutInputChanged {
-  groupName: string;
+  workoutExerciseId: string;
   setId: string;
   field: keyof ISet;
   newValue: string;

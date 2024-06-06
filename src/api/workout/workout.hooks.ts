@@ -3,13 +3,18 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { IErrorResponse, ISuccessResponse } from "../auth/auth.types";
 import {
   addMultipleExercisesToWorkout,
+  addMultipleSetsToWorkoutExercise,
+  addSetToWorkoutExercise,
   createWorkout,
   getUserWeeklyWorkouts,
   getUserWorkoutsByDate,
+  updateSetBySetId,
 } from "./workout.requests";
 import {
   IAddMultipleExercisesToWorkout,
   IAddMultipleExercisesToWorkoutSuccessResponse,
+  IAddMultipleSetsToWorkoutExercise,
+  IAddSetToWorkoutExercise,
   ICreateWorkoutOptions,
 } from "./workout.types";
 
@@ -56,6 +61,48 @@ export const useAddMultipleExercisesToWorkout = (options: IAddMultipleExercisesT
       options.onError(error);
     },
     onSuccess(data: IAddMultipleExercisesToWorkoutSuccessResponse) {
+      options.onSuccess(data);
+    },
+  });
+
+/**
+ * Utility hook add a set (weight, reps) to an existing workout exercise
+ */
+export const useAddSetToWorkoutExercise = (options: IAddSetToWorkoutExercise) =>
+  useMutation({
+    mutationFn: addSetToWorkoutExercise,
+    onError: (error: IErrorResponse) => {
+      options.onError(error);
+    },
+    onSuccess(data) {
+      options.onSuccess(data);
+    },
+  });
+
+/**
+ * Utility hook add a set (weight, reps) to an existing workout exercise
+ */
+export const useAddMultipleSetsToWorkoutExercise = (options: IAddMultipleSetsToWorkoutExercise) =>
+  useMutation({
+    mutationFn: addMultipleSetsToWorkoutExercise,
+    onError: (error: IErrorResponse) => {
+      options.onError(error);
+    },
+    onSuccess(data) {
+      options.onSuccess(data);
+    },
+  });
+
+/**
+ * Utility hook add a set (weight, reps) to an existing workout exercise
+ */
+export const useUpdateSet = options =>
+  useMutation({
+    mutationFn: updateSetBySetId,
+    onError: (error: IErrorResponse) => {
+      options.onError(error);
+    },
+    onSuccess(data) {
       options.onSuccess(data);
     },
   });

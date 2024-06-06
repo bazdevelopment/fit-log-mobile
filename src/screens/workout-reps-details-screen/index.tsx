@@ -1,7 +1,9 @@
 import { router, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
-import { View } from "react-native";
+import { Keyboard, View } from "react-native";
+import { showMessage } from "react-native-flash-message";
 
+import { IErrorResponse, ISuccessResponse } from "../../api/auth/auth.types";
 import { useUserWorkoutsByDate } from "../../api/workout/workout.hooks";
 import CloseIcon from "../../assets/icons/Close";
 import ThickIcon from "../../assets/icons/ThickIcon";
@@ -11,8 +13,8 @@ import Icon from "../../components/atoms/icon";
 import Label from "../../components/atoms/label";
 import ScreenWrapper from "../../components/templates/screen-wrapper";
 import { Colors } from "../../styles/colors";
+import { wait } from "../../utilities/wait";
 import WorkoutSelectedExerciseList from "./components/workout-selected-exercise-list";
-import { IWorkoutInputChanged } from "./components/workout-selected-exercise-list/WorkoutSelectedExerciseList.interface";
 /**
  * Screen used to display the muscle groups selected together with exercises linked to each group
  * The user has possibility to add the number of sets/reps for each exercise
@@ -23,34 +25,11 @@ const WorkoutRepsDetailsScreen = () => {
   const { data } = useUserWorkoutsByDate(day as string);
   const workouts = data?.record;
 
-  const [inputs, setInputs] = useState<Record<string, { weight: string; reps: string; group: string }>>({});
-
-  const onUpdateInputs = ({ groupName, setId, field, newValue }: IWorkoutInputChanged) => {
-    setInputs(prevState => ({
-      ...prevState,
-      [setId]: { ...prevState[setId], [field]: newValue, group: groupName },
-    }));
-  };
-
   /**
    * Function to handle button click
    * Dispatch an action to update sets in Redux
    */
   const onEditInputs = () => {
-    Object.entries(inputs).forEach(([setId, changedFields]) => {
-      dispatch({
-        type: "UPDATE_SET",
-        payload: {
-          setId,
-          group: changedFields.group,
-          weight: changedFields.weight || "0",
-          reps: changedFields.reps || "0",
-        },
-      });
-    });
-    // Reset inputsChanged after update
-    setInputs({});
-
     router.push({
       pathname: "workout-details-screen",
       params: {
@@ -63,14 +42,18 @@ const WorkoutRepsDetailsScreen = () => {
     <ScreenWrapper isScrollEnabled keyboardAvoiding title={workouts?.length > 0 ? "Workouts" : "Workout"}>
       <View className="absolute right-4 top-3 z-10 mb-2 flex-row gap-3">
         <Icon
-          onPress={() =>
-            router.push({
-              pathname: "workout-details-screen",
-              params: {
-                day,
-              },
-            })
-          }
+          onPress={() => {
+            // !the code above is an workaround to see the updated reps/weight in the previus screen
+            Keyboard.isVisible() && Keyboard.dismiss();
+            wait(200).then(() =>
+              router.push({
+                pathname: "workout-details-screen",
+                params: {
+                  day,
+                },
+              })
+            );
+          }}
           additionalInnerClassName="bg-black"
           iconElement={<CloseIcon width={16} height={16} fill={Colors.white} />}
         />
@@ -86,7 +69,6 @@ const WorkoutRepsDetailsScreen = () => {
         {workouts?.map(({ name: workoutName, id: workoutId, exercises: workoutExercises, musclesGroupTarget }) => {
           const selectedExercises = workoutExercises;
           const hasExerciseSelected = Boolean(workoutExercises?.length);
-
           return (
             <React.Fragment key={workoutId}>
               <Label
@@ -98,12 +80,7 @@ const WorkoutRepsDetailsScreen = () => {
                 <Label labelText="No exercises." as="h5" additionalLabelStyle="font-primary text-gray-800" />
               )}
               {hasExerciseSelected && (
-                <WorkoutSelectedExerciseList
-                  exercises={selectedExercises}
-                  isEditable
-                  isSwipeEnabled
-                  onUpdateInputs={onUpdateInputs}
-                />
+                <WorkoutSelectedExerciseList exercises={selectedExercises} isEditable isSwipeEnabled />
               )}
 
               <Button
