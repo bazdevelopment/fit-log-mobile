@@ -1,10 +1,9 @@
 import { i18n } from "@lingui/core";
 import { Trans } from "@lingui/macro";
 import { useFocusEffect, useScrollToTop } from "@react-navigation/native";
-import { Link, router } from "expo-router";
+import { Lin } from "expo-router";
 import { useCallback, useRef } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import { showMessage } from "react-native-flash-message";
 
 import { getStorageItem, setStorageItem } from "../../api/common/storage";
 import Button from "../../components/atoms/button/button";
@@ -40,6 +39,7 @@ i18n.loadAndActivate({ locale: "ro", messages: undefined });
 export default function Root() {
   const { resetHeader } = useScrollContext();
   const { cardScanned } = useArduinoSocket();
+
   const scrollViewRef = useRef(null);
 
   const at = getStorageItem("access_token");
@@ -54,39 +54,8 @@ export default function Root() {
   );
 
   return (
-    <View className="mt-28 flex-1">
-      <Label labelText={cardScanned} as="h2" />
-
-      <Button
-        buttonText="Log out"
-        variant="primary"
-        onPress={() => {
-          setStorageItem("access_token", null);
-          setStorageItem("refresh_token", null);
-          setStorageItem("is_authenticated", "false");
-          router.navigate("/sign-in");
-
-          showMessage({
-            message: "Logged out",
-            type: "danger",
-            duration: 4000,
-            floating: true,
-          });
-        }}
-      />
-      <Button
-        variant="primary"
-        onPress={() => {
-          showMessage({
-            message: "Simple message",
-            type: "danger",
-            duration: 4000,
-            // floating: true,
-          });
-        }}
-        buttonText="Request Details"
-      />
-      <ContentScroller ref={scrollViewRef} />
+    <View className="mt-0 flex-1">
+      <ContentScroller ref={scrollViewRef} cardScanned={cardScanned} />
 
       {/* <LanguagePreference />
       <Test />

@@ -83,7 +83,10 @@
     "storybook": "^7.0.10",
     "tailwind-merge": "^2.2.1",
     "ts-jest": "^29.1.2",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "@react-native-masked-view/masked-view": "0.3.0",
+    "expo-linear-gradient": "~12.7.2",
+    "lottie-react-native": "6.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",

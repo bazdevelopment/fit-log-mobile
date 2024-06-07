@@ -24,7 +24,7 @@ export const useWeekNavigation = () => {
   const currentMonth = getCurrentMonth(currentYear, weekNumber);
   const segmentedDays = getSegmentedDays(weekDates);
   const interval = getWeekInterval(currentYear, weekNumber);
-  const currentDay = getCurrentDay();
+  const currentDay = getCurrentDay("ddd");
 
   const { startOfWeek, endOfWeek } = getStartAndEndWeek(currentYear, weekNumber);
   const initialDayFocused = segmentedDays.find(day => day.title === currentDay);

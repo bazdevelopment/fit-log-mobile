@@ -82,7 +82,7 @@ export const getWeekInterval = (year: number, weekNumber: number): string => {
 /**
  * Utility function used to get the current day in ddd format like "Mon"
  */
-export const getCurrentDay = (): string => dayjs().format("ddd");
+export const getCurrentDay = (format: string): string => dayjs().format(format);
 
 /**
  * Utility function which returns the start and end week

@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useRoute } from "@react-navigation/native";
+import { useEffect, useRef, useState } from "react";
+import { showMessage } from "react-native-flash-message";
 
 import socket from "../../api/common/socket";
 
@@ -7,6 +9,8 @@ import socket from "../../api/common/socket";
  */
 export const useArduinoSocket = () => {
   const [cardScanned, setCardScanned] = useState("");
+  const prevCard = useRef(cardScanned);
+  const { name: focusedScreenName } = useRoute();
 
   useEffect(() => {
     const handleConnect = () => {
@@ -16,7 +20,18 @@ export const useArduinoSocket = () => {
     const handleMessage = (data: string) => {
       console.log("Received:", data);
       /**Update state with received data /* */
-      setCardScanned(data);
+
+      if (focusedScreenName === "index") {
+        if (data === prevCard.current) {
+          showMessage({
+            message: "You already scanned",
+            type: "danger",
+            duration: 10000,
+          });
+        }
+        setCardScanned(data);
+        prevCard.current = data;
+      }
     };
 
     const handleDisconnect = () => {
