@@ -1,10 +1,8 @@
 import { router } from "expo-router";
 import { useState } from "react";
 import { showMessage } from "react-native-flash-message";
-import { useMMKVBoolean } from "react-native-mmkv";
 
 import { IErrorResponse, ISuccessResponse } from "../../api/auth/auth.types";
-import { storage } from "../../api/common/storage";
 import { useCurrentUser, useUpdateUser } from "../../api/user/user.hooks";
 import OnboardingSecondFlow from "../../components/templates/onboarding-second-flow";
 import { IOnboardingSecondData } from "../../components/templates/onboarding-second-flow/OnboardingSecondFlow.interface";
@@ -22,8 +20,6 @@ import WeightSelectionScreen from "../../screens/onboarding-second/weight-select
  * The information can be related to age, height, activity level, weight, goal
  */
 export default function OnboardingSecondFlowPage() {
-  const [_, setIsOnboardedLocal] = useMMKVBoolean("is_onboarded_local", storage);
-
   const [onboardingData, setOnboardingData] = useState({
     gender: null,
     age: null,
@@ -40,7 +36,6 @@ export default function OnboardingSecondFlowPage() {
       duration: 5000,
     });
 
-    setIsOnboardedLocal(true);
     router.navigate("(tabs)");
   };
 

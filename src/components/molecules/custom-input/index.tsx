@@ -95,7 +95,6 @@ const CustomInput = ({
           icon={<MaterialIcons name="error" size={22} color={Colors.error} />}
         />
       )}
-      {/* </View> */}
     </View>
   );
 };

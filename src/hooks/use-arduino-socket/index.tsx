@@ -1,15 +1,20 @@
 import { useRoute } from "@react-navigation/native";
-import { useEffect, useRef, useState } from "react";
-import { showMessage } from "react-native-flash-message";
+import { useEffect, useState } from "react";
 
 import socket from "../../api/common/socket";
 
 /**
  * Custom hook used to get the card id from arduino based on socket io
  */
-export const useArduinoSocket = () => {
+export const useArduinoSocket = ({
+  onSubmitMembershipCardId,
+  handleRegisterGymVisit,
+}: {
+  onSubmitMembershipCardId: (cardId: string) => void;
+  handleRegisterGymVisit: (cardId: string) => void;
+}) => {
   const [cardScanned, setCardScanned] = useState("");
-  const prevCard = useRef(cardScanned);
+
   const { name: focusedScreenName } = useRoute();
 
   useEffect(() => {
@@ -17,20 +22,21 @@ export const useArduinoSocket = () => {
       console.log("Socket.io connected");
     };
 
-    const handleMessage = (data: string) => {
-      console.log("Received:", data);
+    const handleMessage = async (cardId: string) => {
+      console.log("Received:", cardId);
       /**Update state with received data /* */
 
       if (focusedScreenName === "index") {
-        if (data === prevCard.current) {
-          showMessage({
-            message: "You already scanned",
-            type: "danger",
-            duration: 10000,
-          });
+        try {
+          const { record } = await handleRegisterGymVisit(cardId);
+          record.cardMembershipId && setCardScanned(cardId);
+        } catch (err) {
+          //you don't have to do anything here, the error is handled in onError utility fnc
         }
-        setCardScanned(data);
-        prevCard.current = data;
+      }
+
+      if (focusedScreenName === "scan-membership/index") {
+        onSubmitMembershipCardId && onSubmitMembershipCardId(cardId);
       }
     };
 

@@ -23,7 +23,7 @@ export const getButtonStyles = (
       wrapper: `${flexStyle} rounded-full bg-slate-100`,
     },
     outlined: {
-      text: `text-${size} font-primary text-primary-default p-3 text-center`,
+      text: `text-${size} font-primary-bold text-primary-default p-3 text-center`,
       wrapper: `${flexStyle} border rounded-md border-primary-default ${pressed ? "opacity-75" : ""}`,
     },
     destructive: {

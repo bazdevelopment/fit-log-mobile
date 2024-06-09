@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { Redirect, useNavigationContainerRef } from "expo-router";
 import { useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
@@ -10,14 +9,22 @@ import { useAuth } from "../hooks/use-auth/use-auth";
  * when navigation mounted, based on a condition if the user did the onboarding low he wil be redirect to onboarding screens / root screens
  */
 export default function Page() {
-  const { data } = useCurrentUser();
+  const { data: currenUser } = useCurrentUser();
+  const userInfo = currenUser?.record;
   const { isAuthenticated } = useAuth();
   const navigation = useNavigationContainerRef();
-
   const [ready, setReady] = useState(false);
 
-  const isUserOnboarded = data?.record.isOnboarded;
-  const redirectPath = isAuthenticated ? (isUserOnboarded ? "(tabs)" : "/onboarding-first-flow") : "/sign-in";
+  const isUserOnboarded = userInfo?.isOnboarded;
+  const isMembershipCardScanned = userInfo?.cardMembershipId;
+
+  const redirectPath = isAuthenticated
+    ? !isMembershipCardScanned
+      ? "/scan-membership"
+      : isUserOnboarded
+        ? "(tabs)"
+        : "/onboarding-first-flow"
+    : "/sign-in";
 
   useEffect(() => {
     if (!navigation?.isReady) return;
