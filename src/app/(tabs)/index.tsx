@@ -1,11 +1,13 @@
 import { i18n } from "@lingui/core";
-import { Trans } from "@lingui/macro";
 import { useFocusEffect, useScrollToTop } from "@react-navigation/native";
-import { Lin } from "expo-router";
 import { useCallback, useRef } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { View } from "react-native";
+import { showMessage } from "react-native-flash-message";
 
-import { getStorageItem, setStorageItem } from "../../api/common/storage";
+import { IErrorResponse } from "../../api/auth/auth.types";
+import { queryClient } from "../../api/common";
+import { getStorageItem } from "../../api/common/storage";
+import { useRegisterGymVisit, useTodayGymVisit } from "../../api/membership-card/membership-card.hooks";
 import Button from "../../components/atoms/button/button";
 import Label from "../../components/atoms/label";
 import LanguagePreference from "../../components/language-preferrence";
@@ -13,33 +15,36 @@ import ContentScroller from "../../components/organisms/content-scroller";
 import { useScrollContext } from "../../context/scroll-context";
 import useArduinoSocket from "../../hooks/use-arduino-socket";
 import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
-import { useTodoMutation } from "../../mutations/use-todo-mutation/use-todo-mutation";
-import { useTodoQuery } from "../../queries/hooks/use-todo-query/use-todo-query";
-
-export const Test = () => {
-  const { data, isLoading, isError } = useTodoQuery();
-
-  const { mutate } = useTodoMutation(1, {});
-
-  return (
-    <View className="mb-10 flex flex-row justify-center">
-      <ContentScroller />
-      <TouchableOpacity onPress={() => mutate()} accessibilityRole="button">
-        <Text>
-          <Trans>Press to trigger todo mutation</Trans>
-        </Text>
-        <Link href="/onboarding">About</Link>
-      </TouchableOpacity>
-    </View>
-  );
-};
 
 i18n.loadAndActivate({ locale: "ro", messages: undefined });
 
+const handleOnSuccess = data => {
+  showMessage({
+    message: data.message,
+    type: "success",
+    duration: 5000,
+  });
+
+  queryClient.invalidateQueries({ queryKey: ["verify-today-gym-visit-key"] });
+};
+
+const handleOnError = (error: IErrorResponse) => {
+  showMessage({
+    message: error.message,
+    type: "danger",
+    duration: 10000,
+  });
+};
+
 export default function Root() {
   const { resetHeader } = useScrollContext();
-  const { cardScanned } = useArduinoSocket();
+  const { mutateAsync: handleRegisterGymVisit } = useRegisterGymVisit({
+    onSuccess: handleOnSuccess,
+    onError: handleOnError,
+  });
 
+  useArduinoSocket({ onSubmitMembershipCardId: () => null, handleRegisterGymVisit });
+  const { data } = useTodayGymVisit();
   const scrollViewRef = useRef(null);
 
   const at = getStorageItem("access_token");
@@ -55,10 +60,13 @@ export default function Root() {
 
   return (
     <View className="mt-0 flex-1">
-      <ContentScroller ref={scrollViewRef} cardScanned={cardScanned} />
+      <ContentScroller
+        ref={scrollViewRef}
+        isCardScannedToday={!!data?.record.cardMembershipId}
+        cardScannedDate={data?.record.createdAt}
+      />
 
       {/* <LanguagePreference />
-      <Test />
       <TouchableOpacity accessibilityRole="button" onPress={toggleColorScheme}>
         <Text>Toggle light/dark mode</Text>
       </TouchableOpacity> */}

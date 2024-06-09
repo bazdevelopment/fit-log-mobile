@@ -5,12 +5,14 @@ import { showMessage } from "react-native-flash-message";
 
 import { useLogin } from "../../api/auth/auth.hooks";
 import { IErrorResponse, ILoginSuccessResponse } from "../../api/auth/auth.types";
-import { getStorageBoolean, setStorageItem } from "../../api/common/storage";
+import { setStorageItem } from "../../api/common/storage";
+import { getCurrentUser } from "../../api/user/users.requests";
 import Button from "../../components/atoms/button/button";
 import Label from "../../components/atoms/label";
 import CustomInput from "../../components/molecules/custom-input";
 import ScreenWrapper from "../../components/templates/screen-wrapper";
 import { Colors } from "../../styles/colors";
+import SpinnerScreen from "../spinner-screen";
 
 /**
  * Sign in screen that displays two inputs (email and password)
@@ -19,19 +21,27 @@ import { Colors } from "../../styles/colors";
  */
 const SignInScreen = () => {
   const { setOptions } = useNavigation();
-  const isUserOnboardedLocal = getStorageBoolean("is_onboarded_local");
-  const redirectPath = isUserOnboardedLocal ? "(tabs)" : "/onboarding-first-flow";
 
-  const handleOnSuccess = (data: ILoginSuccessResponse) => {
+  const handleOnSuccess = async (data: ILoginSuccessResponse) => {
+    setStorageItem("access_token", data.record.accessToken);
+    setStorageItem("refresh_token", data.record.refreshToken);
+    setStorageItem("is_authenticated", "true");
+
+    const currentUserResponse = await getCurrentUser();
+    const hasUserCardMembership = currentUserResponse.record.cardMembershipId;
+    const isUserOnboarded = currentUserResponse.record.isOnboarded;
+
     showMessage({
       message: data.message,
       type: "success",
       duration: 5000,
     });
 
-    setStorageItem("access_token", data.record.accessToken);
-    setStorageItem("refresh_token", data.record.refreshToken);
-    setStorageItem("is_authenticated", "true");
+    const redirectPath = isUserOnboarded
+      ? "(tabs)"
+      : !hasUserCardMembership
+        ? "/scan-membership"
+        : "/onboarding-first-flow";
 
     router.navigate(redirectPath);
   };
@@ -65,6 +75,7 @@ const SignInScreen = () => {
   }, [setOptions]);
   return (
     <ScreenWrapper keyboardAvoiding keyboardVerticalOffset={10}>
+      <SpinnerScreen />
       <View className="mt-20 flex-col items-center">
         <View className="flex-col items-center">
           <Label labelText="Sign in" as="h1" additionalLabelStyle="font-primary-semi-bold text-gray-800 mb-4" />

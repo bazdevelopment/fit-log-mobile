@@ -43,7 +43,7 @@ const WorkoutRepsDetailsScreen = () => {
           onPress={() => {
             // !the code above is an workaround to see the updated reps/weight in the previus screen
             Keyboard.isVisible() && Keyboard.dismiss();
-            wait(200).then(() =>
+            wait(500).then(() =>
               router.push({
                 pathname: "workout-details-screen",
                 params: {

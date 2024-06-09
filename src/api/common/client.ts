@@ -32,7 +32,7 @@ API_AXIOS_CLIENT.interceptors.response.use(
         removeStorageItem("refresh_token");
         setStorageItem("is_authenticated", "false");
         /**Redirect to the sign in screen if the refresh token is expired */
-        router.navigate("/sign-in");
+        router.navigate("/");
         return Promise.reject(refreshTokenError);
       }
     }

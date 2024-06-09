@@ -32,6 +32,7 @@ interface ICurrentUser {
   phoneNumber: string;
   userName: string;
   isOnboarded: boolean;
+  cardMembershipId: string;
 }
 export interface ICurrentUserResponse extends ISuccessResponse {
   record: ICurrentUser;
