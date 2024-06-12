@@ -1,34 +1,57 @@
 import dayjs from "dayjs";
 import { router } from "expo-router";
 import LottieView from "lottie-react-native";
-import React, { forwardRef } from "react";
-import { Pressable, StyleSheet, View } from "react-native";
+import { forwardRef } from "react";
+import { StyleSheet, View } from "react-native";
+import { showMessage } from "react-native-flash-message";
 import Animated from "react-native-reanimated";
 
+import { queryClient } from "../../../api/common";
 import { useCurrentUser } from "../../../api/user/user.hooks";
-import { useUserWorkoutsByDate } from "../../../api/workout/workout.hooks";
+import { useUserWorkoutsByDate, useWorkoutAction } from "../../../api/workout/workout.hooks";
+import { WORKOUT_ACTION } from "../../../api/workout/workout.types";
 import CardIcon from "../../../assets/icons/Card";
-import PlayIcon from "../../../assets/icons/Play";
 import SquatsIllustration from "../../../assets/images/illustrations/Squats";
 import { useContentScroller } from "../../../hooks/use-content-scroller/use-content-scroller";
 import SpinnerScreen from "../../../screens/spinner-screen";
 import { Colors } from "../../../styles/colors";
 import { getCurrentDay } from "../../../utilities/date-time-helpers";
-import Button from "../../atoms/button/button";
 import HorizontalLine from "../../atoms/horizontal-line";
-import Image from "../../atoms/image";
 import Label from "../../atoms/label";
 import WelcomeMessage from "../../molecules/welcome-message";
+import WorkoutActionCard from "../../molecules/workout-action-card";
 import EdgeCaseTemplate from "../../templates/edge-case-template";
 
 const scanCardAnimation = require("../../../assets/animations/scan-card-animation.json");
+
+const handleOnSuccessWorkoutAction = data => {
+  showMessage({
+    message: data.message,
+    type: "success",
+    duration: 5000,
+  });
+
+  queryClient.invalidateQueries({ queryKey: ["user-workouts-by-date"] });
+};
+
+const handleOnErrorWorkoutAction = error => {
+  showMessage({
+    message: error.message,
+    type: "danger",
+    duration: 10000,
+  });
+};
+
 const ContentScroller = forwardRef(
   ({ isCardScannedToday, cardScannedDate }: { isCardScannedToday: Boolean; cardScannedDate: Date }, ref) => {
     const { contentContainerStyle, scrollHandler } = useContentScroller();
-    const dot = <View className="size-[8px] rounded-full bg-secondary-default" />;
 
     const currentDayDate = getCurrentDay("YYYY-MM-DD");
     const { data } = useUserWorkoutsByDate(currentDayDate);
+    const { mutate: handleWorkoutAction } = useWorkoutAction({
+      onSuccess: handleOnSuccessWorkoutAction,
+      onError: handleOnErrorWorkoutAction,
+    });
     const { data: currentUserResponse } = useCurrentUser();
 
     const dailyWorkouts = data?.record;
@@ -88,61 +111,30 @@ const ContentScroller = forwardRef(
 
         {Boolean(dailyWorkouts?.length) && isCardScannedToday ? (
           <View>
-            {dailyWorkouts?.map(({ name: workoutName, id: workoutId, exercises, musclesGroupTarget }) => (
-              <React.Fragment key={workoutId}>
-                <Label labelText={workoutName} as="h2" additionalLabelStyle="font-primary-bold text-gray-800 mt-4" />
-                <View className="flex-row items-center gap-4">
-                  {musclesGroupTarget.map((muscleName: string, id: number) => (
-                    <Label
-                      key={`${muscleName}-${id}`}
-                      labelText={muscleName}
-                      additionalLabelStyle="font-primary-bold text-sm text-tertiary-default"
-                      icon={dot}
-                    />
-                  ))}
-                </View>
-                {!exercises.length && (
-                  <Label
-                    labelText="No exercises yet"
-                    additionalContainerStyle="mt-2"
-                    as="h5"
-                    additionalLabelStyle="font-primary-medium text-gray-800"
+            {dailyWorkouts?.map(
+              ({ name: workoutName, id: workoutId, exercises, musclesGroupTarget, startDateTime, endDateTime }) => {
+                const isWorkoutStarted = !!startDateTime;
+                const isWorkoutCompleted = !!endDateTime;
+
+                const btnText = isWorkoutStarted ? "Stop workout" : "Start workout";
+                const workoutAction = isWorkoutStarted ? WORKOUT_ACTION.STOP : WORKOUT_ACTION.START;
+                return (
+                  <WorkoutActionCard
+                    workoutName={workoutName}
+                    exercises={exercises}
+                    musclesGroupTarget={musclesGroupTarget}
+                    key={workoutId}
+                    workoutId={workoutId}
+                    btnText={btnText}
+                    workoutAction={workoutAction}
+                    handleWorkoutAction={handleWorkoutAction}
+                    isWorkoutCompleted={isWorkoutCompleted}
+                    startDateTime={startDateTime}
+                    endDateTime={endDateTime}
                   />
-                )}
-
-                {exercises.map(exerciseDetails => (
-                  <View className="left-[-15px] mt-4 flex-row items-center" key={exerciseDetails.id}>
-                    <Pressable
-                      accessibilityRole="button"
-                      onPress={() =>
-                        router.push({
-                          pathname: "/modal-stack/exercise-details-modal",
-                          params: {
-                            exerciseName: exerciseDetails.exercise.name,
-                          },
-                        })
-                      }
-                    >
-                      <Image source={{ uri: exerciseDetails.exercise.gifUrl }} className="ml-4 size-[50px]" />
-                    </Pressable>
-                    <Label
-                      labelText={exerciseDetails.exercise.name}
-                      as="h4"
-                      additionalLabelStyle="text-gray-800 font-primary-bold ml-2"
-                    />
-                  </View>
-                ))}
-
-                <Button
-                  buttonText="Start workout"
-                  onPress={() => {}}
-                  variant="outlined"
-                  additionalContainerStyle="mt-6"
-                  icon={<PlayIcon fill={Colors.primary} width={20} height={20} top={1.5} />}
-                />
-                <HorizontalLine thickness="sm" color="light" additionalClassName="mt-4" />
-              </React.Fragment>
-            ))}
+                );
+              }
+            )}
           </View>
         ) : null}
       </Animated.ScrollView>
