@@ -7,6 +7,8 @@ interface ICreateWorkoutResponse {
   name: string;
   createdAt: string;
   updatedAt: string;
+  startDateTime: Date;
+  endDateTime: Date;
 }
 interface IWorkoutExerciseGrouped {
   id: string;
@@ -78,3 +80,10 @@ export interface IAddMultipleSetsToWorkoutExercise {
   onError: (error: IErrorResponse) => void;
   onSuccess: (data) => void;
 }
+
+export const WORKOUT_ACTION = {
+  START: "start",
+  STOP: "stop",
+} as const;
+
+export type TWorkoutAction = (typeof WORKOUT_ACTION)[keyof typeof WORKOUT_ACTION];

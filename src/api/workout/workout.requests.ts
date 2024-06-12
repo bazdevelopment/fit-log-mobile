@@ -6,6 +6,7 @@ import {
   IDailyUserWorkoutsByDate,
   IDateInterval,
   IUserWeeklyWorkoutsResponse,
+  TWorkoutAction,
 } from "./workout.types";
 
 /**function create a new workout and add it in db */
@@ -87,6 +88,7 @@ export const addSetToWorkoutExercise = async ({
   reps: number;
 }) => {
   try {
+    /**TODO: add types here */
     const { data }: { data: any } = await API_AXIOS_CLIENT.post(
       `/api/workout/workout-exercise-set/${workoutExerciseId}`,
       { weight, reps }
@@ -100,7 +102,6 @@ export const addSetToWorkoutExercise = async ({
 
 /**function used to add multiple sets to an workout exercise*/
 export const addMultipleSetsToWorkoutExercise = async sets => {
-  console.log("sets here boss", sets);
   try {
     const { data }: { data: any } = await API_AXIOS_CLIENT.post("api/workout/workout-exercise-sets", { sets });
 
@@ -113,10 +114,28 @@ export const addMultipleSetsToWorkoutExercise = async sets => {
 /**function used to update a specific set by set id*/
 export const updateSetBySetId = async fields => {
   const { setId, ...rest } = fields;
-  console.log("setId, fields", setId, fields);
+
   try {
+    /**TODO: add types here */
     const { data }: { data: any } = await API_AXIOS_CLIENT.patch(`api/workout/workout-sets/${setId}`, { ...rest });
 
+    return data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+/**function used submit an workout action start | stop*/
+export const submitWorkoutAction = async ({
+  workoutAction,
+  workoutId,
+}: {
+  workoutAction: TWorkoutAction;
+  workoutId: string;
+}) => {
+  try {
+    /**TODO: add types here */
+    const { data } = await API_AXIOS_CLIENT.post(`api/workout/${workoutId}/${workoutAction}`);
     return data;
   } catch (error) {
     throw error.response.data;

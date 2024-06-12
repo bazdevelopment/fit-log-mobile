@@ -8,6 +8,7 @@ import {
   createWorkout,
   getUserWeeklyWorkouts,
   getUserWorkoutsByDate,
+  submitWorkoutAction,
   updateSetBySetId,
 } from "./workout.requests";
 import {
@@ -99,6 +100,20 @@ export const useAddMultipleSetsToWorkoutExercise = (options: IAddMultipleSetsToW
 export const useUpdateSet = options =>
   useMutation({
     mutationFn: updateSetBySetId,
+    onError: (error: IErrorResponse) => {
+      options.onError(error);
+    },
+    onSuccess(data) {
+      options.onSuccess(data);
+    },
+  });
+
+/**
+ * Utility hook used to add an workout action: start | stop
+ */
+export const useWorkoutAction = options =>
+  useMutation({
+    mutationFn: submitWorkoutAction,
     onError: (error: IErrorResponse) => {
       options.onError(error);
     },

@@ -8,7 +8,6 @@ import { IErrorResponse } from "../../api/auth/auth.types";
 import { queryClient } from "../../api/common";
 import { getStorageItem } from "../../api/common/storage";
 import { useRegisterGymVisit, useTodayGymVisit } from "../../api/membership-card/membership-card.hooks";
-import Button from "../../components/atoms/button/button";
 import Label from "../../components/atoms/label";
 import LanguagePreference from "../../components/language-preferrence";
 import ContentScroller from "../../components/organisms/content-scroller";
@@ -62,8 +61,8 @@ export default function Root() {
     <View className="mt-0 flex-1">
       <ContentScroller
         ref={scrollViewRef}
-        isCardScannedToday={!!data?.record.cardMembershipId}
-        cardScannedDate={data?.record.createdAt}
+        isCardScannedToday={!!data?.record?.cardMembershipId}
+        cardScannedDate={data?.record?.createdAt}
       />
 
       {/* <LanguagePreference />
