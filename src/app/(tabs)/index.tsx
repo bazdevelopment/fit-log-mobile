@@ -14,10 +14,12 @@ import ContentScroller from "../../components/organisms/content-scroller";
 import { useScrollContext } from "../../context/scroll-context";
 import useArduinoSocket from "../../hooks/use-arduino-socket";
 import { useThemeScheme } from "../../hooks/use-theme-scheme/use-theme-scheme";
+import { playSound } from "../../utilities/play-sound";
 
 i18n.loadAndActivate({ locale: "ro", messages: undefined });
 
 const handleOnSuccess = data => {
+  playSound("success");
   showMessage({
     message: data.message,
     type: "success",
@@ -28,6 +30,7 @@ const handleOnSuccess = data => {
 };
 
 const handleOnError = (error: IErrorResponse) => {
+  playSound("error");
   showMessage({
     message: error.message,
     type: "danger",

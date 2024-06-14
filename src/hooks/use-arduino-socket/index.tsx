@@ -14,7 +14,6 @@ export const useArduinoSocket = ({
   handleRegisterGymVisit: (cardId: string) => void;
 }) => {
   const [cardScanned, setCardScanned] = useState("");
-
   const { name: focusedScreenName } = useRoute();
 
   useEffect(() => {

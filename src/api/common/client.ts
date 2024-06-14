@@ -9,7 +9,7 @@ export const API_AXIOS_CLIENT = axios.create({
 });
 
 API_AXIOS_CLIENT.interceptors.response.use(
-  response => response, // directly return the succesful responses
+  response => response, // directly return the successful responses
   async error => {
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
