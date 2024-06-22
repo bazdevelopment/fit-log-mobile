@@ -36,3 +36,15 @@ export const verifyTodayVisit = async () => {
     throw error.response.data;
   }
 };
+
+/**
+ * Function used to fetch all gym visits
+ */
+export const getAllGymVisits = async () => {
+  try {
+    const { data } = await API_AXIOS_CLIENT.get("/api/membership-card/visits");
+    return data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
