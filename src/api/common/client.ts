@@ -7,7 +7,6 @@ import { getStorageItem, removeStorageItem, setStorageItem } from "./storage";
 export const API_AXIOS_CLIENT = axios.create({
   baseURL: process.env.EXPO_PUBLIC_API_URL,
 });
-console.log("Ceva");
 
 API_AXIOS_CLIENT.interceptors.response.use(
   response => response, // directly return the successful responses
