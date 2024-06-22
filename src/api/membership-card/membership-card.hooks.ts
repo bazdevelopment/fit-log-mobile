@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 import { IErrorResponse } from "../auth/auth.types";
-import { registerGymVisit, submitMembershipCard, verifyTodayVisit } from "./membership-card.requests";
+import { getAllGymVisits, registerGymVisit, submitMembershipCard, verifyTodayVisit } from "./membership-card.requests";
 import { IMembershipCardIdActionsResponse } from "./membership-card.types";
 
 /**
@@ -39,4 +39,13 @@ export const useTodayGymVisit = () =>
   useQuery({
     queryKey: ["verify-today-gym-visit-key"],
     queryFn: verifyTodayVisit,
+  });
+
+/**
+ * Utility hook used to fetch all the gym visits
+ */
+export const useGymVisits = () =>
+  useQuery({
+    queryKey: ["all-gym-visits"],
+    queryFn: getAllGymVisits,
   });

@@ -11,12 +11,14 @@ import { useCurrentUser } from "../../../api/user/user.hooks";
 import { useUserWorkoutsByDate, useWorkoutAction } from "../../../api/workout/workout.hooks";
 import { WORKOUT_ACTION } from "../../../api/workout/workout.types";
 import CardIcon from "../../../assets/icons/Card";
+import ChevronIcon from "../../../assets/icons/SvgExample";
 import SquatsIllustration from "../../../assets/images/illustrations/Squats";
 import { useContentScroller } from "../../../hooks/use-content-scroller/use-content-scroller";
 import SpinnerScreen from "../../../screens/spinner-screen";
 import { Colors } from "../../../styles/colors";
 import { getCurrentDay } from "../../../utilities/date-time-helpers";
 import HorizontalLine from "../../atoms/horizontal-line";
+import Icon from "../../atoms/icon";
 import Label from "../../atoms/label";
 import WelcomeMessage from "../../molecules/welcome-message";
 import WorkoutActionCard from "../../molecules/workout-action-card";
@@ -70,12 +72,17 @@ const ContentScroller = forwardRef(
         <SpinnerScreen />
         {isCardScannedToday && (
           <>
-            <View className="my-2 rounded-md bg-primary-default p-3">
+            <View className="my-2 flex-row rounded-md bg-primary-default px-4 py-1">
               <Label
                 labelText={`Gym pass scanned today at ${dayjs(cardScannedDate).format("hh:mm A")}`}
                 as="h5"
                 icon={<CardIcon fill={Colors.grey} width={20} height={20} />}
                 additionalLabelStyle="text-white font-primary text-center ml-2"
+              />
+              <Icon
+                iconElement={<ChevronIcon width={14} height={14} fill={Colors.white} />}
+                additionalInnerClassName="bg-none ml-4"
+                onPress={() => router.navigate("/gym-visit")}
               />
             </View>
             <HorizontalLine color="light" thickness="sm" additionalClassName="mt-2" />
