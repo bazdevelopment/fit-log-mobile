@@ -12,12 +12,20 @@ import Label from "../../atoms/label";
  * Workout overview card
  * used in the schedule screen for each day when there are some workout done
  */
-const WorkoutOverviewCard = ({ workout }: { workout: IWorkoutItem }) => {
+const WorkoutOverviewCard = ({
+  workout,
+  isCurrentDayFocused,
+}: {
+  workout: IWorkoutItem;
+  isCurrentDayFocused: boolean;
+}) => {
   const hasWorkouts = workout?.data;
   const dot = <View className="size-[6px] rounded-full bg-secondary-default" />;
 
   return (
-    <View className=" flex-row items-center justify-between rounded-lg bg-white p-4">
+    <View
+      className={`flex-row items-center justify-between rounded-lg bg-white p-4 ${isCurrentDayFocused && "border-2 mx-1 border-primary-default shadow"}`}
+    >
       <View className="flex-1 flex-row items-center gap-4">
         <View className="w-[80px]">
           <Label

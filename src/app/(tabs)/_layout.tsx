@@ -44,16 +44,8 @@ export default function TabLayout() {
                   isHeaderCollapsed={screen.title !== "Schedule"}
                   options={{
                     headerTitle: screen.title,
-                    headerLeft: () => (
-                      <View>
-                        <Text>Header Left</Text>
-                      </View>
-                    ),
-                    headerRight: () => (
-                      <View>
-                        <Text>Header Right</Text>
-                      </View>
-                    ),
+                    headerLeft: () => null,
+                    headerRight: () => null,
                   }}
                   onLayout={handleLayout}
                 />

@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { useCallback, useRef } from "react";
 import { SectionList, View } from "react-native";
 
-import { IWorkoutItem, IWorkoutSection, workoutSections } from "../../../__mocks__/workout-schedule-mock";
+import { IWorkoutItem, IWorkoutSection } from "../../../__mocks__/workout-schedule-mock";
 import { useCurrentWeeklyWorkouts } from "../../../api/workout/workout.hooks";
 import HorizontalLine from "../../../components/atoms/horizontal-line";
 import Label from "../../../components/atoms/label";
@@ -13,6 +13,7 @@ import { useWeekNavigation } from "../../../components/organisms/week-block/hook
 import { useScrollContext } from "../../../context/scroll-context";
 import { useRefreshOnFocus } from "../../../hooks/use-refetch-on-focus/use-refetch-on-focus";
 import SpinnerScreen from "../../../screens/spinner-screen";
+import { checkIsToday } from "../../../utilities/date-time-helpers";
 
 const Page = () => {
   const { resetHeader } = useScrollContext();
@@ -66,9 +67,11 @@ const Page = () => {
   };
 
   const renderWorkoutItem = ({ item }: { item: IWorkoutItem }) => {
+    const isCurrentDayFocused = checkIsToday(item.day);
+
     return (
       <>
-        <WorkoutOverviewCard workout={item} />
+        <WorkoutOverviewCard workout={item} isCurrentDayFocused={isCurrentDayFocused} />
         <HorizontalLine thickness="sm" color="light" />
       </>
     );
@@ -88,7 +91,7 @@ const Page = () => {
     <View className="mt-28 flex-1">
       <SpinnerScreen />
       <WeekBlock
-        workoutSections={workoutSections}
+        workoutSections={sections}
         onScrollToIndex={onScrollToIndex}
         weekOffset={weekOffset}
         initialDayFocused={initialDayFocused}
