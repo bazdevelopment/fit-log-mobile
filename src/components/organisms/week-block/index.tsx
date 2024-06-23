@@ -40,16 +40,17 @@ const WeekBlock = ({
         onScrollToIndex(0, 0);
       } else {
         handleChangeSelection(initialDayFocused as ISegmentedControlOption);
-        const indexes = findSectionIndexToScroll(initialDayFocused.id, workoutSections);
+        const indexes = findSectionIndexToScroll(initialDayFocused?.subtitle, workoutSections);
+
         /**
          *  Delay added to ensure the UI has time to update before scrolling
          * TODO: maybe the check ofr indexes && can be replace with something more specific
          */
-        indexes && wait(500).then(() => onScrollToIndex(indexes.sectionIndex, indexes.itemIndex));
+        wait(500).then(() => onScrollToIndex(indexes[0]?.sectionIndex, indexes[0]?.itemIndex));
       }
     };
     handleWeekOffsetChange();
-  }, [weekOffset]);
+  }, [weekOffset, workoutSections?.length]);
 
   return (
     <View>
@@ -78,8 +79,9 @@ const WeekBlock = ({
         selectedOption={selectedOption as ISegmentedControlOption}
         onOptionPress={option => {
           handleChangeSelection(option);
-          const indexes = findSectionIndexToScroll(option?.id, workoutSections);
-          indexes && onScrollToIndex(indexes.sectionIndex, indexes.itemIndex);
+
+          const indexes = findSectionIndexToScroll(`${option.month}-${option.subtitle}`, workoutSections);
+          indexes?.length && onScrollToIndex(indexes[0].sectionIndex, indexes[0].itemIndex);
         }}
         withBorder
         borderColor={Colors.primary}
@@ -94,16 +96,17 @@ export default WeekBlock;
 
 /**
  * Utility function used to find the section index and element index to scroll
+ * slice(8) to extract the last 2 characters from "20-12-22"
  */
 const findSectionIndexToScroll = (
-  selectedDayId: number,
+  selectedDayTitle: string,
   workoutSections: IWorkoutSection[]
-): { sectionIndex: number; itemIndex: number } | undefined => {
-  const indexesFound = workoutSections
-    .flatMap((section: IWorkoutSection, sectionIndex: number) =>
-      section.data.map((item, itemIndex) => ({ sectionIndex, itemIndex: itemIndex + 1, id: item.id }))
-    )
-    .find(item => item.id === selectedDayId);
+): { sectionIndex: number; itemIndex: number }[] => {
+  const indexesFound = workoutSections?.map((section, sectionIndex) =>
+    section.data
+      .map((item, itemIndex) => ({ sectionIndex, itemIndex: itemIndex + 1, day: item.day }))
+      .find(item => item.day.includes(selectedDayTitle))
+  );
 
-  return indexesFound;
+  return indexesFound?.filter(Boolean);
 };

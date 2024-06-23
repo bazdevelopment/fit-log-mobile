@@ -17,7 +17,6 @@ import Icon from "../../components/atoms/icon";
 import Image from "../../components/atoms/image";
 import Label from "../../components/atoms/label";
 import { Colors } from "../../styles/colors";
-import SpinnerScreen from "../../screens/spinner-screen";
 
 const handleOnSuccess = (data: IAddMultipleExercisesToWorkoutSuccessResponse) => {
   showMessage({
@@ -61,7 +60,6 @@ export default function Modal() {
   return (
     <View className="mt-6 flex-1">
       <StatusBar style="light" />
-      <SpinnerScreen/>
       <Stack.Screen
         options={{
           title: musclesGroupTarget,

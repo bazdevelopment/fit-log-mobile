@@ -26,7 +26,10 @@ export const getDaysOfWeek = (weekNumber: number, year: number): IDayOfWeek[] =>
   let currentDay = startOfWeek;
   while (currentDay.isSameOrBefore(endOfWeek)) {
     daysOfWeek.push({
-      [currentDay.format("ddd")]: currentDay.date(), // Abbreviated day name as key, day number as value
+      [currentDay.format("ddd")]: {
+        day: currentDay.date(),
+        month: currentDay.month() < 9 ? `0${currentDay.month() + 1}` : currentDay.month() + 1,
+      }, // Abbreviated day name as key, day number as value
     });
     currentDay = currentDay.add(1, "day"); // Move to the next day
   }
@@ -47,11 +50,12 @@ export const getYearFromWeekOffset = (weekOffset: number): number => {
  */
 export const getSegmentedDays = (weekDates: IDayOfWeek[]): ISegmentedControlOption[] => {
   const mappedDays = weekDates.map((day, index) => {
-    const [dayName, dayNumber] = Object.entries(day)[0];
+    const [dayName, { day: dayNumber, month }] = Object.entries(day)[0];
     return {
       title: dayName,
-      subtitle: String(dayNumber),
+      subtitle: dayNumber < 10 ? `0${dayNumber}` : `${dayNumber}`,
       id: index,
+      month,
     };
   });
   return mappedDays;
@@ -92,4 +96,12 @@ export const getStartAndEndWeek = (year: number, weekNumber: number): { startOfW
   const endOfWeek = dayjs().year(year).isoWeek(weekNumber).endOf("isoWeek"); // Get the end of the specified week with offset: ;
 
   return { startOfWeek, endOfWeek };
+};
+
+/* Function that checks if a date of format "2024-06-23" is today  */
+export const checkIsToday = (date: string) => {
+  const today = dayjs().format("YYYY-MM-DD");
+  const isToday = dayjs(date).isSame(today, "day");
+
+  return isToday;
 };
