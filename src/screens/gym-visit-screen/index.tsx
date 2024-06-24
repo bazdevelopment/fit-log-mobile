@@ -1,21 +1,36 @@
 import dayjs from "dayjs";
-import { ScrollView, View } from "react-native";
+import { View } from "react-native";
 
 import { useGymVisits } from "../../api/membership-card/membership-card.hooks";
 import CalendarIcon from "../../assets/icons/Calendar";
 import MembershipCardImage from "../../assets/icons/MembershipCard";
 import Label from "../../components/atoms/label";
+import MonthlyGymVisitsSummary from "../../components/templates/monthly-gym-visits-chart";
 import ScreenWrapper from "../../components/templates/screen-wrapper";
 import { Colors } from "../../styles/colors";
 /**
  * Screen used to fetch the gym visits based on how many times you scanned the membership card
  */
+const workoutData = [
+  { date: "2024-01-15", count: 20 },
+  { date: "2024-02-12", count: 15 },
+  { date: "2024-03-10", count: 5 },
+  { date: "2024-04-25", count: 10 },
+  { date: "2024-05-05", count: 30 },
+  { date: "2024-06-21", count: 5 },
+  { date: "2024-07-18", count: 3 },
+  { date: "2024-08-23", count: 4 },
+  { date: "2024-09-11", count: 1 },
+  { date: "2024-10-19", count: 3 },
+  { date: "2024-11-02", count: 2 },
+  { date: "2024-12-14", count: 10 },
+];
 const GymVisitScreen = () => {
   const { data } = useGymVisits();
   const gymVisitsList = data?.record;
   return (
-    <ScreenWrapper isBackNavigationEnabled title="Gym visits" isScrollEnabled={false}>
-      <ScrollView className="flex-1 bg-white p-4">
+    <ScreenWrapper isBackNavigationEnabled title="Gym visits" isScrollEnabled={true}>
+      <View className="px-4">
         <MembershipCardImage width={350} height={300} top={-60} fill={Colors.success} />
         {gymVisitsList &&
           Object.keys(gymVisitsList).map(month => (
@@ -36,7 +51,8 @@ const GymVisitScreen = () => {
               ))}
             </View>
           ))}
-      </ScrollView>
+        <MonthlyGymVisitsSummary workoutData={workoutData} />
+      </View>
     </ScreenWrapper>
   );
 };

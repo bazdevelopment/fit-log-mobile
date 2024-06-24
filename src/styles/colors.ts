@@ -16,4 +16,5 @@ export const Colors = {
   information: "#009EE3",
   transparent: "transparent",
   blackPantone: "#27324C",
+  primaryTransparent: "rgba(103, 57, 255, 0.75)",
 };
