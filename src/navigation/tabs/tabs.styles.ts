@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 
+import { DEVICE_TYPE } from "../../constants/device-type";
 import { Colors } from "../../styles/colors";
 
 export const getTabBarStyles = (isDarkColorScheme: boolean) =>
@@ -14,8 +15,9 @@ export const getTabBarStyles = (isDarkColorScheme: boolean) =>
       right: -1,
       bottom: -1,
       position: "absolute",
-      height: 85,
+      height: DEVICE_TYPE.IOS ? 85 : 65,
       paddingTop: 5,
+      paddingBottom: DEVICE_TYPE.IOS ? 0 : 5,
       borderTopWidth: 1.25,
     },
   });

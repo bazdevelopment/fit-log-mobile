@@ -28,7 +28,6 @@ export default function TabLayout() {
         screenOptions={{
           tabBarActiveTintColor: Colors.primary,
           /**TODO: consider to create a custom top navigation bar */
-
           tabBarStyle: styles.tabBarContainer,
         }}
       >
@@ -50,7 +49,6 @@ export default function TabLayout() {
                   onLayout={handleLayout}
                 />
               ),
-
               tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
                 <TabBarIcon icon={screen.icon(color)} focused={focused} />
               ),

@@ -88,7 +88,7 @@ const Page = () => {
   };
 
   return (
-    <View className="mt-28 flex-1">
+    <View className="mt-32 flex-1">
       <SpinnerScreen />
       <WeekBlock
         workoutSections={sections}

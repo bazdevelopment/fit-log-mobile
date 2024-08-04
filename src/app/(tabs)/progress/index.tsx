@@ -5,6 +5,7 @@ import { View } from "react-native";
 import ChartCategories from "../../../components/templates/chart-categories";
 import { PieChart } from "../../../components/templates/pie-chart";
 import ScreenWrapper from "../../../components/templates/screen-wrapper";
+import { DEVICE_TYPE } from "../../../constants/device-type";
 
 const gymTimeData = [
   { date: "2024-01-15", timeSpent: 45 },
@@ -129,7 +130,7 @@ const Page = () => {
   const calculateAverageWeight = calculateAverageWeightPerMonth(weightData);
   return (
     <ScreenWrapper>
-      <View className="my-20">
+      <View className={`mb-20 ${DEVICE_TYPE.IOS ? "mt-14" : "mt-24"}`}>
         <ChartCategories
           onChangeCategory={onChangeCategory}
           activeCategory={activeCategory}
