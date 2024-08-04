@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 1,
     height: 300,
+    marginTop: -100,
   },
   title: {
     fontSize: 20,
